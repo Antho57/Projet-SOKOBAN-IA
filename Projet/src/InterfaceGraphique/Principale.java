@@ -1,3 +1,4 @@
+package InterfaceGraphique;
 
 /**
  * @author Anthony Briot
