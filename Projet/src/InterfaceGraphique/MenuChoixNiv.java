@@ -4,9 +4,9 @@ import java.awt.*;
 
 public class MenuChoixNiv extends JPanel {
 
-    private JFrame f;
+    private Fenetre f;
 
-    public MenuChoixNiv(JFrame f){
+    public MenuChoixNiv(Fenetre f){
         this.f = f;
         this.f = f;
         this.setSize(new Dimension(900, 600));
