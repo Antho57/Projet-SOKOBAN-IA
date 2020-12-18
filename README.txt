@@ -13,9 +13,8 @@ VINCENT THOMAS
 
 Info : 
 
-Ceci est un projet réalisé dans le cadre de notre 2eme année de DUT informatique. 
+Ceci est un projet tutoré réalisé dans le cadre de notre 2eme année de DUT informatique. 
 
-Le but principale de celui-ci est de développer le jeu de sokoban (lien : https://fr.wikipedia.org/wiki/Sokoban)
-avec une IA permettant de résoudre différents niveaux du jeu, 
-afin d'analyser comment procède cette dernière.
+Le but principal de celui-ci est de développer le jeu Sokoban (lien : https://fr.wikipedia.org/wiki/Sokoban)
+avec une IA permettant de résoudre différents niveaux du jeu, et ceci dans le but de vulgariser l'IA.
 
