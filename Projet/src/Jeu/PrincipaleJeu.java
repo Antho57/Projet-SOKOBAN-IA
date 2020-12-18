@@ -6,5 +6,4 @@ public class PrincipaleJeu {
 	public PrincipaleJeu(Labyrinthe laby) {
 		this.laby = laby;
 	}
-	
 }
