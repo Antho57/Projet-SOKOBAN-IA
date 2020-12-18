@@ -29,4 +29,9 @@ public class Fenetre extends JFrame {
 
         this.setVisible(true);
     }
+
+    public void changer(JPanel j){
+        this.remove(this.getContentPane());
+        this.setContentPane(j);
+    }
 }

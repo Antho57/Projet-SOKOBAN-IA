@@ -17,9 +17,9 @@ import java.awt.event.ActionListener;
 
 public class MenuPrincipale extends JPanel {
 
-    private Frame f;
+    private JFrame f;
 
-    public MenuPrincipale(Frame f){
+    public MenuPrincipale(JFrame f){
 
         this.f = f;
         this.setSize(new Dimension(900, 600));
@@ -59,15 +59,12 @@ public class MenuPrincipale extends JPanel {
         jp2.add(jb);
 
         this.add(jp2);
-
-
-
+        
     }
 
     public void jouer(){
-
-        new FenetreChoixNiveau();
-        this.f.dispose();
+        MenuChoixNiv m = new MenuChoixNiv(this.f);
+        this.f.changer(m);
 
     }
 
