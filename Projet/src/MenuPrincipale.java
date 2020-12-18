@@ -17,9 +17,9 @@ import java.awt.event.ActionListener;
 
 public class MenuPrincipale extends JPanel {
 
-    private JFrame f;
+    private Fenetre f;
 
-    public MenuPrincipale(JFrame f){
+    public MenuPrincipale(Fenetre f){
 
         this.f = f;
         this.setSize(new Dimension(900, 600));
