@@ -7,6 +7,8 @@ package InterfaceGraphique;
  * @author Benoit Nicol
  */
 
+import Jeu.ModeleLabyrinthe;
+
 /**
  * Class principale qui permet de lancer le jeu
  */

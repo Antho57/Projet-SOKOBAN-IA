@@ -20,7 +20,7 @@ public class Fenetre extends JFrame {
      */
     public Fenetre(){
 
-        this.setSize(new Dimension(900, 600));
+        this.setSize(new Dimension(900, 628));
         this.setTitle("SOKOBAN & IA");
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
