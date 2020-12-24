@@ -13,6 +13,7 @@ public class MenuJeu extends JPanel {
     private int niveau;
     private int difficulte;
     private ModeleLabyrinthe modele;
+    private JPanel inf;
 
     public MenuJeu(Fenetre f, int[] choix){
         this.f = f;
@@ -22,20 +23,16 @@ public class MenuJeu extends JPanel {
         this.setLayout(new BorderLayout());
         this.setBackground(new Color(78, 48, 150));
 
-        VueInferieure vi = new VueInferieure();
-        this.add(vi, BorderLayout.SOUTH);
+        this.inf = new VueInferieureJoueur(this.modele, this);
+        this.add(this.inf, BorderLayout.SOUTH);
 
-        VueSuperieure vs = new VueSuperieure(this.modele, this);
+        VueSuperieure vs = new VueSuperieure(this.modele, this, this.niveau, this.difficulte);
         this.add(vs, BorderLayout.NORTH);
 
         JPanel jp2 = new JPanel();
         jp2.setSize(new Dimension(900, 200));
-        jp2.setBackground(new Color(255, 5, 204));
+        jp2.setBackground(new Color(207, 88, 88));
         this.add(jp2, BorderLayout.CENTER);
-
-
-
-
     }
 
     public void retour(){
@@ -47,5 +44,24 @@ public class MenuJeu extends JPanel {
 
     public void choixNiveau(){
 
+    }
+
+    public void modeIA(){
+        VueInferieureIA v = new VueInferieureIA(this.modele, this);
+        this.remove(this.inf);
+        this.add(v, BorderLayout.SOUTH);
+        this.inf = v;
+        this.revalidate();
+        this.repaint();
+
+    }
+
+    public void modeJoueur(){
+        VueInferieureJoueur v = new VueInferieureJoueur(this.modele, this);
+        this.remove(this.inf);
+        this.add(v, BorderLayout.SOUTH);
+        this.inf = v;
+        this.revalidate();
+        this.repaint();
     }
 }

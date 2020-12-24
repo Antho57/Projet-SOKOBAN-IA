@@ -48,18 +48,17 @@ public class MenuChoixNiv extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JComboBox jcb = (JComboBox) e.getSource();
-                int val = jcb.getSelectedIndex();
-                niveau = val;
+                choixNiveau(jcb.getSelectedIndex());
             }
         });
 
         JComboBox jcb2= new JComboBox(difficulte);
         jcb2.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 JComboBox jcb = (JComboBox) e.getSource();
-                int val = jcb.getSelectedIndex();
-                niveau = val;
+                choixDifficulte(jcb.getSelectedIndex());
             }
         });
         jcb1.setPreferredSize(new Dimension(300, 50));
@@ -96,6 +95,14 @@ public class MenuChoixNiv extends JPanel {
         MenuJeu m = new MenuJeu(this.f, choix);
         this.f.changer(m);
 
+    }
+
+    public void choixNiveau (int n){
+        this.niveau=n;
+    }
+
+    public void choixDifficulte (int d){
+        this.difficulte=d;
     }
 
 }

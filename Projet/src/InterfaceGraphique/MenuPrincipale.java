@@ -61,7 +61,24 @@ public class MenuPrincipale extends JPanel {
 
         this.add(jp2);
 
+        JPanel jp3 = new JPanel();
+        jp3.setSize(new Dimension(900, 200));
+        jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 800, 130));
+        jp3.setBackground(new Color(78, 48, 150));
 
+        JButton jb2= new JButton("Crédits");
+        jb2.setPreferredSize(new Dimension(75, 50));
+        jb2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                credits();
+            }
+        });
+
+        jp3.add(jb2);
+
+        this.add(jp3);
 
     }
 
@@ -70,6 +87,11 @@ public class MenuPrincipale extends JPanel {
         MenuChoixNiv m = new MenuChoixNiv(this.f);
         this.f.changer(m);
 
+    }
+
+    public void credits(){
+        MenuCredits m = new MenuCredits(this.f);
+        this.f.changer(m);
     }
 
 
