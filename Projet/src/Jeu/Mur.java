@@ -1,10 +1,14 @@
 package Jeu;
 
+import java.awt.Image;
+
 public class Mur extends Case {
 
-	public Mur(int x, int y) {
+	private Image image;
+
+	public Mur(int x, int y, Image im) {
 		super(x, y);
-		// TODO Auto-generated constructor stub
+		this.image = im;
 	}
 
 }

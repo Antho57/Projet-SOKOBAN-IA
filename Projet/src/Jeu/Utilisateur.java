@@ -1,6 +1,5 @@
 package Jeu;
 
 public interface Utilisateur {
-	public void deplacerPerso(String s);
-	
+	public void deplacerPersonnage(String s);
 }

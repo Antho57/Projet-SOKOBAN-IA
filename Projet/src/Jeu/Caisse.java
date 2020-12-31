@@ -1,15 +1,14 @@
 package Jeu;
 
+import java.awt.Image;
+
 public class Caisse {
-	int x;
-	int y;
 	
+	private Case position;
+	private Image image;
 	
-	public Caisse(int x, int y) {
-		super();
-		this.x = x;
-		this.y = y;
+	public Caisse(Case pos, Image im) {
+		this.position = pos;
+		this.image = im;
 	}
-	
-	
 }
