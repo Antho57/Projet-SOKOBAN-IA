@@ -11,4 +11,8 @@ public class Mur extends Case {
 		this.image = im;
 	}
 
+	public Image getImage(){
+		return this.image;
+	}
+
 }
