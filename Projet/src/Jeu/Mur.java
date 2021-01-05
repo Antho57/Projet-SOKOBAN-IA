@@ -9,8 +9,9 @@ public class Mur extends Case {
 	public Mur(int x, int y, Image im) {
 		super(x, y);
 		this.image = im;
+		this.setMur(true);
 	}
-
+	
 	public Image getImage(){
 		return this.image;
 	}

@@ -93,8 +93,17 @@ public class Labyrinthe {
 	}
 
 	public void move(String dep) {
+		int x= this.p.getPosX();
+		int y= this.p.getPosY();
 		switch (dep){
 			case "haut":
+				if(!this.grille[y-1][x].isMur()) {
+					if (this.grille[y-1][x].isOccupe() && (!this.grille[y-2][x].isMur() && !this.grille[y-2][x].isOccupe())) {
+						
+					}
+					this.p.setPosition(y-1, x);
+					
+				}
 				break;
 			case "bas":
 				break;
