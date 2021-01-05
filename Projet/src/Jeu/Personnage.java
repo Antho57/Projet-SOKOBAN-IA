@@ -12,7 +12,24 @@ public class Personnage {
 		this.image = im;
 	}
 
-	public void deplacement(String dep) {
-		
+	public void move(String dep) {
+		switch (dep){
+			case "haut":
+				break;
+			case "bas":
+				break;
+			case "gauche":
+				break;
+			case "droite":
+				break;
+		}
+	}
+
+	public Case getPosition() {
+		return position;
+	}
+
+	public void setPosition(Case c){
+		this.position = position;
 	}
 }
