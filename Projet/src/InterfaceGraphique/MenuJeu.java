@@ -1,37 +1,34 @@
 package InterfaceGraphique;
 
-import Jeu.ModeleLabyrinthe;
+import Jeu.Labyrinthe;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuJeu extends JPanel {
 
     private Fenetre f;
     private int niveau;
     private int difficulte;
-    private ModeleLabyrinthe modele;
+    private Labyrinthe Lab;
     private JPanel inf;
 
-    public MenuJeu(Fenetre f, int[] choix){
+    public MenuJeu(Fenetre f, int[] choix, Labyrinthe l){
         this.f = f;
+        this.Lab = l;
         this.niveau = choix[0];
         this.difficulte = choix[1];
-        this.setSize(new Dimension(900, 600));
+        this.setSize(new Dimension(767, 925));
         this.setLayout(new BorderLayout());
         this.setBackground(new Color(78, 48, 150));
 
-        this.inf = new VueInferieureJoueur(this.modele, this);
+        this.inf = new VueInferieureJoueur(this.Lab, this);
         this.add(this.inf, BorderLayout.SOUTH);
 
-        VueSuperieure vs = new VueSuperieure(this.modele, this, this.niveau, this.difficulte);
+        VueSuperieure vs = new VueSuperieure(this.Lab, this, this.niveau, this.difficulte);
         this.add(vs, BorderLayout.NORTH);
 
-        JPanel jp2 = new JPanel();
-        jp2.setSize(new Dimension(900, 200));
-        jp2.setBackground(new Color(207, 88, 88));
+        JPanel jp2 = new VueJeu(Lab);
         this.add(jp2, BorderLayout.CENTER);
     }
 
@@ -47,7 +44,7 @@ public class MenuJeu extends JPanel {
     }
 
     public void modeIA(){
-        VueInferieureIA v = new VueInferieureIA(this.modele, this);
+        VueInferieureIA v = new VueInferieureIA(this.Lab, this);
         this.remove(this.inf);
         this.add(v, BorderLayout.SOUTH);
         this.inf = v;
@@ -57,7 +54,7 @@ public class MenuJeu extends JPanel {
     }
 
     public void modeJoueur(){
-        VueInferieureJoueur v = new VueInferieureJoueur(this.modele, this);
+        VueInferieureJoueur v = new VueInferieureJoueur(this.Lab, this);
         this.remove(this.inf);
         this.add(v, BorderLayout.SOUTH);
         this.inf = v;

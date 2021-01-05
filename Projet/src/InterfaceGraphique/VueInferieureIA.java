@@ -1,6 +1,6 @@
 package InterfaceGraphique;
 
-import Jeu.ModeleLabyrinthe;
+import Jeu.Labyrinthe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +9,10 @@ import java.awt.event.ActionListener;
 
 public class VueInferieureIA extends JPanel{
 
-    public ModeleLabyrinthe modele;
+    public Labyrinthe modele;
     private MenuJeu menu;
 
-    public VueInferieureIA(ModeleLabyrinthe modele, MenuJeu menu){
+    public VueInferieureIA(Labyrinthe modele, MenuJeu menu){
 
         this.modele = modele;
         this.menu = menu;

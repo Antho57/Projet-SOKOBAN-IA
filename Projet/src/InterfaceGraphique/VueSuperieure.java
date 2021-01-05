@@ -1,6 +1,6 @@
 package InterfaceGraphique;
 
-import Jeu.ModeleLabyrinthe;
+import Jeu.Labyrinthe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,13 +9,13 @@ import java.awt.event.ActionListener;
 
 public class VueSuperieure extends JPanel {
 
-    public ModeleLabyrinthe modele;
+    public Labyrinthe lab;
     private MenuJeu menu;
     private int mouvements;
 
-    public VueSuperieure(ModeleLabyrinthe modele, MenuJeu menu, int niveau, int difficulte){
+    public VueSuperieure(Labyrinthe modele, MenuJeu menu, int niveau, int difficulte){
 
-        this.modele = modele;
+        this.lab = modele;
         this.menu = menu;
         this.mouvements=0;
         this.setSize(new Dimension(900, 100));
@@ -59,7 +59,7 @@ public class VueSuperieure extends JPanel {
 
 
     public void actualiser(){
-        this.mouvements=modele.getMouvements();
+        this.mouvements=lab.getMouvements();
     }
 
     public String titre(int niv, int dif){

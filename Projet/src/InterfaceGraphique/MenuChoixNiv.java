@@ -1,4 +1,7 @@
 package InterfaceGraphique;
+import Jeu.Labyrinthe;
+import Jeu.Personnage;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,13 +15,13 @@ public class MenuChoixNiv extends JPanel {
 
     public MenuChoixNiv(Fenetre f){
         this.f = f;
-        this.setSize(new Dimension(900, 600));
+        this.setSize(new Dimension(760, 955));
         this.setLayout(new GridLayout(3, 1));
         this.setBackground(new Color(78, 48, 150));
 
 
         JPanel jp = new JPanel();
-        jp.setSize(new Dimension(900, 200));
+        jp.setSize(new Dimension(760, 200));
         jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
         jp.setBackground(new Color(78, 48, 150));
 
@@ -31,7 +34,7 @@ public class MenuChoixNiv extends JPanel {
 
 
         JPanel jp2 = new JPanel();
-        jp2.setSize(new Dimension(900, 200));
+        jp2.setSize(new Dimension(760, 200));
         jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
         jp2.setBackground(new Color(78, 48, 150));
 
@@ -69,7 +72,7 @@ public class MenuChoixNiv extends JPanel {
         this.add(jp2);
 
         JPanel jp4 = new JPanel();
-        jp4.setSize(new Dimension(900, 200));
+        jp4.setSize(new Dimension(760, 200));
         jp4.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 40));
         jp4.setBackground(new Color(78, 48, 150));
 
@@ -92,7 +95,7 @@ public class MenuChoixNiv extends JPanel {
     public void jouer(){
 
         int[] choix= {this.niveau, this.difficulte};
-        MenuJeu m = new MenuJeu(this.f, choix);
+        MenuJeu m = new MenuJeu(this.f, choix, new Labyrinthe(1));
         this.f.changer(m);
 
     }

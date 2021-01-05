@@ -3,20 +3,38 @@ package Jeu;
 import java.awt.Image;
 
 public class Caisse {
-	
+
 	private Case position;
-	private Image image;
-	
-	public Caisse(Case pos, Image im) {
-		this.position = pos;
-		this.image = im;
+	private int posX;
+	private int posY;
+	private boolean bienPlace;
+
+	public Caisse(int X, int Y, boolean p) {
+		this.posX = X;
+		this.posY = Y;
+		this.bienPlace = p;
 	}
 
-	public Case getPosition() {
-		return position;
+	public int getPosX() {
+		return this.posX;
 	}
 
-	public void setPosition(Case c){
-		this.position = position;
+	public int getPosY() {
+
+		return this.posY;
 	}
+
+	public void setPosition(int X, int Y) {
+		this.posX = X;
+		this.posY = Y;
+	}
+
+	public void setBienPlace(boolean p){
+		this.bienPlace = p;
+	}
+
+	public boolean estBienPlace(){
+		return this.bienPlace;
+	}
+
 }

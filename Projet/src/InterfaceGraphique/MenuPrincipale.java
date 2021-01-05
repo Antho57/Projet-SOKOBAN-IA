@@ -23,13 +23,13 @@ public class MenuPrincipale extends JPanel {
     public MenuPrincipale(Fenetre f){
 
         this.f = f;
-        this.setSize(new Dimension(900, 600));
+        this.setSize(new Dimension(767, 955));
         this.setLayout(new GridLayout(3, 1));
         this.setBackground(new Color(78, 48, 150));
 
 
         JPanel jp = new JPanel();
-        jp.setSize(new Dimension(900, 200));
+        jp.setSize(new Dimension(767, 200));
         jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
         jp.setBackground(new Color(78, 48, 150));
 
@@ -42,7 +42,7 @@ public class MenuPrincipale extends JPanel {
 
 
         JPanel jp2 = new JPanel();
-        jp2.setSize(new Dimension(900, 200));
+        jp2.setSize(new Dimension(767, 200));
         jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
         jp2.setBackground(new Color(78, 48, 150));
 
@@ -62,8 +62,8 @@ public class MenuPrincipale extends JPanel {
         this.add(jp2);
 
         JPanel jp3 = new JPanel();
-        jp3.setSize(new Dimension(900, 200));
-        jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 800, 130));
+        jp3.setSize(new Dimension(767, 200));
+        jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 567, 130));
         jp3.setBackground(new Color(78, 48, 150));
 
         JButton jb2= new JButton("Crédits");
