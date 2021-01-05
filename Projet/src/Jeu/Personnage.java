@@ -5,31 +5,25 @@ import java.awt.Image;
 public class Personnage {
 	
 	private Image image;
-	private Case position;
+	private int posX;
+	private int posY;
 	
-	public Personnage(Case pos, Image im) {
-		this.position = pos;
+	public Personnage(int X, int Y, Image im) {
+		this.posX = X;
+		this.posY = Y;
 		this.image = im;
 	}
 
-	public void move(String dep) {
-		switch (dep){
-			case "haut":
-				break;
-			case "bas":
-				break;
-			case "gauche":
-				break;
-			case "droite":
-				break;
-		}
+	public int getPosX() {
+		return this.posX;
 	}
 
-	public Case getPosition() {
-		return position;
+	public int getPosY() {
+		return this.posY;
 	}
 
-	public void setPosition(Case c){
-		this.position = position;
+	public void setPosition(int X, int Y){
+		this.posX = X;
+		this.posY = Y;
 	}
 }

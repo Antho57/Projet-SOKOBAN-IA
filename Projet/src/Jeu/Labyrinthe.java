@@ -92,6 +92,19 @@ public class Labyrinthe {
 		}
 	}
 
+	public void move(String dep) {
+		switch (dep){
+			case "haut":
+				break;
+			case "bas":
+				break;
+			case "gauche":
+				break;
+			case "droite":
+				break;
+		}
+	}
+
 	public Case getCase(int x, int y){
 		return this.grille[x][y];
 	}

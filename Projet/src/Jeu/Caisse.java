@@ -12,19 +12,6 @@ public class Caisse {
 		this.image = im;
 	}
 
-	public void move(String dep) {
-		switch (dep){
-			case "haut":
-				break;
-			case "bas":
-				break;
-			case "gauche":
-				break;
-			case "droite":
-				break;
-		}
-	}
-
 	public Case getPosition() {
 		return position;
 	}
