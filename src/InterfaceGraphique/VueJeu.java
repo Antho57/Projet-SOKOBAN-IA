@@ -14,13 +14,11 @@ import java.io.IOException;
 public class VueJeu extends JPanel implements Observateur{
 
     private Labyrinthe lab;
-    private Caisse[] allCaisse;
 
     private Image sol, mur, emplacement, joueur, caisse, caissev;
 
     public VueJeu(Labyrinthe l){
         this.lab = l;
-        this.allCaisse = lab.getAllCaisse();
         this.setSize(new Dimension(760, 755));
 
         try{
@@ -52,24 +50,35 @@ public class VueJeu extends JPanel implements Observateur{
                         break;
                     case "Sol":
                         g.drawImage(this.sol, j*95, i*95, null);
+                        if (this.lab.getCase(j, i).isOccupe()){
+                            g.drawImage(this.caisse, this.lab.getCase(j, i).getOccupantCaisse().getPosX()*95, this.lab.getCase(j, i).getOccupantCaisse().getPosY()*95, null);
+                        }
                         break;
                     case "Emplacement":
                         g.drawImage(this.emplacement, j*95, i*95, null);
+                        if (this.lab.getCase(j, i).isOccupe()){
+                            g.drawImage(this.caissev, this.lab.getCase(j, i).getOccupantCaisse().getPosX()*95, this.lab.getCase(j, i).getOccupantCaisse().getPosY()*95, null);
+                        }
                         break;
                 }
             }
         }
         g.drawImage(this.joueur, lab.getPersonnage().getPosX()*95, lab.getPersonnage().getPosY()*95, null);
 
-        for (int i=0; i< lab.getNbCaisse(); i++){
-            if(allCaisse[i].estBienPlace()){
-                g.drawImage(this.caissev, allCaisse[i].getPosX()*95, allCaisse[i].getPosY()*95, null);
-            }else{
-                g.drawImage(this.caisse, allCaisse[i].getPosX()*95, allCaisse[i].getPosY()*95, null);
+        int nb =0;
+        for (int i=0; i<9; i++) {
+
+            for (int j = 0; j <= 7; j++) {
+                if (this.lab.getCase(j, i).getClass().getSimpleName() == "Emplacement" && this.lab.getCase(j, i).isOccupe()){
+                    if (this.lab.getCase(j, i).getOccupantCaisse().estBienPlace()){
+                        nb++;
+                    }
+                }
             }
         }
-
-        
+        if (nb == this.lab.getNbCaisse()){
+            this.lab.win();
+        }
     }
 
 

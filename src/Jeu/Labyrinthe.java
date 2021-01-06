@@ -10,9 +10,9 @@ public class Labyrinthe implements Sujet{
 	
 	private Personnage p;
 	private Case[][] grille;
-	private Caisse[] allCaisse;
 	private int nbCaisse;
 	private int mouvements;
+	private boolean win;
 
 	private ArrayList<Observateur> observateurs;
 	
@@ -20,9 +20,9 @@ public class Labyrinthe implements Sujet{
 	public Labyrinthe(int niv) {
 		this.p = null;
 		this.grille = new Case[8][9];
-		this.allCaisse = new Caisse[20];
-		this.nbCaisse =0;
 		this.mouvements = 0;
+		this.nbCaisse = 0;
+		this.win = false;
 		this.observateurs = new ArrayList<Observateur>();
 
 		try{
@@ -46,44 +46,37 @@ public class Labyrinthe implements Sujet{
 
 						case "#":
 							//murs
-							Image m = null;
-							this.grille[j][i] = new Mur(j, i, m);
+							this.grille[j][i] = new Mur(j, i);
 							break;
 						case ".":
 							//cases cibles (zones de rangement des caisses)
-							Image e= null;
-							this.grille[j][i] = new Emplacement(j, i, e);
+							this.grille[j][i] = new Emplacement(j, i, null, false);
 							break;
 						case "$":
 							//caisses lorsquâ€™elles ne sont pas dans une cible de rangement
-							Image c = null;
-							this.grille[j][i] = new Sol(j, i, c);
-							this.allCaisse[nbCaisse] = new Caisse(j, i, false);
+							Caisse caisse = new Caisse(j, i, false);
+							this.grille[j][i] = new Sol(j, i, caisse,true);
 							this.nbCaisse++;
 							break;
 						case "*":
 							//caisses lorsquâ€™elles sont sur une case cible
-							Image cc= null;
-							this.grille[j][i] = new Emplacement(j, i, cc);
-							this.allCaisse[this.nbCaisse] = new Caisse(j, i, true);
+							Caisse caisse2 = new Caisse(j, i, true);
+							this.grille[j][i] = new Emplacement(j, i, caisse2, true);
 							this.nbCaisse++;
 							break;
 						case "@":
 							//personnage (personnage mobile) lorsquâ€™il nâ€™est pas sur une cible de rangement
-							Image p= null;
-							this.grille[j][i] = new Sol(j, i, p);
+							this.grille[j][i] = new Sol(j, i, null, false);
 							this.p = new Personnage(j, i);
 							break;
 						case "+":
 							//personnage lorsquâ€™il est sur une case cible
-							Image pc= null;
-							this.grille[j][i] = new Emplacement(j, i, pc);
+							this.grille[j][i] = new Emplacement(j, i, null, false);
 							this.p = new Personnage(j, i);
 							break;
 						case " ":
 							//sol simple (sans caisse ni personnage)
-							Image s= null;
-							this.grille[j][i] = new Sol(j, i, s);
+							this.grille[j][i] = new Sol(j, i, null, false);
 							break;
 					}
 				}
@@ -129,35 +122,49 @@ public class Labyrinthe implements Sujet{
 	}
 	
 	public boolean isOccupe(Case test) {
-		Boolean res;
-		if (test.isOccupe()) res = true;
-		else res = false;
-		return res;
+		return test.isOccupe();
 	}
 	
 	
 	
 	
 	public void move(String direction) {
-		// récupération de la position du personnage
+		// rï¿½cupï¿½ration de la position du personnage
 		int x= this.p.getPosX();
 		int y= this.p.getPosY();
 		Case caseSuivante;
-		// récupération de la case suivante en fonction de sa direction si le deplacement est possible
+		// rï¿½cupï¿½ration de la case suivante en fonction de sa direction si le deplacement est possible
 		caseSuivante = this.getCaseSuivante(x, y, direction);
 		int xSuiv = caseSuivante.getX();
 		int ySuiv = caseSuivante.getY();
-		// vérification de la case suivante (case libre, mur ou caisse)
+		// vï¿½rification de la case suivante (case libre, mur ou caisse)
 		if (!this.isMur(caseSuivante)) {
 		if (!this.isOccupe(caseSuivante)  ) {
 			this.p.setPosition(xSuiv,ySuiv);
 			this.notifierObservateurs();
-			// si caisse, vérification de la possibilté de déplacement de celle ci
-		}else if(!this.isOccupe(this.getCaseSuivante(xSuiv, ySuiv, direction))&& !this.isMur(this.getCaseSuivante(xSuiv, ySuiv, direction))) {
-			this.p.setPosition(xSuiv,ySuiv);
-			caseSuivante.setOccupe(false);
-			this.getCaseSuivante(xSuiv, ySuiv, direction).setOccupe(true);
-			this.notifierObservateurs();
+			// si caisse, vï¿½rification de la possibiltï¿½ de dï¿½placement de celle ci
+		}else {
+			Case caseSuivante2 = this.getCaseSuivante(xSuiv, ySuiv, direction);
+			if (!this.isOccupe(caseSuivante2) && !this.isMur(caseSuivante2)) {
+				this.p.setPosition(xSuiv, ySuiv);
+
+				Caisse c = grille[xSuiv][ySuiv].getOccupantCaisse();
+
+				grille[xSuiv][ySuiv].setOccupe(false);
+				grille[xSuiv][ySuiv].setOccupantCaisse(null);
+
+				c.setPosition(caseSuivante2.getX(), caseSuivante2.getY());
+
+				if (grille[caseSuivante2.getX()][caseSuivante2.getY()].getClass().getSimpleName() =="Emplacement"){
+					c.setBienPlace(true);
+				}else {
+					c.setBienPlace(false);
+				}
+
+				grille[caseSuivante2.getX()][caseSuivante2.getY()].occuperCaisse(c);
+
+				this.notifierObservateurs();
+			}
 		}
 		}
 	}
@@ -170,16 +177,16 @@ public class Labyrinthe implements Sujet{
 		return this.p;
 	}
 
-	public Caisse[] getAllCaisse(){
-		return this.allCaisse;
-	}
-
 	public int getNbCaisse(){
 		return this.nbCaisse;
 	}
 
 	public int getMouvements(){
 		return this.mouvements;
+	}
+
+	public void win(){
+		this.win=true;
 	}
 
 
@@ -203,14 +210,5 @@ public class Labyrinthe implements Sujet{
 			obs.actualiser(this);
 		}
 
-	}
-	public static void main(String[] args) {
-		Labyrinthe l = new Labyrinthe(1);
-		
-		for (int i = 0; i < 8; i++) {
-			for (int j =0; j < 9; j ++) {
-				System.out.println(l.getCase(i,j).isOccupe());
-			}
-		}
 	}
 }

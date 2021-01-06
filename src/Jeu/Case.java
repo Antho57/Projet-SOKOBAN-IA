@@ -8,12 +8,14 @@ public abstract class Case {
 
 	private boolean occupe;
 	private boolean isMur;
+	private Caisse occupantCaisse;
 	
-	public Case(int x, int y) {
+	public Case(int x, int y, Caisse c) {
 		this.x = x;
 		this.y = y;
 		this.occupe = false;
 		this.isMur = false;
+		this.occupantCaisse = c;
 	}
 	
 	
@@ -65,5 +67,18 @@ public abstract class Case {
 	 */
 	public void setMur(boolean isMur) {
 		this.isMur = isMur;
+	}
+
+	public void setOccupantCaisse(Caisse c){
+		this.occupantCaisse = c;
+	}
+
+	public Caisse getOccupantCaisse() {
+		return occupantCaisse;
+	}
+
+	public void occuperCaisse(Caisse c){
+		this.occupantCaisse=c;
+		this.setOccupe(true);
 	}
 }
