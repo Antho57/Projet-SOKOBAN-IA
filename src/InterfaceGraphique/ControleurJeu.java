@@ -27,7 +27,7 @@ public class ControleurJeu implements KeyListener {
                 this.lab.move("gauche");
                 break;
             case KeyEvent.VK_D:
-                this.lab.move("droit");
+                this.lab.move("droite");
                 break;
             case KeyEvent.VK_Z:
                 this.lab.move("haut");

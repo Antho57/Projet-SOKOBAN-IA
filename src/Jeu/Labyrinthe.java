@@ -112,16 +112,80 @@ public class Labyrinthe implements Sujet{
 						}
 						this.p.setPosition(x, y-1);
 						this.allCaisse[i-1].setPosition(x, y-2);
-					}else if(y >= 1 && !this.grille[y-1][x].isOccupe())
-						this.p.setPosition(y-1, x);
+						this.notifierObservateurs();
+					}else if (y > 1 && !this.grille[y-1][x].isOccupe()) {
+						
 					
-				}
+						this.p.setPosition(y-1, x);
+					this.notifierObservateurs();
+				}}
 				break;
 			case "bas":
+				
+				if(!this.grille[y+1][x].isMur()) {
+					if (this.grille[y+1][x].isOccupe() && (!this.grille[y+2][x].isMur() && !this.grille[y+2][x].isOccupe()) && y<=6) {
+						boolean trouve = false;
+						int i = 0;
+						while(i < this.nbCaisse && trouve ==  false) {
+							if(this.allCaisse[i].getPosY()== y+1 && this.allCaisse[i].getPosX() == x ){
+								trouve = true;
+							}
+							i++;
+						}
+						this.p.setPosition(x, y+1);
+						this.allCaisse[i-1].setPosition(x, y+2);
+						this.notifierObservateurs();
+					}else if (y <= 7 && !this.grille[y+1][x].isOccupe()) {
+						
+					
+						this.p.setPosition(y+1, x);
+					this.notifierObservateurs();
+				}}
+				
 				break;
 			case "gauche":
+				if(!this.grille[y][x-1].isMur()) {
+					if (this.grille[y][x-1].isOccupe() && (!this.grille[y][x-2].isMur() && !this.grille[y][x-2].isOccupe()) && x>=3) {
+						boolean trouve = false;
+						int i = 0;
+						while(i < this.nbCaisse && trouve ==  false) {
+							if(this.allCaisse[i].getPosY()== y && this.allCaisse[i].getPosX() == x-1 ){
+								trouve = true;
+							}
+							i++;
+						}
+						this.p.setPosition(x-1, y);
+						this.allCaisse[i-1].setPosition(x-2, y);
+						this.notifierObservateurs();
+					}else if(x >= 2 && !this.grille[y][x-1].isOccupe()) {
+					
+						this.p.setPosition(x-1, y);
+						this.notifierObservateurs();
+					}
+				}
 				break;
 			case "droite":
+				
+				if(!this.grille[y][x+1].isMur()) {
+					if (this.grille[y][x+1].isOccupe() && (!this.grille[y][x+2].isMur() && !this.grille[y][x+2].isOccupe()) && x<=5) {
+						boolean trouve = false;
+						int i = 0;
+						while(i < this.nbCaisse && trouve ==  false) {
+							if(this.allCaisse[i].getPosY()== y && this.allCaisse[i].getPosX() == x+1 ){
+								trouve = true;
+							}
+							i++;
+						}
+						this.p.setPosition(x+1, y);
+						this.allCaisse[i-1].setPosition(x+2, y);
+						this.notifierObservateurs();
+					}else if(x <= 6 && !this.grille[y][x+1].isOccupe()) {
+					
+						this.p.setPosition(x+1, y);
+						this.notifierObservateurs();
+					}
+				}
+				
 				break;
 		}
 	}
