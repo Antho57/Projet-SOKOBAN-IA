@@ -63,7 +63,7 @@ public class VueSuperieure extends JPanel {
     }
 
     public String titre(int niv, int dif){
-        String s = "<html><p style='text-align: CENTER'>Niveau n°" +niv;
+        String s = "<html><p style='text-align: CENTER'>Niveau n" +niv;
         switch(dif){
             case(0):
                 s +=" &emsp Facile</p></html>";

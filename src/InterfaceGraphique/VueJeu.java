@@ -19,7 +19,6 @@ public class VueJeu extends JPanel implements Observateur{
     private Image sol, mur, emplacement, joueur, caisse, caissev;
 
     public VueJeu(Labyrinthe l){
-
         this.lab = l;
         this.allCaisse = lab.getAllCaisse();
         this.setSize(new Dimension(760, 755));

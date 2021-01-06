@@ -32,6 +32,7 @@ public class MenuJeu extends JPanel {
         ControleurJeu ctrl = new ControleurJeu(Lab);
         jp2.addKeyListener(ctrl);
         Lab.enregistrerObservateur(jp2);
+
         this.add(jp2, BorderLayout.CENTER);
     }
 

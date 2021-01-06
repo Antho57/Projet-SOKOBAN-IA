@@ -66,7 +66,7 @@ public class MenuPrincipale extends JPanel {
         jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 567, 130));
         jp3.setBackground(new Color(78, 48, 150));
 
-        JButton jb2= new JButton("Crédits");
+        JButton jb2= new JButton("Credits");
         jb2.setPreferredSize(new Dimension(75, 50));
         jb2.addActionListener(new ActionListener() {
 

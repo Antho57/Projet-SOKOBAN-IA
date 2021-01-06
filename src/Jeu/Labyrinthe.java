@@ -114,11 +114,10 @@ public class Labyrinthe implements Sujet{
 						this.allCaisse[i-1].setPosition(x, y-2);
 						this.notifierObservateurs();
 					}else if (y > 1 && !this.grille[y-1][x].isOccupe()) {
-						
-					
+
 						this.p.setPosition(y-1, x);
-					this.notifierObservateurs();
-				}}
+						this.notifierObservateurs();
+					}}
 				break;
 			case "bas":
 				
@@ -136,11 +135,10 @@ public class Labyrinthe implements Sujet{
 						this.allCaisse[i-1].setPosition(x, y+2);
 						this.notifierObservateurs();
 					}else if (y <= 7 && !this.grille[y+1][x].isOccupe()) {
-						
-					
+
 						this.p.setPosition(y+1, x);
-					this.notifierObservateurs();
-				}}
+						this.notifierObservateurs();
+					}}
 				
 				break;
 			case "gauche":
@@ -158,7 +156,6 @@ public class Labyrinthe implements Sujet{
 						this.allCaisse[i-1].setPosition(x-2, y);
 						this.notifierObservateurs();
 					}else if(x >= 2 && !this.grille[y][x-1].isOccupe()) {
-					
 						this.p.setPosition(x-1, y);
 						this.notifierObservateurs();
 					}
@@ -180,7 +177,6 @@ public class Labyrinthe implements Sujet{
 						this.allCaisse[i-1].setPosition(x+2, y);
 						this.notifierObservateurs();
 					}else if(x <= 6 && !this.grille[y][x+1].isOccupe()) {
-					
 						this.p.setPosition(x+1, y);
 						this.notifierObservateurs();
 					}
