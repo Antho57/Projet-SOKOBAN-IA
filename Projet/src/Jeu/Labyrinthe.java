@@ -96,7 +96,7 @@ public class Labyrinthe {
 		switch (dep){
 			case "haut":
 				if(!this.grille[y-1][x].isMur()) {
-					if (this.grille[y-1][x].isOccupe() && (!this.grille[y-2][x].isMur() && !this.grille[y-2][x].isOccupe()) && y>=2) {
+					if (this.grille[y-1][x].isOccupe() && (!this.grille[y-2][x].isMur() && !this.grille[y-2][x].isOccupe()) && y>=3) {
 						boolean trouve = false;
 						int i = 0;
 						while(i < this.nbCaisse && trouve ==  false) {
