@@ -30,7 +30,8 @@ public class MenuJeu extends JPanel {
 
         VueJeu jp2 = new VueJeu(Lab);
         ControleurJeu ctrl = new ControleurJeu(Lab);
-        jp2.addKeyListener(ctrl);
+        f.addKeyListener(ctrl);
+        f.requestFocus();
         Lab.enregistrerObservateur(jp2);
 
         this.add(jp2, BorderLayout.CENTER);
