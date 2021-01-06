@@ -204,4 +204,13 @@ public class Labyrinthe implements Sujet{
 		}
 
 	}
+	public static void main(String[] args) {
+		Labyrinthe l = new Labyrinthe(1);
+		
+		for (int i = 0; i < 8; i++) {
+			for (int j =0; j < 9; j ++) {
+				System.out.println(l.getCase(i,j).isOccupe());
+			}
+		}
+	}
 }
