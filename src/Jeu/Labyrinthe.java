@@ -94,95 +94,71 @@ public class Labyrinthe implements Sujet{
 			e.printStackTrace();
 		}
 	}
-
-	public void move(String dep) {
+	
+	
+	public Case getCaseSuivante(int x, int y, String dir) {
+		Case res = null;
+		switch (dir) {
+		case "haut":
+			if (y >= 1)
+			res = this.grille[x][y-1];
+			break;
+		case "bas":
+			if (y<=7)
+			res = this.grille[x][y+1];
+			break;
+		case "droite":
+			if (x <= 6)
+			res = this.grille[x+1][y];
+		break;
+		case "gauche":
+			if (x >= 1)
+			res = this.grille[x-1][y];
+		break;
+		}
+		return res;
+	}
+	
+	public boolean isMur(Case test) {
+		int x = test.getX();
+		int y = test.getY();
+		boolean res;
+		if (x <=0 || x >= 7 || y <= 0 || y >= 8) res = true;
+		else res = false;
+		return res;
+	}
+	
+	public boolean isOccupe(Case test) {
+		Boolean res;
+		if (test.isOccupe()) res = true;
+		else res = false;
+		return res;
+	}
+	
+	
+	
+	
+	public void move(String direction) {
+		// récupération de la position du personnage
 		int x= this.p.getPosX();
 		int y= this.p.getPosY();
-		switch (dep){
-			case "haut":
-				if(!this.grille[y-1][x].isMur()) {
-					if (this.grille[y-1][x].isOccupe() && (!this.grille[y-2][x].isMur() && !this.grille[y-2][x].isOccupe()) && y>=3) {
-						boolean trouve = false;
-						int i = 0;
-						while(i < this.nbCaisse && trouve ==  false) {
-							if(this.allCaisse[i].getPosY()== y-1 && this.allCaisse[i].getPosX() == x ){
-								trouve = true;
-							}
-							i++;
-						}
-						this.p.setPosition(x, y-1);
-						this.allCaisse[i-1].setPosition(x, y-2);
-						this.notifierObservateurs();
-					}else if (y > 1 && !this.grille[y-1][x].isOccupe()) {
-
-						this.p.setPosition(y-1, x);
-						this.notifierObservateurs();
-					}}
-				break;
-			case "bas":
-				
-				if(!this.grille[y+1][x].isMur()) {
-					if (this.grille[y+1][x].isOccupe() && (!this.grille[y+2][x].isMur() && !this.grille[y+2][x].isOccupe()) && y<=6) {
-						boolean trouve = false;
-						int i = 0;
-						while(i < this.nbCaisse && trouve ==  false) {
-							if(this.allCaisse[i].getPosY()== y+1 && this.allCaisse[i].getPosX() == x ){
-								trouve = true;
-							}
-							i++;
-						}
-						this.p.setPosition(x, y+1);
-						this.allCaisse[i-1].setPosition(x, y+2);
-						this.notifierObservateurs();
-					}else if (y <= 7 && !this.grille[y+1][x].isOccupe()) {
-
-						this.p.setPosition(y+1, x);
-						this.notifierObservateurs();
-					}}
-				
-				break;
-			case "gauche":
-				if(!this.grille[y][x-1].isMur()) {
-					if (this.grille[y][x-1].isOccupe() && (!this.grille[y][x-2].isMur() && !this.grille[y][x-2].isOccupe()) && x>=3) {
-						boolean trouve = false;
-						int i = 0;
-						while(i < this.nbCaisse && trouve ==  false) {
-							if(this.allCaisse[i].getPosY()== y && this.allCaisse[i].getPosX() == x-1 ){
-								trouve = true;
-							}
-							i++;
-						}
-						this.p.setPosition(x-1, y);
-						this.allCaisse[i-1].setPosition(x-2, y);
-						this.notifierObservateurs();
-					}else if(x >= 2 && !this.grille[y][x-1].isOccupe()) {
-						this.p.setPosition(x-1, y);
-						this.notifierObservateurs();
-					}
-				}
-				break;
-			case "droite":
-				
-				if(!this.grille[y][x+1].isMur()) {
-					if (this.grille[y][x+1].isOccupe() && (!this.grille[y][x+2].isMur() && !this.grille[y][x+2].isOccupe()) && x<=5) {
-						boolean trouve = false;
-						int i = 0;
-						while(i < this.nbCaisse && trouve ==  false) {
-							if(this.allCaisse[i].getPosY()== y && this.allCaisse[i].getPosX() == x+1 ){
-								trouve = true;
-							}
-							i++;
-						}
-						this.p.setPosition(x+1, y);
-						this.allCaisse[i-1].setPosition(x+2, y);
-						this.notifierObservateurs();
-					}else if(x <= 6 && !this.grille[y][x+1].isOccupe()) {
-						this.p.setPosition(x+1, y);
-						this.notifierObservateurs();
-					}
-				}
-				
-				break;
+		Case caseSuivante;
+		// récupération de la case suivante en fonction de sa direction si le deplacement est possible
+		caseSuivante = this.getCaseSuivante(x, y, direction);
+		int xSuiv = caseSuivante.getX();
+		int ySuiv = caseSuivante.getY();
+		// vérification de la case suivante (case libre, mur ou caisse)
+		if (!this.isMur(caseSuivante)) {
+		if (!this.isOccupe(caseSuivante)  ) {
+			this.p.setPosition(xSuiv,ySuiv);
+			this.notifierObservateurs();
+			// si caisse, vérification de la possibilté de déplacement de celle ci
+		}else if(!this.isOccupe(this.getCaseSuivante(xSuiv, ySuiv, direction))&& !this.isMur(this.getCaseSuivante(xSuiv, ySuiv, direction))) {
+			this.p.setPosition(xSuiv,ySuiv);
+			caseSuivante.setOccupe(false);
+			this.getCaseSuivante(xSuiv, ySuiv, direction).setOccupe(true);
+			this.notifierObservateurs();
+		}
 		}
 	}
 

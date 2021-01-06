@@ -17,6 +17,25 @@ public abstract class Case {
 	}
 	
 	
+	
+	/**
+	 * @return the x
+	 */
+	public int getX() {
+		return x;
+	}
+
+
+
+	/**
+	 * @return the y
+	 */
+	public int getY() {
+		return y;
+	}
+
+
+
 	/**
 	 * @param occupe the occupe to set
 	 */
