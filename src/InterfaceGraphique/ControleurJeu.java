@@ -1,14 +1,17 @@
 package InterfaceGraphique;
 
+import Jeu.Labyrinthe;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ControleurJeu implements KeyListener {
 
-    private VueJeu vue;
+    private Labyrinthe lab;
 
-    public ControleurJeu(VueJeu v){
-        this.vue = v;
+    public ControleurJeu(Labyrinthe l){
+
+        this.lab = l;
     }
 
     @Override
@@ -21,16 +24,16 @@ public class ControleurJeu implements KeyListener {
         switch(e.getKeyCode()){
 
             case KeyEvent.VK_Q:
-                this.vue.MAJ("gauche");
+                this.lab.move("gauche");
                 break;
             case KeyEvent.VK_D:
-                this.vue.MAJ("droit");
+                this.lab.move("droit");
                 break;
             case KeyEvent.VK_Z:
-                this.vue.MAJ("haut");
+                this.lab.move("haut");
                 break;
             case KeyEvent.VK_S:
-                this.vue.MAJ("bas");
+                this.lab.move("bas");
                 break;
         }
     }

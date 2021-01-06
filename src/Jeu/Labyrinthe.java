@@ -1,16 +1,20 @@
 package Jeu;
 
+import InterfaceGraphique.Observateur;
+
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class Labyrinthe {
+public class Labyrinthe implements Sujet{
 	
 	private Personnage p;
 	private Case[][] grille;
 	private Caisse[] allCaisse;
 	private int nbCaisse;
 	private int mouvements;
+
+	private ArrayList<Observateur> observateurs;
 	
 	
 	public Labyrinthe(int niv) {
@@ -19,6 +23,7 @@ public class Labyrinthe {
 		this.allCaisse = new Caisse[20];
 		this.nbCaisse =0;
 		this.mouvements = 0;
+		this.observateurs = new ArrayList<Observateur>();
 
 		try{
 			InputStream test = new FileInputStream("./Ressources/Niveaux/sokoban" +niv +".xsb");
@@ -139,5 +144,28 @@ public class Labyrinthe {
 
 	public int getMouvements(){
 		return this.mouvements;
+	}
+
+
+	@Override
+	public void enregistrerObservateur(Observateur o) {
+		this.observateurs.add(o);
+
+	}
+
+	@Override
+	public void supprimerObservateur(Observateur o) {
+		int i =this.observateurs.indexOf(o);
+		if (i>= 0)
+			this.observateurs.remove(i);
+	}
+
+	@Override
+	public void notifierObservateurs() {
+		for (int i=0; i<this.observateurs.size(); i++) {
+			Observateur obs = this.observateurs.get(i);
+			obs.actualiser(this);
+		}
+
 	}
 }

@@ -3,6 +3,7 @@ package InterfaceGraphique;
 import Jeu.Caisse;
 import Jeu.Labyrinthe;
 import Jeu.Mur;
+import Jeu.Sujet;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -10,7 +11,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-public class VueJeu extends JPanel {
+public class VueJeu extends JPanel implements Observateur{
 
     private Labyrinthe lab;
     private Caisse[] allCaisse;
@@ -36,11 +37,6 @@ public class VueJeu extends JPanel {
         }
 
 
-    }
-
-    public void MAJ(String dep){
-        this.lab.move(dep);
-        this.repaint();
     }
 
     public void paintComponent(Graphics g){
@@ -78,4 +74,9 @@ public class VueJeu extends JPanel {
     }
 
 
+    @Override
+    public void actualiser(Sujet s) {
+        this.lab = (Labyrinthe) s;
+        this.repaint();
+    }
 }

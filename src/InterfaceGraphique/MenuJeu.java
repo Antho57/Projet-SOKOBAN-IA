@@ -28,7 +28,10 @@ public class MenuJeu extends JPanel {
         VueSuperieure vs = new VueSuperieure(this.Lab, this, this.niveau, this.difficulte);
         this.add(vs, BorderLayout.NORTH);
 
-        JPanel jp2 = new VueJeu(Lab);
+        VueJeu jp2 = new VueJeu(Lab);
+        ControleurJeu ctrl = new ControleurJeu(Lab);
+        jp2.addKeyListener(ctrl);
+        Lab.enregistrerObservateur(jp2);
         this.add(jp2, BorderLayout.CENTER);
     }
 
