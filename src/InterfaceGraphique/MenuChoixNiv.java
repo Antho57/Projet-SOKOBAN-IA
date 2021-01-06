@@ -42,7 +42,7 @@ public class MenuChoixNiv extends JPanel {
         jp3.setLayout(new GridLayout(1, 2));
 
 
-        String[] niveaux = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
+        String[] niveaux = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5", "Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10", "Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
         String[] difficulte = {"Facile", "Normale", "Difficile"};
 
         JComboBox jcb1 = new JComboBox(niveaux);
@@ -94,8 +94,8 @@ public class MenuChoixNiv extends JPanel {
 
     public void jouer(){
 
-        int[] choix= {this.niveau, this.difficulte};
-        MenuJeu m = new MenuJeu(this.f, choix, new Labyrinthe(1));
+        int[] choix= {this.niveau+1, this.difficulte};
+        MenuJeu m = new MenuJeu(this.f, choix, new Labyrinthe(this.niveau+1));
         this.f.changer(m);
 
     }
