@@ -35,5 +35,8 @@ public class Fenetre extends JFrame {
     public void changer(JPanel j){
         this.remove(this.getContentPane());
         this.setContentPane(j);
+        this.revalidate();
+        this.validate();
+        this.repaint();
     }
 }

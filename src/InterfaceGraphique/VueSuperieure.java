@@ -24,7 +24,7 @@ public class VueSuperieure extends JPanel implements Observateur{
         this.setBackground(new Color(134, 134, 134));
 
 
-        JLabel dep = new JLabel("Deplacements :  " + this.mouvements);
+        JLabel dep = new JLabel(" Deplacements :  " + this.mouvements);
         dep.setFont(new Font("Sans-Serif",Font.BOLD, 20));
         dep.setForeground(new Color(195, 195, 195));
         this.add(dep);
@@ -100,7 +100,7 @@ public class VueSuperieure extends JPanel implements Observateur{
                 i++;
             }
         }
-        j[0].setText("Deplacements :  " + this.mouvements);
+        j[0].setText(" Deplacements :  " + this.mouvements);
         this.repaint();
         this.revalidate();
     }
