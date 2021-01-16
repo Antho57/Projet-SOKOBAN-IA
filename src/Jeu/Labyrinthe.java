@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Labyrinthe implements Sujet{
-	
+
 	private Personnage p;
 	private Case[][] grille;
 	private int nbCaisse;
@@ -15,8 +15,8 @@ public class Labyrinthe implements Sujet{
 	private boolean win;
 
 	private ArrayList<Observateur> observateurs;
-	
-	
+
+
 	public Labyrinthe(int niv) {
 		this.p = null;
 		this.grille = new Case[8][9];
@@ -87,31 +87,31 @@ public class Labyrinthe implements Sujet{
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+
 	public Case getCaseSuivante(int x, int y, String dir) {
 		Case res = null;
 		switch (dir) {
-		case "haut":
-			if (y >= 1)
-			res = this.grille[x][y-1];
-			break;
-		case "bas":
-			if (y<=7)
-			res = this.grille[x][y+1];
-			break;
-		case "droite":
-			if (x <= 6)
-			res = this.grille[x+1][y];
-		break;
-		case "gauche":
-			if (x >= 1)
-			res = this.grille[x-1][y];
-		break;
+			case "haut":
+				if (y >= 1)
+					res = this.grille[x][y-1];
+				break;
+			case "bas":
+				if (y<=7)
+					res = this.grille[x][y+1];
+				break;
+			case "droite":
+				if (x <= 6)
+					res = this.grille[x+1][y];
+				break;
+			case "gauche":
+				if (x >= 1)
+					res = this.grille[x-1][y];
+				break;
 		}
 		return res;
 	}
-	
+
 	public boolean isMur(Case test) {
 		int x = test.getX();
 		int y = test.getY();
@@ -120,14 +120,14 @@ public class Labyrinthe implements Sujet{
 		else res = false;
 		return res;
 	}
-	
+
 	public boolean isOccupe(Case test) {
 		return test.isOccupe();
 	}
-	
-	
-	
-	
+
+
+
+
 	public void move(String direction) {
 		// r�cup�ration de la position du personnage
 		int x= this.p.getPosX();
@@ -139,33 +139,35 @@ public class Labyrinthe implements Sujet{
 		int ySuiv = caseSuivante.getY();
 		// v�rification de la case suivante (case libre, mur ou caisse)
 		if (!this.isMur(caseSuivante)) {
-		if (!this.isOccupe(caseSuivante)  ) {
-			this.p.setPosition(xSuiv,ySuiv);
-			this.notifierObservateurs();
-			// si caisse, v�rification de la possibilt� de d�placement de celle ci
-		}else {
-			Case caseSuivante2 = this.getCaseSuivante(xSuiv, ySuiv, direction);
-			if (!this.isOccupe(caseSuivante2) && !this.isMur(caseSuivante2)) {
-				this.p.setPosition(xSuiv, ySuiv);
-
-				Caisse c = grille[xSuiv][ySuiv].getOccupantCaisse();
-
-				grille[xSuiv][ySuiv].setOccupe(false);
-				grille[xSuiv][ySuiv].setOccupantCaisse(null);
-
-				c.setPosition(caseSuivante2.getX(), caseSuivante2.getY());
-
-				if (grille[caseSuivante2.getX()][caseSuivante2.getY()].getClass().getSimpleName() =="Emplacement"){
-					c.setBienPlace(true);
-				}else {
-					c.setBienPlace(false);
-				}
-
-				grille[caseSuivante2.getX()][caseSuivante2.getY()].occuperCaisse(c);
-
+			if (!this.isOccupe(caseSuivante)  ) {
+				this.p.setPosition(xSuiv,ySuiv);
+				this.mouvements++;
 				this.notifierObservateurs();
+				// si caisse, v�rification de la possibilt� de d�placement de celle ci
+			}else {
+				Case caseSuivante2 = this.getCaseSuivante(xSuiv, ySuiv, direction);
+				if (!this.isOccupe(caseSuivante2) && !this.isMur(caseSuivante2)) {
+					this.p.setPosition(xSuiv, ySuiv);
+
+					Caisse c = grille[xSuiv][ySuiv].getOccupantCaisse();
+
+					grille[xSuiv][ySuiv].setOccupe(false);
+					grille[xSuiv][ySuiv].setOccupantCaisse(null);
+
+					c.setPosition(caseSuivante2.getX(), caseSuivante2.getY());
+					this.mouvements++;
+
+					if (grille[caseSuivante2.getX()][caseSuivante2.getY()].getClass().getSimpleName() =="Emplacement"){
+						c.setBienPlace(true);
+					}else {
+						c.setBienPlace(false);
+					}
+
+					grille[caseSuivante2.getX()][caseSuivante2.getY()].occuperCaisse(c);
+
+					this.notifierObservateurs();
+				}
 			}
-		}
 		}
 	}
 
@@ -187,6 +189,10 @@ public class Labyrinthe implements Sujet{
 
 	public void win(){
 		this.win=true;
+	}
+
+	public boolean getWin(){
+		return this.win;
 	}
 
 

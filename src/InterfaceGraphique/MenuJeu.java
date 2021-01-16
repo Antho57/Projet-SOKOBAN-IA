@@ -28,12 +28,12 @@ public class MenuJeu extends JPanel {
         VueSuperieure vs = new VueSuperieure(this.Lab, this, this.niveau, this.difficulte);
         this.add(vs, BorderLayout.NORTH);
 
-        VueJeu jp2 = new VueJeu(Lab);
+        VueJeu jp2 = new VueJeu(Lab, this);
         ControleurJeu ctrl = new ControleurJeu(Lab);
         f.addKeyListener(ctrl);
         f.requestFocus();
         Lab.enregistrerObservateur(jp2);
-
+        Lab.enregistrerObservateur(vs);
         this.add(jp2, BorderLayout.CENTER);
     }
 
@@ -44,8 +44,17 @@ public class MenuJeu extends JPanel {
 
     }
 
-    public void choixNiveau(){
+    public void gagner(){
+        VueGagner vg = new VueGagner(this.Lab, this);
+        this.f.changer(vg);
+    }
 
+    public void relancer(){
+
+        int[] choix= {this.niveau, this.difficulte};
+
+        MenuJeu m = new MenuJeu(this.f, choix,new Labyrinthe(this.niveau));
+        this.f.changer(m);
     }
 
     public void modeIA(){
@@ -66,4 +75,6 @@ public class MenuJeu extends JPanel {
         this.revalidate();
         this.repaint();
     }
+
+
 }

@@ -17,8 +17,11 @@ public class VueJeu extends JPanel implements Observateur{
 
     private Image sol, mur, emplacement, joueur, caisse, caissev;
 
-    public VueJeu(Labyrinthe l){
+    private MenuJeu mj;
+
+    public VueJeu(Labyrinthe l, MenuJeu mj){
         this.lab = l;
+        this.mj= mj;
         this.setSize(new Dimension(760, 755));
 
         try{
@@ -69,15 +72,14 @@ public class VueJeu extends JPanel implements Observateur{
         for (int i=0; i<9; i++) {
 
             for (int j = 0; j <= 7; j++) {
-                if (this.lab.getCase(j, i).getClass().getSimpleName() == "Emplacement" && this.lab.getCase(j, i).isOccupe()){
-                    if (this.lab.getCase(j, i).getOccupantCaisse().estBienPlace()){
-                        nb++;
-                    }
+                if (this.lab.getCase(j, i).getClass().getSimpleName().equals("Emplacement") && this.lab.getCase(j, i).isOccupe()){
+                    nb++;
                 }
             }
         }
+        System.out.println(this.lab.getNbCaisse() +" et " +nb);
         if (nb == this.lab.getNbCaisse()){
-            this.lab.win();
+            this.mj.gagner();
         }
     }
 

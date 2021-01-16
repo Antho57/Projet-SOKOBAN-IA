@@ -1,13 +1,14 @@
 package InterfaceGraphique;
 
 import Jeu.Labyrinthe;
+import Jeu.Sujet;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class VueSuperieure extends JPanel {
+public class VueSuperieure extends JPanel implements Observateur{
 
     public Labyrinthe lab;
     private MenuJeu menu;
@@ -23,10 +24,10 @@ public class VueSuperieure extends JPanel {
         this.setBackground(new Color(134, 134, 134));
 
 
-        JLabel deplacement = new JLabel("Deplacements :  " + this.mouvements);
-        deplacement.setFont(new Font("Sans-Serif",Font.BOLD, 20));
-        deplacement.setForeground(new Color(195, 195, 195));
-        this.add(deplacement);
+        JLabel dep = new JLabel("Deplacements :  " + this.mouvements);
+        dep.setFont(new Font("Sans-Serif",Font.BOLD, 20));
+        dep.setForeground(new Color(195, 195, 195));
+        this.add(dep);
 
         JLabel titre = new JLabel(titre(niveau, difficulte));
         titre.setFont(new Font("Sans-Serif",Font.BOLD, 20));
@@ -39,7 +40,7 @@ public class VueSuperieure extends JPanel {
         jp.setBackground(new Color(255, 5, 204));
 
         JButton jb1 = new JButton("MENU");
-        jb1.setPreferredSize(new Dimension(50, 40));
+        jb1.setPreferredSize(new Dimension(40, 40));
         jb1.addActionListener(new ActionListener() {
 
             @Override
@@ -50,17 +51,25 @@ public class VueSuperieure extends JPanel {
         });
 
         JButton jb2 = new JButton("AIDE");
-        jb2.setPreferredSize(new Dimension(50, 40));
+        jb2.setPreferredSize(new Dimension(40, 40));
+
+        JButton jb3 = new JButton("↻");
+        jb2.setPreferredSize(new Dimension(60, 40));
+        jb3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                menu.relancer();
+            }
+        });
 
         jp.add(jb2);
+        jp.add(jb3);
         jp.add(jb1);
         this.add(jp);
     }
 
-
-    public void actualiser(){
-        this.mouvements=lab.getMouvements();
-    }
 
     public String titre(int niv, int dif){
         String s = "<html><p style='text-align: CENTER'>Niveau n" +niv;
@@ -79,4 +88,20 @@ public class VueSuperieure extends JPanel {
     }
 
 
+    @Override
+    public void actualiser(Sujet s) {
+        this.lab = (Labyrinthe) s;
+        this.mouvements=lab.getMouvements();
+        JLabel[] j = new JLabel[2];
+        int i= 0;
+        for (Component c : this.getComponents()){
+            if (c instanceof JLabel){
+                j[i]= (JLabel) c;
+                i++;
+            }
+        }
+        j[0].setText("Deplacements :  " + this.mouvements);
+        this.repaint();
+        this.revalidate();
+    }
 }
