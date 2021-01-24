@@ -2,9 +2,9 @@ package Jeu;
 
 import InterfaceGraphique.Observateur;
 
-import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.TimerTask;
 
 public class Labyrinthe implements Sujet{
 
@@ -128,7 +128,7 @@ public class Labyrinthe implements Sujet{
 
 
 
-	public void move(String direction) {
+	public TimerTask move(String direction) {
 		// r�cup�ration de la position du personnage
 		int x= this.p.getPosX();
 		int y= this.p.getPosY();
@@ -169,6 +169,7 @@ public class Labyrinthe implements Sujet{
 				}
 			}
 		}
+		return null;
 	}
 
 	public Case getCase(int x, int y){
@@ -216,5 +217,24 @@ public class Labyrinthe implements Sujet{
 			obs.actualiser(this);
 		}
 
+	}
+
+	public void gagner(){
+		this.setPersonnage(1,1);
+		this.notifierObservateurs();
+		String[] move = {"droite", "droite", "droite", "droite", "droite", "bas", "bas", "bas", "bas", "bas", "bas", "gauche", "gauche", "gauche", "gauche", "gauche", "haut", "haut", "haut", "haut", "haut", "haut" };
+		for (int i=0; i< move.length; i++){
+			this.move(move[i]);
+			long time = System.currentTimeMillis();
+			while(System.currentTimeMillis()<time+500){
+
+			}
+			System.out.println(this.getPersonnage().getPosX() +" - " +this.getPersonnage().getPosY());
+
+		}
+	}
+
+	public void setPersonnage(int x, int y){
+		this.p.setPosition(x, y);
 	}
 }

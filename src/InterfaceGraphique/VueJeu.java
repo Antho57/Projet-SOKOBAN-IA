@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Timer;
 
 public class VueJeu extends JPanel implements Observateur{
 
@@ -19,9 +20,12 @@ public class VueJeu extends JPanel implements Observateur{
 
     private MenuJeu mj;
 
+    private boolean win;
+
     public VueJeu(Labyrinthe l, MenuJeu mj){
         this.lab = l;
         this.mj= mj;
+        this.win= false;
         this.setSize(new Dimension(760, 755));
 
         try{
@@ -77,7 +81,9 @@ public class VueJeu extends JPanel implements Observateur{
                 }
             }
         }
-        if (nb == this.lab.getNbCaisse()){
+        if (nb == this.lab.getNbCaisse() && !this.win){
+            this.win = true;
+            this.lab.gagner();
             this.mj.gagner();
         }
     }
