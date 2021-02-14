@@ -6,12 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class VueInferieurIA qui représente la vue du mode IA
+ */
 public class VueInferieureIA extends JPanel{
 
-    public Labyrinthe modele;
-    private MenuJeu menu;
+    public Labyrinthe modele; //Labyrinthe courant
+    private MenuJeu menu; //menu génerale du jeu
 
+    /*
+    Constructeur de la VueInferieurIA
+    @param modele, labyrinthe courant
+    @param menu, menu génerale du jeu
+     */
     public VueInferieureIA(Labyrinthe modele, MenuJeu menu){
 
         this.modele = modele;
@@ -47,6 +61,9 @@ public class VueInferieureIA extends JPanel{
     }
 
 
+    /*
+    Méthode qui actualise la vue
+     */
     public void actualiser(){
 
     }

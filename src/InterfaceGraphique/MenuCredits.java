@@ -4,11 +4,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class qui représente le MenuCredits
+ */
 public class MenuCredits extends JPanel{
 
-    private Fenetre f;
+    private Fenetre f; //fenêtre de l'application
 
+    /*
+    Contructeur du menuCredits
+    @param f, fenêtre de l'application
+     */
     public MenuCredits(Fenetre f){
 
         this.f = f;
@@ -55,6 +68,9 @@ public class MenuCredits extends JPanel{
 
     }
 
+    /*
+    Méthode qui permet de revenir au menu principale
+     */
     public void retour(){
 
         MenuPrincipale m = new MenuPrincipale(this.f);

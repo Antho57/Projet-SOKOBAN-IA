@@ -4,15 +4,31 @@ import Jeu.Labyrinthe;
 
 import javax.swing.*;
 import java.awt.*;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class MenuJeu qui représente le menu générale du jeu
+qui contient la VueSupérieur et Inférieur ainsi que la VueJeu
+ */
 public class MenuJeu extends JPanel {
 
-    private Fenetre f;
-    private int niveau;
-    private int difficulte;
-    private Labyrinthe Lab;
-    private JPanel inf;
+    private Fenetre f; //fenêtre d'affichage du jeu
+    private int niveau; //niveau courant
+    private int difficulte; //difficulté du niveau
+    private Labyrinthe Lab; //Labyrinthe courant
+    private JPanel inf; //VueInférieur
 
+    /*
+    Constructeur MenuJeu
+    @param f, fenetre de l'application
+    @param choix, tableau qui représente le choix du niveau et de la difficulté
+    @param l, labyrinthe courant
+     */
     public MenuJeu(Fenetre f, int[] choix, Labyrinthe l){
         this.f = f;
         this.Lab = l;
@@ -37,6 +53,9 @@ public class MenuJeu extends JPanel {
         this.add(jp2, BorderLayout.CENTER);
     }
 
+    /*
+    Méthode qui permet de revenir au menu principale
+     */
     public void retour(){
 
         MenuPrincipale m = new MenuPrincipale(this.f);
@@ -44,11 +63,17 @@ public class MenuJeu extends JPanel {
 
     }
 
+    /*
+    Méthode qui permet de notifier que la partie est gagné
+     */
     public void gagner(){
         VueGagner vg = new VueGagner(this.Lab, this);
         this.f.changer(vg);
     }
 
+    /*
+    Méthode qui permet de recommencer le niveau courant
+     */
     public void relancer(){
 
         int[] choix= {this.niveau, this.difficulte};
@@ -57,6 +82,9 @@ public class MenuJeu extends JPanel {
         this.f.changer(m);
     }
 
+    /*
+    Méthode qui permet de passer au modeIA
+     */
     public void modeIA(){
         VueInferieureIA v = new VueInferieureIA(this.Lab, this);
         this.remove(this.inf);
@@ -67,6 +95,9 @@ public class MenuJeu extends JPanel {
 
     }
 
+    /*
+    Méthode qui permet de passer au modeJoueur
+     */
     public void modeJoueur(){
         VueInferieureJoueur v = new VueInferieureJoueur(this.Lab, this);
         this.remove(this.inf);
@@ -75,6 +106,5 @@ public class MenuJeu extends JPanel {
         this.revalidate();
         this.repaint();
     }
-
 
 }

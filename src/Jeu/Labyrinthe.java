@@ -5,6 +5,13 @@ import InterfaceGraphique.Observateur;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.TimerTask;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
+
 /*
 Class qui repérsente le labyrinthe de jeu, qui contient les caisses et le personnage
  */

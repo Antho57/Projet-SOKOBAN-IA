@@ -6,13 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class qui représente le MenuChoixNiv
+ */
 public class MenuChoixNiv extends JPanel {
 
-    private Fenetre f;
-    private int niveau;
-    private int difficulte;
+    private Fenetre f; //fenêtre de l'application
+    private int niveau; //niveau courant
+    private int difficulte; //difficulté du niveau courant
 
+    /*
+    Constructeur du MenuChoixNiv
+    @param f, fenêtre de l'apllication
+     */
     public MenuChoixNiv(Fenetre f){
         this.f = f;
         this.setSize(new Dimension(760, 955));
@@ -92,6 +105,9 @@ public class MenuChoixNiv extends JPanel {
 
     }
 
+    /*
+    Méthode qui permet de lancer le jeu avec le niveau choisi
+     */
     public void jouer(){
 
         int[] choix= {this.niveau+1, this.difficulte};
@@ -100,10 +116,18 @@ public class MenuChoixNiv extends JPanel {
 
     }
 
+    /*
+    Méthode qui permet de changer le niveau choisi
+    @param n, le niveau choisi
+     */
     public void choixNiveau (int n){
         this.niveau=n;
     }
 
+    /*
+    Méthode qui permet de changer la difficulté choisi
+    @param d, la difficulté choisi
+     */
     public void choixDifficulte (int d){
         this.difficulte=d;
     }

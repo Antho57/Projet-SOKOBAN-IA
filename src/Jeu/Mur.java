@@ -2,6 +2,13 @@ package Jeu;
 
 import java.awt.Image;
 
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
+
 /*
 Class qui représente un mur dans le labyrinthe
 un type de case spécifique

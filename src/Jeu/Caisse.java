@@ -1,6 +1,12 @@
 package Jeu;
 
 import java.awt.Image;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
 /*
 Class qui représente les caisses présentes dans le lalbyrinthe

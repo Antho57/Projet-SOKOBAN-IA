@@ -32,6 +32,9 @@ public class Fenetre extends JFrame {
         this.setVisible(true);
     }
 
+    /*
+    Méthode qui permet changer le panel qui est affiché dans la fenêtre
+     */
     public void changer(JPanel j){
         this.remove(this.getContentPane());
         this.setContentPane(j);

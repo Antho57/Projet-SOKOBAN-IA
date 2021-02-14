@@ -6,12 +6,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class qui représente la vueInférieurJoueur
+ */
 public class VueInferieureJoueur extends JPanel {
 
-    public Labyrinthe modele;
-    private MenuJeu menu;
+    public Labyrinthe modele; //labyrinthe courant
+    private MenuJeu menu; //Menu générale du jeu
 
+    /*
+    Constructeur de la vueInferieurJoueur
+    @param modele, le labyrinthe courant
+    @param menu, le menu générale du jeu
+     */
     public VueInferieureJoueur(Labyrinthe modele, MenuJeu menu){
 
         this.modele = modele;
@@ -42,7 +56,9 @@ public class VueInferieureJoueur extends JPanel {
         this.add(S);
     }
 
-
+    /*
+    Méthode qui permet d'actualiser la vue
+     */
     public void actualiser(){
 
     }

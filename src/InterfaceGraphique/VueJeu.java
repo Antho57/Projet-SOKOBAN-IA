@@ -11,17 +11,32 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.Timer;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class qui représente le labyrinthe courant
+en lien avec le labyrinthe avec observateur
+ */
 public class VueJeu extends JPanel implements Observateur{
 
-    private Labyrinthe lab;
+    private Labyrinthe lab; //Labyrinthe courant
 
-    private Image sol, mur, emplacement, joueur, caisse, caissev;
+    private Image sol, mur, emplacement, joueur, caisse, caissev; //Image des différents objet
 
-    private MenuJeu mj;
+    private MenuJeu mj; //Menu génrale du jeu
 
-    private boolean win;
+    private boolean win; //Attribut qui indique si le jeu est gagné
 
+    /*
+    Constructeur VueJeu
+    @param l, labyrinthe courant
+    @param mj, menu générale du jeu
+     */
     public VueJeu(Labyrinthe l, MenuJeu mj){
         this.lab = l;
         this.mj= mj;
@@ -43,6 +58,10 @@ public class VueJeu extends JPanel implements Observateur{
 
     }
 
+    /*
+    Méthode qui permet de déssiner le labyrinthe
+    @param g, graphics
+     */
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);
@@ -89,6 +108,10 @@ public class VueJeu extends JPanel implements Observateur{
     }
 
 
+    /*
+    Méthode qui actualise l'affichage du labyrinthe
+    @param s, sujet courant (labyrinthe)
+     */
     @Override
     public void actualiser(Sujet s) {
         this.lab = (Labyrinthe) s;

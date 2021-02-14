@@ -18,8 +18,12 @@ import java.awt.event.ActionListener;
 
 public class MenuPrincipale extends JPanel {
 
-    private Fenetre f;
+    private Fenetre f; //fenêtre de l'application
 
+    /*
+    Constructeur du menuPrincipale
+    @param f, fenêtre de l'application
+     */
     public MenuPrincipale(Fenetre f){
 
         this.f = f;
@@ -82,6 +86,9 @@ public class MenuPrincipale extends JPanel {
 
     }
 
+    /*
+    Méthode qui permet de jouer (affiche le menu de choix de niveau
+     */
     public void jouer(){
 
         MenuChoixNiv m = new MenuChoixNiv(this.f);
@@ -89,6 +96,9 @@ public class MenuPrincipale extends JPanel {
 
     }
 
+    /*
+    Méthode qui permet d'afficher les crédits
+     */
     public void credits(){
         MenuCredits m = new MenuCredits(this.f);
         this.f.changer(m);

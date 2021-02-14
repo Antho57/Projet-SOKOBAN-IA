@@ -2,6 +2,13 @@ package Jeu;
 
 import java.awt.Image;
 
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
+
 /*
 Class qui représente le sol du labyrinthe
 un type de case spécifique

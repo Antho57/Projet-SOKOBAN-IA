@@ -1,6 +1,14 @@
 package Jeu;
 
 import InterfaceGraphique.Observateur;
+
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
+
 /*
 Interface sujet qui permet de mettre en place le model MVC
  */

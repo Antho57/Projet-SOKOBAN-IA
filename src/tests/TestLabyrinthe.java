@@ -8,6 +8,16 @@ import org.junit.Test;
 import Jeu.Case;
 import Jeu.Labyrinthe;
 
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
+
+/*
+Class de test pour le labyrinthe
+ */
 public class TestLabyrinthe {
 	
 	private Labyrinthe l;
@@ -29,17 +39,17 @@ public class TestLabyrinthe {
 		int y = l.getPersonnage().getPosY();
 		
 		//On teste les positions initiales du personnage
-		assertEquals("ça devrait etre 1",1, x);
-		assertEquals("ça devrait etre 1",1, y);
+		assertEquals("ï¿½a devrait etre 1",1, x);
+		assertEquals("ï¿½a devrait etre 1",1, y);
 		
 		l.move("droite");
 		
 		x = l.getPersonnage().getPosX();
 		y = l.getPersonnage().getPosY();
 		
-		//On vérifie que le personnage a bougé
-		assertEquals("ça devrait etre 2",2, x);
-		assertEquals("ça devrait etre 1",1, y);
+		//On vï¿½rifie que le personnage a bougï¿½
+		assertEquals("ï¿½a devrait etre 2",2, x);
+		assertEquals("ï¿½a devrait etre 1",1, y);
 	}
 	
 	/**
@@ -51,17 +61,17 @@ public class TestLabyrinthe {
 		int y = l.getPersonnage().getPosY();
 		
 		//On teste les positions initiales du personnage
-		assertEquals("ça devrait etre 1",1, x);
-		assertEquals("ça devrait etre 1",1, y);
+		assertEquals("ï¿½a devrait etre 1",1, x);
+		assertEquals("ï¿½a devrait etre 1",1, y);
 		
 		l.move("haut");
 		
 		x = l.getPersonnage().getPosX();
 		y = l.getPersonnage().getPosY();
 		
-		//On vérifie que le personnage n'a pas bougé
-		assertEquals("ça devrait etre 1",1, x);
-		assertEquals("ça devrait etre 1",1, y);
+		//On vï¿½rifie que le personnage n'a pas bougï¿½
+		assertEquals("ï¿½a devrait etre 1",1, x);
+		assertEquals("ï¿½a devrait etre 1",1, y);
 	}
 	
 	/**
@@ -73,21 +83,21 @@ public class TestLabyrinthe {
 		
 		Case c = l.getCase(2, 2);
 		
-		//La case en coordonnées (2,2) est sensée être occupée par une Caisse
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		//La case en coordonnï¿½es (2,2) est sensï¿½e ï¿½tre occupï¿½e par une Caisse
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 		
 		l.move("droite");
 		
 		int x = l.getPersonnage().getPosX();
 		int y = l.getPersonnage().getPosY();
 		
-		assertEquals("ça devrait etre 2",2, x);
-		assertEquals("ça devrait etre 2",2, y);
+		assertEquals("ï¿½a devrait etre 2",2, x);
+		assertEquals("ï¿½a devrait etre 2",2, y);
 		
-		//On est sensé avoir poussé la Caisse de la position (2,2) à la position (3,2)
+		//On est sensï¿½ avoir poussï¿½ la Caisse de la position (2,2) ï¿½ la position (3,2)
 		c = l.getCase(3, 2);
 		
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 	}
 	
 	/**
@@ -102,29 +112,29 @@ public class TestLabyrinthe {
 		
 		Case c = l.getCase(2, 1);
 		
-		//On vérifie qu'on a bien déplacé la Caisse de la position (2,2) à la position (2,1)
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		//On vï¿½rifie qu'on a bien dï¿½placï¿½ la Caisse de la position (2,2) ï¿½ la position (2,1)
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 		
 		int x = l.getPersonnage().getPosX();
 		int y = l.getPersonnage().getPosY();
 		
-		assertEquals("ça devrait etre 2",2, x);
-		assertEquals("ça devrait etre 2",2, y);
+		assertEquals("ï¿½a devrait etre 2",2, x);
+		assertEquals("ï¿½a devrait etre 2",2, y);
 		
 		l.move("haut");
 		
 		
 		c = l.getCase(2, 1);
 		
-		//On vérifie que la Caisse n'a pas bougé
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		//On vï¿½rifie que la Caisse n'a pas bougï¿½
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 		
 		x = l.getPersonnage().getPosX();
 		y = l.getPersonnage().getPosY();
 		
 		//Et le Personnage non plus
-		assertEquals("ça devrait etre 2",2, x);
-		assertEquals("ça devrait etre 2",2, y);
+		assertEquals("ï¿½a devrait etre 2",2, x);
+		assertEquals("ï¿½a devrait etre 2",2, y);
 	}
 	
 	/**
@@ -139,32 +149,32 @@ public class TestLabyrinthe {
 		int x = l.getPersonnage().getPosX();
 		int y = l.getPersonnage().getPosY();
 		
-		assertEquals("ça devrait etre 2",2, x);
-		assertEquals("ça devrait etre 3",3, y);
+		assertEquals("ï¿½a devrait etre 2",2, x);
+		assertEquals("ï¿½a devrait etre 3",3, y);
 		
 		Case c = l.getCase(3, 3);
 		
-		//On vérifie qu'il y a une Caisse
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		//On vï¿½rifie qu'il y a une Caisse
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 		
 		c = l.getCase(4, 3);
 		
 		//Et qu'elle est suivie par une autre
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 		
 		l.move("droite");
 		
 		x = l.getPersonnage().getPosX();
 		y = l.getPersonnage().getPosY();
 		
-		//On vérifie que le Personnage n'a pas bougé
-		assertEquals("ça devrait etre 2",2, x);
-		assertEquals("ça devrait etre 3",3, y);
+		//On vï¿½rifie que le Personnage n'a pas bougï¿½
+		assertEquals("ï¿½a devrait etre 2",2, x);
+		assertEquals("ï¿½a devrait etre 3",3, y);
 		
 		c = l.getCase(3, 3);
 		
 		//Et la Caisse non plus
-		assertTrue("ça devrait etre vrai", c.isOccupe());
+		assertTrue("ï¿½a devrait etre vrai", c.isOccupe());
 	}
 	
 	/**
@@ -172,18 +182,18 @@ public class TestLabyrinthe {
 	 */
 	@Test
 	public void testGetCaseSuivante() {
-		//On vérifie que la case est de type Sol
+		//On vï¿½rifie que la case est de type Sol
 		Case c1 = l.getCaseSuivante(l.getPersonnage().getPosX(), l.getPersonnage().getPosY(), "droite");
-		assertEquals("ça devrait etre Sol","Jeu.Sol", c1.getClass().getName());
+		assertEquals("ï¿½a devrait etre Sol","Jeu.Sol", c1.getClass().getName());
 		
 		l.move("bas");
 		
-		//On vérifie que la case est occupée par une Caisse
+		//On vï¿½rifie que la case est occupï¿½e par une Caisse
 		Case c2 = l.getCaseSuivante(l.getPersonnage().getPosX(), l.getPersonnage().getPosY(), "droite");
-		assertTrue("ça devrait etre vrai", c2.isOccupe());
+		assertTrue("ï¿½a devrait etre vrai", c2.isOccupe());
 		
-		//On vérifie que la case est de type Mur
+		//On vï¿½rifie que la case est de type Mur
 		Case c3 = l.getCaseSuivante(l.getPersonnage().getPosX(), l.getPersonnage().getPosY(), "gauche");
-		assertEquals("ça devraietre Mur","Jeu.Mur", c3.getClass().getName());
+		assertEquals("ï¿½a devraietre Mur","Jeu.Mur", c3.getClass().getName());
 	}
 }

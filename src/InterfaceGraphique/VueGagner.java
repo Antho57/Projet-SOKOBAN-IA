@@ -7,13 +7,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class VueGagner qui représente la vue apres avoir gagne
+ */
 public class VueGagner extends JPanel{
 
-    private Labyrinthe lab;
+    private Labyrinthe lab; //labyrinthe courant
 
-    private MenuJeu mj;
+    private MenuJeu mj; //menu générale du jeu
 
+    /*
+    Constructeur de la vueGagner
+    @param lab, labyrinthe courant*
+    @param mj, menu générale du jeu
+     */
     public VueGagner(Labyrinthe lab, MenuJeu mj){
         this.lab = lab;
         this.mj=mj;
@@ -82,12 +96,16 @@ public class VueGagner extends JPanel{
         this.setVisible(true);
     }
 
-
-
+    /*
+    Méthode qui permet de revenir au menu principale
+     */
     public void Menu(){
         this.mj.retour();
     }
 
+    /*
+    Méthode qui permet de relancer le même niveau
+     */
     public void rejouer(){
         this.mj.relancer();
     }

@@ -1,5 +1,14 @@
 package Jeu;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class abstraite qui représente une case
+ */
 public abstract class Case {
 	private int x; //attribut x d'une case
 	private int y; //attribut y d'une case

@@ -7,13 +7,29 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class qui représente la vue suprérieure dans le jeu
+ */
 public class VueSuperieure extends JPanel implements Observateur{
 
-    public Labyrinthe lab;
-    private MenuJeu menu;
-    private int mouvements;
+    public Labyrinthe lab; //le labyrinthe du jeu ene cour
+    private MenuJeu menu; //le menu générale du jeu
+    private int mouvements; //le nombre de mouvements effectué par le joueur
 
+    /*
+    Constructeur de la vueSuperieure
+    @param modele, le labyrinthe courant
+    @param menu, le menu générale du jeu
+    @param niveau, le numéro du niveau en cour
+    @param difficulté, le numéro qui correspond à la difficulté du niveau
+     */
     public VueSuperieure(Labyrinthe modele, MenuJeu menu, int niveau, int difficulte){
 
         this.lab = modele;
@@ -71,6 +87,11 @@ public class VueSuperieure extends JPanel implements Observateur{
     }
 
 
+    /*
+    Méthode qui renvoi le titre qui représente le niveau et la difficulté du niveau
+    @param niv, le niveau courant
+    @param dif, la difficulté du niveau
+     */
     public String titre(int niv, int dif){
         String s = "<html><p style='text-align: CENTER'>Niveau n" +niv;
         switch(dif){
@@ -88,6 +109,10 @@ public class VueSuperieure extends JPanel implements Observateur{
     }
 
 
+    /*
+    Méthode qui permet d'actualiser la vue apres un changement
+    @param s, le sujet courant (labyrinthe)
+     */
     @Override
     public void actualiser(Sujet s) {
         this.lab = (Labyrinthe) s;

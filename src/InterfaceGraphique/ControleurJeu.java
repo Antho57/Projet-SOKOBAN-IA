@@ -4,21 +4,41 @@ import Jeu.Labyrinthe;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+/**
+ * @author Anthony Briot
+ * @author Lucas Saker
+ * @author Quentin Vrignon
+ * @author Benoit Nicol
+ */
 
+/*
+Class qui permet de gérer l'appui sur une touche
+ */
 public class ControleurJeu implements KeyListener {
 
-    private Labyrinthe lab;
+    private Labyrinthe lab; //labyrinthe courant
 
+    /*
+    Constructeur du controleur du jeu
+    @param l, labyrinthe courant
+     */
     public ControleurJeu(Labyrinthe l){
 
         this.lab = l;
     }
 
+    /*
+    Méthode keyTyped
+     */
     @Override
     public void keyTyped(KeyEvent e) {
 
     }
 
+    /*
+    Méthode keyPressed
+    @param e, evenement
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         switch(e.getKeyCode()){
@@ -38,6 +58,10 @@ public class ControleurJeu implements KeyListener {
         }
     }
 
+    /*
+    Méthode keyReleased
+    @param e, evenement
+     */
     @Override
     public void keyReleased(KeyEvent e) {
 
