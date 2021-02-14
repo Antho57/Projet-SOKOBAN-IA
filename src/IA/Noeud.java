@@ -1,0 +1,27 @@
+package IA;
+
+/*
+Class qui represente un noeud dans la recherche
+ */
+public class Noeud {
+
+    private int deplacements; //Nombre de déplacements deja effectués
+    private int cout; //Cout pour arriver à la fin, deplacement + heuristique
+    private int heuristique; //Heuristique, mouvements restants pour arriver jusqu'à la fin
+    private Etat etat; //Etat courant du labyrinthe pour ce noeud
+
+
+    /*
+    Constructeur du noeud
+    @param dep, depalcement deja effectués
+    @param heuristique, mouvements qu'il reste a faire pour finir le niveau
+    @param e, Etat courant du labyrinthe
+     */
+    public Noeud(int dep, int heuristique, Etat e){
+        this.deplacements = dep;
+        this.heuristique = heuristique;
+        this.cout = dep + heuristique;
+        this.etat = e;
+    }
+
+}
