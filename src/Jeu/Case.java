@@ -1,15 +1,18 @@
 package Jeu;
 
 public abstract class Case {
-	int x;
-	int y;
+	private int x; //attribut x d'une case
+	private int y; //attribut y d'une case
+	private boolean occupe; //attribut qui indique si la case est occupé par une caisse ou le personnage
+	private boolean isMur; //attribut qui permet de savoir si la case est un mur ou non
+	private Caisse occupantCaisse; //attribut qui correspond à la caisse qui est sur cette case
 
-
-
-	private boolean occupe;
-	private boolean isMur;
-	private Caisse occupantCaisse;
-	
+	/*
+	Constructeur d'une caisse
+	@param x, position en x de la case
+	@param y, position en y de la case
+	@param c, caisse qui est sur cette case, null sinon
+	 */
 	public Case(int x, int y, Caisse c) {
 		this.x = x;
 		this.y = y;
