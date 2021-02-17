@@ -23,6 +23,13 @@ public class Noeud {
         this.cout = dep + heuristique;
         this.etat = e;
     }
+    
+    
+    /*
+    Methode qui compare deux Noeuds
+    @param n1, Noeud numero 1
+    @param n2, Noeud numero 2
+     */
     public int compareNoeud(Noeud n) {
         if (this.cout < n.cout)
             return 1;

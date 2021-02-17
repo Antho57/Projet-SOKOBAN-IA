@@ -21,22 +21,10 @@ public class IA {
         this.lab = lab;
     }
 
-    /*
-    Methode qui compare deux Etats
-    @param e1, Etat numero 1
-    @param e2, Etat numero 2
-     */
-    public boolean compareEtat(Etat e1, Etat e2){
-        return true;
+    public void chercherSolution(Noeud objectif, Noeud depart) {
+    	
     }
 
-    /*
-    Methode qui compare deux Noeuds
-    @param n1, Noeud numero 1
-    @param n2, Noeud numero 2
-     */
-    public boolean compareNoeud(Noeud n1, Noeud n2){
-        return true;
-    }
+    
 
 }
