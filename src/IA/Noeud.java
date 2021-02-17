@@ -23,5 +23,15 @@ public class Noeud {
         this.cout = dep + heuristique;
         this.etat = e;
     }
-
+    public int compareNoeud(Noeud n) {
+    	if (this.cout < n.cout)
+    		return 1;
+    	else if(this.cout == n.cout) {
+    		if (this.deplacements > n.deplacements)
+    			return 1;
+    		else if (this.deplacements == n.deplacements)
+    			return 0;
+    		else return -1;
+    	}else return -1;    	
+    }
 }
