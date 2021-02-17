@@ -18,4 +18,23 @@ public class Etat {
         this.listeCaisses = c;
         this.personnage = p;
     }
+
+
+    /*
+    Methode qui compare deux Etats
+    @param e1, Etat numero 1
+    @param e2, Etat numero 2
+     */
+    public boolean compareEtat(Etat e){
+        if (this.personnage.getPosX() != e.personnage.getPosX() || this.personnage.getPosY() != e.personnage.getPosY()){
+            return false;
+        }else {
+            for (int i = 0; i <= listeCaisses.length; i++) {
+                if (listeCaisses[i].getPosX() != e.listeCaisses[i].getPosX() || listeCaisses[i].getPosY() != e.listeCaisses[i].getPosY()){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
