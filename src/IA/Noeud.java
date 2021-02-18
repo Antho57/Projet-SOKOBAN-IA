@@ -3,12 +3,13 @@ package IA;
 /*
 Class qui represente un noeud dans la recherche
  */
-public class Noeud {
+public class Noeud implements Comparable<Noeud>{
 
     private int deplacements; //Nombre de déplacements deja effectués
     private int cout; //Cout pour arriver à la fin, deplacement + heuristique
     private int heuristique; //Heuristique, mouvements restants pour arriver jusqu'à la fin
     private Etat etat; //Etat courant du labyrinthe pour ce noeud
+    private Noeud precedent; //Noeud precedent afin de récupérer le chemin parcouru
 
 
     /*
@@ -17,11 +18,12 @@ public class Noeud {
     @param heuristique, mouvements qu'il reste a faire pour finir le niveau
     @param e, Etat courant du labyrinthe
      */
-    public Noeud(int dep, int heuristique, Etat e){
+    public Noeud(int dep, int heuristique, Etat e, Noeud prec){
         this.deplacements = dep;
         this.heuristique = heuristique;
         this.cout = dep + heuristique;
         this.etat = e;
+        this.precedent = prec;
     }
     
     
@@ -30,7 +32,8 @@ public class Noeud {
     @param n1, Noeud numero 1
     @param n2, Noeud numero 2
      */
-    public int compareNoeud(Noeud n) {
+    @Override
+    public int compareTo(Noeud n) {
         if (this.cout < n.cout)
             return 1;
         else if(this.cout == n.cout) {
@@ -40,5 +43,9 @@ public class Noeud {
                 return 0;
             else return -1;
         }else return -1;
+    }
+
+    public Etat getEtat(){
+        return this.etat;
     }
 }
