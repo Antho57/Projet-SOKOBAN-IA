@@ -310,4 +310,8 @@ public class Labyrinthe implements Sujet{
 	public void setPersonnage(int x, int y){
 		this.p.setPosition(x, y);
 	}
+
+	public Case[][] getGrille(){
+		return this.grille;
+	}
 }

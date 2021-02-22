@@ -46,9 +46,9 @@ public class IA {
                 }
             }
         }
-        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(),temp), null);
+        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(),temp, this.lab.getGrille()), null);
         this.listeNoeuds.add(depart);
-        this.objectif = new Etat(this.lab.getPersonnage(), listeObj);
+        this.objectif = new Etat(this.lab.getPersonnage(), listeObj, this.lab.getGrille());
         this.chercherSolution(this.objectif, depart);
     }
 
@@ -57,6 +57,12 @@ public class IA {
         for(int i =0; i<=listeNoeuds.size(); i++){
             if (listeNoeuds.get(i).getEtat().compareEtat(objectif)){
                 this.win = true;
+            }
+        }
+        if (!this.win){
+            for (int i = 0; i<=listeNoeuds.size(); i++){
+                Noeud n = listeNoeuds.get(i);
+                Etat e = n.getEtat();
             }
         }
 

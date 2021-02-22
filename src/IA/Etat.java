@@ -1,6 +1,8 @@
 package IA;
 
 import Jeu.Caisse;
+import Jeu.Case;
+import Jeu.Labyrinthe;
 import Jeu.Personnage;
 /*
 Class représentant l'etat du jeu à un moment précis
@@ -10,13 +12,15 @@ public class Etat {
 
     private Caisse[] listeCaisses; //liste de caisses du labyrinthe courant
     private Personnage personnage; //personnage du labyrinthe courant
+    private Case[][] grille; //La grille du labyrinthe
 
     /*
     Constructeur de l'etat courant du labyrinthe
      */
-    public Etat(Personnage p, Caisse[] c){
+    public Etat(Personnage p, Caisse[] c, Case[][] grille){
         this.listeCaisses = c;
         this.personnage = p;
+        this.grille = grille;
     }
 
 
@@ -36,5 +40,18 @@ public class Etat {
             }
         }
         return true;
+    }
+
+    public Personnage getPersonnage(){
+        return this.personnage;
+    }
+
+    public Etat[] chercherProchainsMouvements(){
+        Etat[] liste = new Etat[0];
+        String[] mouvements = new String[0];
+        if (this.grille[this.personnage.getPosX()+1][this.personnage.getPosY()].getClass().getSimpleName() != "Mur"){
+            
+        }
+        return null;
     }
 }
