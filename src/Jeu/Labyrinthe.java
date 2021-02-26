@@ -192,7 +192,7 @@ public class Labyrinthe implements Sujet{
 					c.setPosition(caseSuivante2.getX(), caseSuivante2.getY());
 					this.mouvements++;
 
-					if (grille[caseSuivante2.getX()][caseSuivante2.getY()].getClass().getSimpleName() =="Emplacement"){
+					if (grille[caseSuivante2.getX()][caseSuivante2.getY()].getClass().getSimpleName().equals("Emplacement")){
 						c.setBienPlace(true);
 					}else {
 						c.setBienPlace(false);

@@ -45,7 +45,27 @@ public class Noeud implements Comparable<Noeud>{
         }else return -1;
     }
 
+    /*
+    Methode qui renvoi l'Etat courant du Noeud
+    @return Etat, l'Etat courant
+     */
     public Etat getEtat(){
         return this.etat;
+    }
+
+    /*
+    Methode qui retourne le nombre de deplacements courant
+    @return int, le nombre de deplacements
+     */
+    public int getDeplacements(){
+        return this.deplacements;
+    }
+
+    /*
+    Methode qui retourne l'heurisique
+    @return int, l'heuristique
+     */
+    public int getHeuristique(){
+        return this.heuristique;
     }
 }
