@@ -54,6 +54,10 @@ public class IA {
     }
 
 
+    /*
+    Methode de recherche de solution pour le niveau courant
+    @param objectif, l'Etat qui représente l'objectif
+     */
     public void chercherSolution(Etat objectif) {
         for(int i =0; i<=listeNoeuds.size(); i++){
             if (listeNoeuds.get(i).getEtat().compareEtat(objectif)){
