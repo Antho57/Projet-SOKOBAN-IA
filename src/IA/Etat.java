@@ -50,7 +50,7 @@ public class Etat {
         Etat[] liste = new Etat[0];
         String[] mouvements = new String[0];
         if (this.grille[this.personnage.getPosX()+1][this.personnage.getPosY()].getClass().getSimpleName() != "Mur"){
-            
+
         }
         return null;
     }
