@@ -10,6 +10,7 @@ public class Noeud implements Comparable<Noeud>{
     private int heuristique; //Heuristique, mouvements restants pour arriver jusqu'à la fin
     private Etat etat; //Etat courant du labyrinthe pour ce noeud
     private Noeud precedent; //Noeud precedent afin de récupérer le chemin parcouru
+    private String mouvement; //Mouvement qui a mené à ce noeud
 
 
     /*
@@ -18,12 +19,13 @@ public class Noeud implements Comparable<Noeud>{
     @param heuristique, mouvements qu'il reste a faire pour finir le niveau
     @param e, Etat courant du labyrinthe
      */
-    public Noeud(int dep, int heuristique, Etat e, Noeud prec){
+    public Noeud(int dep, int heuristique, Etat e, Noeud prec, String mouv){
         this.deplacements = dep;
         this.heuristique = heuristique;
         this.cout = dep + heuristique;
         this.etat = e;
         this.precedent = prec;
+        this.mouvement = mouv;
     }
     
     

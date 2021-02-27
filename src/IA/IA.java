@@ -13,7 +13,7 @@ Class qui permet de faire fonctionner l'IA
 public class IA {
 
     private ArrayList<Noeud> listeNoeuds; //Liste de noeuds qu'il faut encore explorer
-    private Noeud[] listeFerme; //Liste de noeuds que nous avons deja explore
+    private ArrayList<Noeud> listeFerme; //Liste de noeuds que nous avons deja explore
     private Labyrinthe lab; //Le labyrinthe courant
     private Etat objectif; //Etat qui représente l'objectif de l'IA
     private boolean win; //Boolean qui représente la reussite de l'IA
@@ -27,6 +27,7 @@ public class IA {
         this.lab = lab;
         this.win = false;
         listeNoeuds = new ArrayList<Noeud>();
+        listeFerme = new ArrayList<Noeud>();
         Case[][] grille = this.lab.getGrille();
 
         for (int i = 0; i < 9; i++) {
@@ -47,7 +48,7 @@ public class IA {
                 }
             }
         }
-        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null);
+        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null, null);
         this.listeNoeuds.add(depart);
         this.objectif = new Etat(this.lab.getPersonnage(), grille);
         this.chercherSolution(this.objectif);
@@ -69,21 +70,22 @@ public class IA {
                 Noeud n = listeNoeuds.get(i);
                 Etat e = n.getEtat();
                 this.listeNoeuds.remove(n);
+                this.listeFerme.add(n);
                 Etat droite = e.chercherProchainMouvement("droite");
                 Etat gauche = e.chercherProchainMouvement("gauche");
                 Etat haut = e.chercherProchainMouvement("haut");
                 Etat bas = e.chercherProchainMouvement("bas");
                 if (droite != null){
-                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), droite, n));
+                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), droite, n, "droite"));
                 }
                 if (gauche != null){
-                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), gauche, n));
+                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), gauche, n, "gauche"));
                 }
                 if (haut != null){
-                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), haut, n));
+                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), haut, n, "haut"));
                 }
                 if (bas != null){
-                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), bas, n));
+                    this.listeNoeuds.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), bas, n, "bas"));
                 }
             }
             chercherSolution(objectif);
