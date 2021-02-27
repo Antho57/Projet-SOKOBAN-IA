@@ -70,4 +70,8 @@ public class Noeud implements Comparable<Noeud>{
     public int getHeuristique(){
         return this.heuristique;
     }
+
+    public Noeud getPrecedent(){ return this.precedent; }
+
+    public String getMouvement(){ return this.mouvement; }
 }
