@@ -30,13 +30,10 @@ public class IA {
         Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null, null);
         Case[][] grille = this.lab.getGrille();
         Case[][] obj = new Case[8][9];
-        //Case[][] grille2 = new Case[8][9];
 
         for (int i = 0; i < 9; i++) {
-
             for (int j = 0; j <= 7; j++) {
-                Case c = grille[j][i];
-                switch (c.getClass().getSimpleName()) {
+                switch (grille[j][i].getClass().getSimpleName()) {
                     case "Sol":
                         obj[j][i] = new Sol(j ,i, null, false);
                         break;
@@ -61,7 +58,6 @@ public class IA {
      */
     public void chercherSolution(Etat objectif) {
         while (!this.win) {
-            System.out.println(this.win);
             int v = 0;
             while (v < listeNoeuds.size() && !this.win) {
                 if (listeNoeuds.get(v).getEtat().win(objectif)) {
@@ -75,15 +71,16 @@ public class IA {
                 for (int i = 0; i < l; i++) {
                     Noeud n = listeNoeuds.get(0);
                     Etat e = n.getEtat();
-                    Boolean same = false;
+                    boolean idem = false;
                     int j = 0;
-                    while (!same && j < listeFerme.size()) {
-                        same = listeFerme.get(j).getEtat().compareEtat(e);
+                    while (!idem && j < listeFerme.size()) {
+                        idem = listeFerme.get(j).getEtat().compareEtat(e);
                         j++;
                     }
                     this.listeNoeuds.remove(n);
-                    if (!same) {
+                    if (!idem) {
                         this.listeFerme.add(n);
+                        System.out.println(this.listeFerme.size());
                         Etat droite = e.chercherProchainMouvement("droite");
                         Etat gauche = e.chercherProchainMouvement("gauche");
                         Etat haut = e.chercherProchainMouvement("haut");

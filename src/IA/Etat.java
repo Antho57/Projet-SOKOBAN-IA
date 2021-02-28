@@ -17,10 +17,29 @@ public class Etat {
     /*
     Constructeur de l'etat courant du labyrinthe
      */
-    public Etat(Personnage p, Case[][] grille){
-        this.listeCaisses = this.creerListeCaisse(grille);
+    public Etat(Personnage p, Case[][] g){
         this.personnage = p;
-        this.grille = grille;
+        Case[][] rep = new Case[8][9];
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j <= 7; j++) {
+                Case c = g[j][i];
+                switch (c.getClass().getSimpleName()) {
+                    case "Sol":
+                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Sol(j ,i, new Caisse(j, i, false), true);
+                        else rep[j][i] = new Sol(j ,i, null, false);
+                        break;
+                    case "Emplacement":
+                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
+                        else rep[j][i] = new Emplacement(j ,i, null, false);
+                        break;
+                    case "Mur":
+                        rep[j][i] = new Mur(j, i);
+                        break;
+                }
+            }
+        }
+        this.grille = rep;
+        this.listeCaisses = this.creerListeCaisse(rep);
     }
 
 
@@ -30,11 +49,14 @@ public class Etat {
     @param e2, Etat numero 2
      */
     public boolean compareEtat(Etat e) {
-        if (this.personnage.getPosX() != e.personnage.getPosX() || this.personnage.getPosY() != e.personnage.getPosY()) {
+        if (this.getPersonnage().getPosX() != e.getPersonnage().getPosX() || this.getPersonnage().getPosY() != e.getPersonnage().getPosY()) {
             return false;
-        } else {
-            for (int i = 0; i < listeCaisses.size(); i++) {
-                if (this.listeCaisses.get(i).getPosX() != e.listeCaisses.get(i).getPosX() || this.listeCaisses.get(i).getPosY() != e.listeCaisses.get(i).getPosY()) {
+        }else {
+            ArrayList<Caisse> liste = this.getListeCaisses();
+            ArrayList<Caisse> listeE = e.getListeCaisses();
+            int taille = liste.size();
+            for (int i = 0; i < taille; i++) {
+                if (liste.get(i).getPosX() != listeE.get(i).getPosX() || liste.get(i).getPosY() != listeE.get(i).getPosY()) {
                     return false;
                 }
             }
@@ -43,8 +65,11 @@ public class Etat {
     }
 
     public boolean win(Etat e) {
-        for (int i = 0; i < listeCaisses.size(); i++) {
-            if (this.listeCaisses.get(i).getPosX() != e.listeCaisses.get(i).getPosX() || this.listeCaisses.get(i).getPosY() != e.listeCaisses.get(i).getPosY()) {
+        ArrayList<Caisse> liste = this.getListeCaisses();
+        ArrayList<Caisse> listeE = e.getListeCaisses();
+        int taille = liste.size();
+        for (int i = 0; i < taille; i++) {
+            if (liste.get(i).getPosX() != listeE.get(i).getPosX() || liste.get(i).getPosY() != listeE.get(i).getPosY()) {
                 return false;
             }
         }
@@ -57,39 +82,31 @@ public class Etat {
     @return Etat, l'etat apres le mouvement, null si le mouvement n'est pas possible
      */
     public Etat chercherProchainMouvement(String direction){
-        int xSuiv = 0;
-        int ySuiv = 0;
-        int ySuiv2 = 0;
-        int xSuiv2 = 0;
+        Personnage perso = this.getPersonnage();
+        int xSuiv = perso.getPosX();
+        int ySuiv = perso.getPosY();
+        int xSuiv2 = xSuiv;
+        int ySuiv2 = ySuiv;
         switch(direction){
             case "droite":
-                xSuiv = this.personnage.getPosX()+1;
-                ySuiv = this.personnage.getPosY();
-                xSuiv2 = this.personnage.getPosX()+2;
-                ySuiv2 = this.personnage.getPosY();
+                xSuiv += 1;
+                xSuiv2 += 2;
                 break;
             case "gauche":
-                xSuiv = this.personnage.getPosX()-1;
-                ySuiv = this.personnage.getPosY();
-                xSuiv2 = this.personnage.getPosX()-2;
-                ySuiv2 = this.personnage.getPosY();
+                xSuiv -= 1;
+                xSuiv2 -= 2;
                 break;
             case "haut":
-                xSuiv = this.personnage.getPosX();
-                ySuiv = this.personnage.getPosY()-1;
-                xSuiv2 = this.personnage.getPosX();
-                ySuiv2 = this.personnage.getPosY()-2;
+                ySuiv -= 1;
+                ySuiv2 -= 2;
                 break;
             case "bas":
-                xSuiv = this.personnage.getPosX();
-                ySuiv = this.personnage.getPosY()+1;
-                xSuiv2 = this.personnage.getPosX();
-                ySuiv2 = this.personnage.getPosY()+2;
+                ySuiv += 1;
+                ySuiv2 += 2;
                 break;
         }
         Case[][] rep = new Case[8][9];
         for (int i = 0; i < 9; i++) {
-
             for (int j = 0; j <= 7; j++) {
                 Case c = this.grille[j][i];
                 switch (c.getClass().getSimpleName()) {
@@ -107,17 +124,15 @@ public class Etat {
                 }
             }
         }
-        Case move = this.grille[xSuiv][ySuiv];
+        Case move = rep[xSuiv][ySuiv];
         if (!move.isMur()){
             if(move.isOccupe()){
-                Case move2 = this.grille[xSuiv2][ySuiv2];
+                Case move2 = rep[xSuiv2][ySuiv2];
                 if (!move.isOccupe() && !move2.isMur()){
                     Personnage p = new Personnage(xSuiv, ySuiv);
                     Caisse c = rep[xSuiv][ySuiv].getOccupantCaisse();
-
                     rep[xSuiv][ySuiv].setOccupe(false);
                     rep[xSuiv][ySuiv].setOccupantCaisse(null);
-
                     c.setPosition(xSuiv2, ySuiv2);
                     rep[xSuiv2][ySuiv2].occuperCaisse(c);
                     return new Etat(p, rep);
@@ -138,17 +153,13 @@ public class Etat {
     public ArrayList<Caisse> creerListeCaisse(Case[][] g){
         ArrayList<Caisse> rep = new ArrayList<Caisse>();
         for (int i = 0; i < 9; i++) {
-
             for (int j = 0; j <= 7; j++) {
-                String s = g[j][i].getClass().getSimpleName();
-                switch (s) {
+                switch (g[j][i].getClass().getSimpleName()) {
                     case "Sol":
-                        Caisse c = g[j][i].getOccupantCaisse();
-                        if (c != null) rep.add(new Caisse(j, i, false));
+                        if (g[j][i].getOccupantCaisse() != null) rep.add(new Caisse(j, i, false));
                         break;
                     case "Emplacement":
-                        Caisse c2 = g[j][i].getOccupantCaisse();
-                        if (c2 != null) rep.add(new Caisse(j, i, true));
+                        if (g[j][i].getOccupantCaisse() != null) rep.add(new Caisse(j, i, true));
                         break;
                     default:
                         break;
