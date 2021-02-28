@@ -60,54 +60,56 @@ public class IA {
     @param objectif, l'Etat qui représente l'objectif
      */
     public void chercherSolution(Etat objectif) {
-        int v =0;
-        while(v<listeNoeuds.size() && !this.win){
-            if (listeNoeuds.get(v).getEtat().compareEtat(objectif)){
-                this.win = true;
-                this.fin = listeNoeuds.get(v);
-            }
-            v++;
-        }
-        if (!this.win){
-            int l = listeNoeuds.size();
-            for (int i = 0; i<l ;i++){
-                Noeud n = listeNoeuds.get(0);
-                Etat e = n.getEtat();
-                Boolean same = false;
-                int j=0;
-                while(!same && j<listeFerme.size()){
-                    same = listeFerme.get(j).getEtat().compareEtat(e);
-                    j++;
+        while (!this.win) {
+            System.out.println(this.win);
+            int v = 0;
+            while (v < listeNoeuds.size() && !this.win) {
+                if (listeNoeuds.get(v).getEtat().win(objectif)) {
+                    this.win = true;
+                    this.fin = listeNoeuds.get(v);
                 }
-                this.listeNoeuds.remove(n);
-                if(!same) {
-                    this.listeFerme.add(n);
-                    Etat droite = e.chercherProchainMouvement("droite");
-                    Etat gauche = e.chercherProchainMouvement("gauche");
-                    Etat haut = e.chercherProchainMouvement("haut");
-                    Etat bas = e.chercherProchainMouvement("bas");
-                    if (droite != null) {
-                        this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), droite, n, "droite"));
+                v++;
+            }
+            if (!this.win) {
+                int l = listeNoeuds.size();
+                for (int i = 0; i < l; i++) {
+                    Noeud n = listeNoeuds.get(0);
+                    Etat e = n.getEtat();
+                    Boolean same = false;
+                    int j = 0;
+                    while (!same && j < listeFerme.size()) {
+                        same = listeFerme.get(j).getEtat().compareEtat(e);
+                        j++;
                     }
-                    if (gauche != null) {
-                        this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), gauche, n, "gauche"));
-                    }
-                    if (haut != null) {
-                        this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), haut, n, "haut"));
-                    }
-                    if (bas != null) {
-                        this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), bas, n, "bas"));
+                    this.listeNoeuds.remove(n);
+                    if (!same) {
+                        this.listeFerme.add(n);
+                        Etat droite = e.chercherProchainMouvement("droite");
+                        Etat gauche = e.chercherProchainMouvement("gauche");
+                        Etat haut = e.chercherProchainMouvement("haut");
+                        Etat bas = e.chercherProchainMouvement("bas");
+                        if (droite != null) {
+                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), droite, n, "droite"));
+                        }
+                        if (gauche != null) {
+                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), gauche, n, "gauche"));
+                        }
+                        if (haut != null) {
+                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), haut, n, "haut"));
+                        }
+                        if (bas != null) {
+                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), bas, n, "bas"));
+                        }
                     }
                 }
-            }
-            chercherSolution(objectif);
-        }else {
-            Noeud n = this.fin;
-            while(n.getPrecedent() != null){
+            } else {
+                Noeud n = this.fin;
+                while (n.getPrecedent() != null) {
+                    System.out.println(n.getMouvement());
+                    n = n.getPrecedent();
+                }
                 System.out.println(n.getMouvement());
-                n = n.getPrecedent();
             }
-            System.out.println(n.getMouvement());
         }
     }
 

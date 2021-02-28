@@ -42,6 +42,15 @@ public class Etat {
         return true;
     }
 
+    public boolean win(Etat e) {
+        for (int i = 0; i < listeCaisses.size(); i++) {
+            if (this.listeCaisses.get(i).getPosX() != e.listeCaisses.get(i).getPosX() || this.listeCaisses.get(i).getPosY() != e.listeCaisses.get(i).getPosY()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /*
     Methode qui renvoi l'Etat pour un deplacement dans la direction choisi
     @param direction, la direction du deplacement
