@@ -3,6 +3,7 @@ package IA;
 import Jeu.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 /*
 Class représentant l'etat du jeu à un moment précis
@@ -48,7 +49,9 @@ public class Etat {
     @param e1, Etat numero 1
     @param e2, Etat numero 2
      */
-    public boolean compareEtat(Etat e) {
+    @Override
+    public boolean equals(Object obj) {
+        Etat e = (Etat)obj;
         if (this.getPersonnage().getPosX() != e.getPersonnage().getPosX() || this.getPersonnage().getPosY() != e.getPersonnage().getPosY()) {
             return false;
         }else {
@@ -64,7 +67,7 @@ public class Etat {
         return true;
     }
 
-    public boolean win(Etat e) {
+    public boolean estGagnant(Etat e) {
         ArrayList<Caisse> liste = this.getListeCaisses();
         ArrayList<Caisse> listeE = e.getListeCaisses();
         int taille = liste.size();

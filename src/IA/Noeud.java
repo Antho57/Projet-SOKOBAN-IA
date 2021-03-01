@@ -3,7 +3,7 @@ package IA;
 /*
 Class qui represente un noeud dans la recherche
  */
-public class Noeud implements Comparable<Noeud>{
+public class Noeud implements Comparable{
 
     private int deplacements; //Nombre de déplacements deja effectués
     private int cout; //Cout pour arriver à la fin, deplacement + heuristique
@@ -35,7 +35,8 @@ public class Noeud implements Comparable<Noeud>{
     @param n2, Noeud numero 2
      */
     @Override
-    public int compareTo(Noeud n) {
+    public int compareTo(Object obj) {
+        Noeud n = (Noeud)obj;
         if (this.cout < n.cout)
             return 1;
         else if(this.cout == n.cout) {
@@ -45,6 +46,12 @@ public class Noeud implements Comparable<Noeud>{
                 return 0;
             else return -1;
         }else return -1;
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        Noeud n = (Noeud)obj;
+        return this.etat.equals(n.etat);
     }
 
     /*

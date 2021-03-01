@@ -3,6 +3,9 @@ package IA;
 import Jeu.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 
 /*
@@ -10,7 +13,7 @@ Class qui permet de faire fonctionner l'IA
  */
 public class IA {
 
-    private ArrayList<Noeud> listeNoeuds; //Liste de noeuds qu'il faut encore explorer
+    private ArrayList<Noeud> listeOuverte; //Liste de noeuds qu'il faut encore explorer
     private ArrayList<Noeud> listeFerme; //Liste de noeuds que nous avons deja explore
     private Labyrinthe lab; //Le labyrinthe courant
     private Etat objectif; //Etat qui représente l'objectif de l'IA
@@ -23,9 +26,9 @@ public class IA {
     @param lab, labyrinthe courant
      */
     public IA(Labyrinthe lab) {
+        this.listeOuverte = new ArrayList<Noeud>();
         this.lab = lab;
         this.win = false;
-        listeNoeuds = new ArrayList<Noeud>();
         listeFerme = new ArrayList<Noeud>();
         Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null, null);
         Case[][] grille = this.lab.getGrille();
@@ -46,7 +49,7 @@ public class IA {
                 }
             }
         }
-        this.listeNoeuds.add(depart);
+        this.listeOuverte.add(depart);
         this.objectif = new Etat(this.lab.getPersonnage(), obj);
         this.chercherSolution(this.objectif);
     }
@@ -57,51 +60,47 @@ public class IA {
     @param objectif, l'Etat qui représente l'objectif
      */
     public void chercherSolution(Etat objectif) {
-        while (!this.win && listeNoeuds.size()> 0) {
-            int v = 0;
-            while (v < listeNoeuds.size() && !this.win) {
-            	//peut etre un bug de comparaison
-                if (listeNoeuds.get(v).getEtat().win(objectif)) {
+        while (!this.win && listeOuverte.size()> 0) {
+            int v =0;
+            while (v<this.listeOuverte.size() && !this.win) {
+
+                //peut etre un bug de comparaison
+                if (this.listeOuverte.get(v).getEtat().estGagnant(objectif)) {
                     this.win = true;
-                    this.fin = listeNoeuds.get(v);
+                    this.fin = this.listeOuverte.get(v);
                 }
                 v++;
             }
             if (!this.win) {
-                int l = listeNoeuds.size();
-                for (int i = 0; i < l; i++) {
-                    Noeud n = listeNoeuds.get(0);
+                //Récupère le Noeud et le supprime de la liste
+                Noeud n = listeOuverte.get(0);
+                this.listeOuverte.remove(0);
+
+                //Vérifie si le Noeud correpsond à un noeud dans la liste fermé
+                boolean idem = listeFerme.contains(n);
+                //Si le Noeud n'est pas déja dans la liste fermé
+                if (!idem) {
+
+                    //On ajoute le Noeud à la liste fermé
+                    this.listeFerme.add(n);
+                    System.out.println(listeFerme.size());
                     Etat e = n.getEtat();
-                    boolean idem = false;
-                    int j = 0;
-                    while (!idem && j < listeFerme.size()) {
-                        idem = listeFerme.get(j).getEtat().compareEtat(e);
-                        j++;
-                    }
-                    this.listeNoeuds.remove(n);
-                    if (!idem) {
-                        this.listeFerme.add(n);
-                        System.out.println(this.listeFerme.size());
-                        Etat droite = e.chercherProchainMouvement("droite");
-                        Etat gauche = e.chercherProchainMouvement("gauche");
-                        Etat haut = e.chercherProchainMouvement("haut");
-                        Etat bas = e.chercherProchainMouvement("bas");
-                        if (droite != null) {
-                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), droite, n, "droite"));
-                        }
-                        if (gauche != null) {
-                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), gauche, n, "gauche"));
-                        }
-                        if (haut != null) {
-                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), haut, n, "haut"));
-                        }
-                        if (bas != null) {
-                            this.listeNoeuds.add(new Noeud(n.getDeplacements() + 1, n.getHeuristique(), bas, n, "bas"));
-                        }
+
+                    //Liste des mouvements a tester
+                    String[] mouvements = {"droite", "gauche", "haut", "bas"};
+
+                    //Recherche et ajout des prochains Noeud dans la listeOuverte
+                    for (int k=0; k<mouvements.length; k++){
+                        String m = mouvements[k];
+                        Etat etat = e.chercherProchainMouvement(m);
+                        if (etat != null) this.listeOuverte.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), etat, n, m));
                     }
                 }
             } else {
+                //Récupère le Noeud final (correspond à la victoire)
                 Noeud n = this.fin;
+
+                //Parcour les Noeuds précédents pour récupérer les mouvements
                 while (n.getPrecedent() != null) {
                     System.out.println(n.getMouvement());
                     n = n.getPrecedent();
