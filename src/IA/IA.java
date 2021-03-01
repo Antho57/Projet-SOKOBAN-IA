@@ -57,9 +57,10 @@ public class IA {
     @param objectif, l'Etat qui représente l'objectif
      */
     public void chercherSolution(Etat objectif) {
-        while (!this.win) {
+        while (!this.win && listeNoeuds.size()> 0) {
             int v = 0;
             while (v < listeNoeuds.size() && !this.win) {
+            	//peut etre un bug de comparaison
                 if (listeNoeuds.get(v).getEtat().win(objectif)) {
                     this.win = true;
                     this.fin = listeNoeuds.get(v);
