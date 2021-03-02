@@ -19,6 +19,7 @@ public class IA {
     private Etat objectif; //Etat qui représente l'objectif de l'IA
     private boolean win; //Boolean qui représente la reussite de l'IA
     private Noeud fin; //Noeud qui vas correspondre à l'objectif
+    private static int nb;
 
 
     /*
@@ -31,27 +32,8 @@ public class IA {
         this.win = false;
         listeFerme = new ArrayList<Noeud>();
         Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null, null);
-        Case[][] grille = this.lab.getGrille();
-        Case[][] obj = new Case[8][9];
-
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j <= 7; j++) {
-                switch (grille[j][i].getClass().getSimpleName()) {
-                    case "Sol":
-                        obj[j][i] = new Sol(j ,i, null, false);
-                        break;
-                    case "Emplacement":
-                        obj[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
-                        break;
-                    case "Mur":
-                        obj[j][i] = new Mur(j, i);
-                        break;
-                }
-            }
-        }
         this.listeOuverte.add(depart);
-        this.objectif = new Etat(this.lab.getPersonnage(), obj);
-        this.chercherSolution(this.objectif);
+        this.chercherSolution();
     }
 
 
@@ -59,13 +41,13 @@ public class IA {
     Methode de recherche de solution pour le niveau courant
     @param objectif, l'Etat qui représente l'objectif
      */
-    public void chercherSolution(Etat objectif) {
+    public void chercherSolution() {
         while (!this.win && listeOuverte.size()> 0) {
             int v =0;
             while (v<this.listeOuverte.size() && !this.win) {
 
                 //peut etre un bug de comparaison
-                if (this.listeOuverte.get(v).getEtat().estGagnant(objectif)) {
+                if (this.listeOuverte.get(v).getEtat().estGagnant()) {
                     this.win = true;
                     this.fin = this.listeOuverte.get(v);
                 }
@@ -73,6 +55,8 @@ public class IA {
             }
             if (!this.win) {
                 //Récupère le Noeud et le supprime de la liste
+                this.nb++;
+                //System.out.println(nb);
                 Noeud n = listeOuverte.get(0);
                 this.listeOuverte.remove(0);
 
@@ -83,7 +67,7 @@ public class IA {
 
                     //On ajoute le Noeud à la liste fermé
                     this.listeFerme.add(n);
-                    System.out.println(listeFerme.size());
+                    //System.out.println(listeFerme.size());
                     Etat e = n.getEtat();
 
                     //Liste des mouvements a tester
@@ -99,13 +83,13 @@ public class IA {
             } else {
                 //Récupère le Noeud final (correspond à la victoire)
                 Noeud n = this.fin;
+                System.out.println("Nombre de tests : " +nb);
 
-                //Parcour les Noeuds précédents pour récupérer les mouvements
+                //Parcoure les Noeuds précédents pour récupérer les mouvements
                 while (n.getPrecedent() != null) {
                     System.out.println(n.getMouvement());
                     n = n.getPrecedent();
                 }
-                System.out.println(n.getMouvement());
             }
         }
     }

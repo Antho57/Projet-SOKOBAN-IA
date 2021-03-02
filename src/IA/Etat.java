@@ -21,6 +21,7 @@ public class Etat {
     public Etat(Personnage p, Case[][] g){
         this.personnage = p;
         Case[][] rep = new Case[8][9];
+
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j <= 7; j++) {
                 Case c = g[j][i];
@@ -39,6 +40,8 @@ public class Etat {
                 }
             }
         }
+
+
         this.grille = rep;
         this.listeCaisses = this.creerListeCaisse(rep);
     }
@@ -67,15 +70,15 @@ public class Etat {
         return true;
     }
 
-    public boolean estGagnant(Etat e) {
+    public boolean estGagnant() {
         ArrayList<Caisse> liste = this.getListeCaisses();
-        ArrayList<Caisse> listeE = e.getListeCaisses();
         int taille = liste.size();
         for (int i = 0; i < taille; i++) {
-            if (liste.get(i).getPosX() != listeE.get(i).getPosX() || liste.get(i).getPosY() != listeE.get(i).getPosY()) {
+            if (!liste.get(i).estBienPlace()){
                 return false;
             }
         }
+        System.out.println("-----------VICTOIRE------------");
         return true;
     }
 
@@ -86,10 +89,13 @@ public class Etat {
      */
     public Etat chercherProchainMouvement(String direction){
         Personnage perso = this.getPersonnage();
+
         int xSuiv = perso.getPosX();
         int ySuiv = perso.getPosY();
+
         int xSuiv2 = xSuiv;
         int ySuiv2 = ySuiv;
+
         switch(direction){
             case "droite":
                 xSuiv += 1;
@@ -108,36 +114,25 @@ public class Etat {
                 ySuiv2 += 2;
                 break;
         }
-        Case[][] rep = new Case[8][9];
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j <= 7; j++) {
-                Case c = this.grille[j][i];
-                switch (c.getClass().getSimpleName()) {
-                    case "Sol":
-                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Sol(j ,i, new Caisse(j, i, false), true);
-                        else rep[j][i] = new Sol(j ,i, null, false);
-                        break;
-                    case "Emplacement":
-                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
-                        else rep[j][i] = new Emplacement(j ,i, null, false);
-                        break;
-                    case "Mur":
-                        rep[j][i] = new Mur(j, i);
-                        break;
-                }
-            }
-        }
+        Case[][] rep = this.grille;
+
         Case move = rep[xSuiv][ySuiv];
+
         if (!move.isMur()){
             if(move.isOccupe()){
+
                 Case move2 = rep[xSuiv2][ySuiv2];
-                if (!move.isOccupe() && !move2.isMur()){
+
+                if (!move2.isOccupe() && !move2.isMur()){
                     Personnage p = new Personnage(xSuiv, ySuiv);
                     Caisse c = rep[xSuiv][ySuiv].getOccupantCaisse();
+
                     rep[xSuiv][ySuiv].setOccupe(false);
                     rep[xSuiv][ySuiv].setOccupantCaisse(null);
+
                     c.setPosition(xSuiv2, ySuiv2);
                     rep[xSuiv2][ySuiv2].occuperCaisse(c);
+
                     return new Etat(p, rep);
                 }
             }else{

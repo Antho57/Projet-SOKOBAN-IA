@@ -81,9 +81,7 @@ public abstract class Case {
 		this.isMur = isMur;
 	}
 
-	public void setOccupantCaisse(Caisse c){
-		this.occupantCaisse = c;
-	}
+	public void setOccupantCaisse(Caisse c){ this.occupantCaisse = c; }
 
 	public Caisse getOccupantCaisse() {
 		return occupantCaisse;
