@@ -18,7 +18,7 @@ public class Etat {
     /*
     Constructeur de l'etat courant du labyrinthe
      */
-    public Etat(Personnage p, Case[][] g){
+    public Etat(Personnage p, Case[][] g) {
         this.personnage = p;
         Case[][] rep = new Case[8][9];
 
@@ -60,8 +60,7 @@ public class Etat {
         }else {
             ArrayList<Caisse> liste = this.getListeCaisses();
             ArrayList<Caisse> listeE = e.getListeCaisses();
-            int taille = liste.size();
-            for (int i = 0; i < taille; i++) {
+            for (int i = 0; i < liste.size(); i++) {
                 if (liste.get(i).getPosX() != listeE.get(i).getPosX() || liste.get(i).getPosY() != listeE.get(i).getPosY()) {
                     return false;
                 }
@@ -72,8 +71,7 @@ public class Etat {
 
     public boolean estGagnant() {
         ArrayList<Caisse> liste = this.getListeCaisses();
-        int taille = liste.size();
-        for (int i = 0; i < taille; i++) {
+        for (int i = 0; i < liste.size(); i++) {
             if (!liste.get(i).estBienPlace()){
                 return false;
             }
@@ -123,7 +121,7 @@ public class Etat {
 
                 Case move2 = rep[xSuiv2][ySuiv2];
 
-                if (!move2.isOccupe() && !move2.isMur()){
+                if (!(move2.isOccupe() || move2.isMur())){
                     Personnage p = new Personnage(xSuiv, ySuiv);
                     Caisse c = rep[xSuiv][ySuiv].getOccupantCaisse();
 
@@ -158,8 +156,6 @@ public class Etat {
                         break;
                     case "Emplacement":
                         if (g[j][i].getOccupantCaisse() != null) rep.add(new Caisse(j, i, true));
-                        break;
-                    default:
                         break;
                 }
             }

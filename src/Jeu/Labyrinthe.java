@@ -39,8 +39,7 @@ public class Labyrinthe implements Sujet{
 
 		try{
 			//Récupération du fichier de jeu en .xsb qui représente le labyritnhe a charger
-			InputStream test = new FileInputStream("./Ressources/Niveaux/sokoban" +niv +".xsb");
-			InputStreamReader stream = new InputStreamReader(test);
+			InputStreamReader stream = new InputStreamReader(new FileInputStream("./Ressources/Niveaux/sokoban" +niv +".xsb"));
 
 			BufferedReader br = new BufferedReader(stream);
 
