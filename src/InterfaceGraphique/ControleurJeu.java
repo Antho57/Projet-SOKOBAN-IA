@@ -4,6 +4,8 @@ import Jeu.Labyrinthe;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  * @author Anthony Briot
  * @author Lucas Saker
@@ -44,16 +46,44 @@ public class ControleurJeu implements KeyListener {
         switch(e.getKeyCode()){
 
             case KeyEvent.VK_Q:
-                this.lab.move("gauche");
+            	Timer timer = new Timer();
+                timer.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("gauche");  // display the data
+                    }
+                }, 100);
                 break;
             case KeyEvent.VK_D:
-                this.lab.move("droite");
+            	Timer timer1 = new Timer();
+                timer1.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("droite");  // display the data
+                    }
+                }, 100);
                 break;
             case KeyEvent.VK_Z:
-                this.lab.move("haut");
+            	Timer timer2 = new Timer();
+                timer2.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("haut");  // display the data
+                    }
+                }, 100);
                 break;
             case KeyEvent.VK_S:
-                this.lab.move("bas");
+            	Timer timer3 = new Timer();
+                timer3.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("bas");  // display the data
+                    }
+                }, 100);
                 break;
         }
     }
