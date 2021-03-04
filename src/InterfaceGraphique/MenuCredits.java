@@ -1,9 +1,13 @@
 package InterfaceGraphique;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * @author Anthony Briot
  * @author Lucas Saker
@@ -27,13 +31,13 @@ public class MenuCredits extends JPanel{
         this.f = f;
         this.setSize(new Dimension(767, 955));
         this.setLayout(new BorderLayout());
-        this.setBackground(new Color(78, 48, 150));
+        this.setBackground(new Color(78, 48, 150, 0));
 
 
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(767, 200));
         jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 30));
-        jp.setBackground(new Color(78, 48, 150));
+        jp.setBackground(new Color(78, 48, 150, 0));
 
 
         JLabel titre = new JLabel("<html> <p style='text-align: center; text-decoration: underline'> CREDITS</p> <br> " +
@@ -50,7 +54,7 @@ public class MenuCredits extends JPanel{
         JPanel jp3 = new JPanel();
         jp3.setSize(new Dimension(767, 50));
         jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 50));
-        jp3.setBackground(new Color(78, 48, 150));
+        jp3.setBackground(new Color(78, 48, 150, 0));
 
         JButton jb2= new JButton("Retour");
         jb2.setPreferredSize(new Dimension(75, 50));
@@ -65,6 +69,7 @@ public class MenuCredits extends JPanel{
         jp3.add(jb2);
 
         this.add(jp3, BorderLayout.SOUTH);
+        this.repaint();
 
     }
 
@@ -76,6 +81,17 @@ public class MenuCredits extends JPanel{
         MenuPrincipale m = new MenuPrincipale(this.f);
         this.f.changer(m);
 
+    }
+
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        Image img = null;
+        try {
+            img = ImageIO.read(new File("Ressources/Images/Fond_Sans_Titre.jpg")).getScaledInstance(767, 965, Image.SCALE_REPLICATE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        g.drawImage(img, 0, 0, null);
     }
 
 

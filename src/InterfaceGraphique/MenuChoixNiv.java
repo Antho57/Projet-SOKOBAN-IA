@@ -2,10 +2,14 @@ package InterfaceGraphique;
 import Jeu.Labyrinthe;
 import Jeu.Personnage;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * @author Anthony Briot
  * @author Lucas Saker
@@ -30,13 +34,13 @@ public class MenuChoixNiv extends JPanel {
 		this.f = f;
 		this.setSize(new Dimension(760, 955));
 		this.setLayout(new GridLayout(3, 1));
-		this.setBackground(new Color(78, 48, 150));
+		this.setBackground(new Color(78, 48, 150, 0));
 
 
 		JPanel jp = new JPanel();
 		jp.setSize(new Dimension(760, 200));
 		jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
-		jp.setBackground(new Color(78, 48, 150));
+		jp.setBackground(new Color(78, 48, 150, 0));
 
 
 		JLabel titre = new JLabel("Choix du niveau");
@@ -49,7 +53,7 @@ public class MenuChoixNiv extends JPanel {
 		JPanel jp2 = new JPanel();
 		jp2.setSize(new Dimension(760, 200));
 		jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
-		jp2.setBackground(new Color(78, 48, 150));
+		jp2.setBackground(new Color(78, 48, 150, 0));
 
 		JPanel jp3 = new JPanel();
 		jp3.setLayout(new GridLayout(1, 2));
@@ -59,7 +63,7 @@ public class MenuChoixNiv extends JPanel {
 		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
 		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
 		String[] difficulte = {"Facile", "Normal", "Difficile"};
-		
+
 		JComboBox jcb1 = new JComboBox(niveauxF);
 		jcb1.addActionListener(new ActionListener() {
 
@@ -78,26 +82,26 @@ public class MenuChoixNiv extends JPanel {
 				JComboBox jcb = (JComboBox) e.getSource();
 				choixDifficulte(jcb.getSelectedIndex());
 				switch (jcb.getSelectedIndex()) {
-				case 0:
-					jcb1.setModel(new DefaultComboBoxModel<String>(niveauxF));
-					repaint();
-					break;
-				case 1:
-					jcb1.setModel(new DefaultComboBoxModel<String>(niveauxN));
-					repaint();
-					break;
-				case 2:
-					jcb1.setModel(new DefaultComboBoxModel<String>(niveauxD));
-					repaint();
-					break;
+					case 0:
+						jcb1.setModel(new DefaultComboBoxModel<String>(niveauxF));
+						repaint();
+						break;
+					case 1:
+						jcb1.setModel(new DefaultComboBoxModel<String>(niveauxN));
+						repaint();
+						break;
+					case 2:
+						jcb1.setModel(new DefaultComboBoxModel<String>(niveauxD));
+						repaint();
+						break;
 
-				default:
-					break;
-			}
+					default:
+						break;
+				}
 			}
 		});
 
-		
+
 
 		jcb1.setPreferredSize(new Dimension(300, 50));
 
@@ -109,7 +113,7 @@ public class MenuChoixNiv extends JPanel {
 		JPanel jp4 = new JPanel();
 		jp4.setSize(new Dimension(760, 200));
 		jp4.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 40));
-		jp4.setBackground(new Color(78, 48, 150));
+		jp4.setBackground(new Color(78, 48, 150, 0));
 
 
 		JButton jb = new JButton("Jouer");
@@ -118,7 +122,7 @@ public class MenuChoixNiv extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				goInfo();
+				jouer();
 			}
 		});
 
@@ -138,6 +142,7 @@ public class MenuChoixNiv extends JPanel {
 		jp4.add(jb2);
 
 		this.add(jp4);
+		this.repaint();
 
 	}
 
@@ -175,10 +180,21 @@ public class MenuChoixNiv extends JPanel {
 		MenuPrincipale m = new MenuPrincipale(this.f);
 		this.f.changer(m);
 	}
-	
+
 	public void goInfo(){
 		MenuInfo m = new MenuInfo(this.f);
 		this.f.changer(m);
+	}
+
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		Image img = null;
+		try {
+			img = ImageIO.read(new File("Ressources/Images/Fond_Sans_Titre.jpg")).getScaledInstance(767, 965, Image.SCALE_REPLICATE);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		g.drawImage(img, 0, 0, null);
 	}
 
 }
