@@ -49,11 +49,11 @@ public class VueInferieureJoueur extends JPanel {
         this.add(jb1);
 
 
-        JSlider S = new JSlider();
+        //JSlider S = new JSlider();
         JLabel titre = new JLabel("");
         titre.setFont(new Font("Sans-Serif",Font.BOLD, 20));
         titre.setForeground(new Color(195, 195, 195));
-        this.add(S);
+        //this.add(S);
     }
 
     /*
