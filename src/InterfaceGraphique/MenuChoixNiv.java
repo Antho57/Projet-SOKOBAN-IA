@@ -118,7 +118,7 @@ public class MenuChoixNiv extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				jouer();
+				goInfo();
 			}
 		});
 
@@ -173,6 +173,11 @@ public class MenuChoixNiv extends JPanel {
 	 */
 	public void retourMenuPrincipale(){
 		MenuPrincipale m = new MenuPrincipale(this.f);
+		this.f.changer(m);
+	}
+	
+	public void goInfo(){
+		MenuInfo m = new MenuInfo(this.f);
 		this.f.changer(m);
 	}
 
