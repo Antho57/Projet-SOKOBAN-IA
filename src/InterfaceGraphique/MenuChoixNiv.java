@@ -55,10 +55,12 @@ public class MenuChoixNiv extends JPanel {
         jp3.setLayout(new GridLayout(1, 2));
 
 
-        String[] niveaux = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5", "Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10", "Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
+        String[] niveauxF = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5", "Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10", "Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
+        //String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
+        //String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
         String[] difficulte = {"Facile", "Normal", "Difficile"};
 
-        JComboBox jcb1 = new JComboBox(niveaux);
+        JComboBox jcb1 = new JComboBox(niveauxF);
         jcb1.addActionListener(new ActionListener() {
 
             @Override
@@ -108,6 +110,7 @@ public class MenuChoixNiv extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //retour en arriere vers le menu principale
+            	retourMenuPrincipale();
             }
         });
 
@@ -143,6 +146,11 @@ public class MenuChoixNiv extends JPanel {
      */
     public void choixDifficulte (int d){
         this.difficulte=d;
+    }
+    
+    public void retourMenuPrincipale(){
+        MenuPrincipale m = new MenuPrincipale(this.f);
+        this.f.changer(m);
     }
 
 }
