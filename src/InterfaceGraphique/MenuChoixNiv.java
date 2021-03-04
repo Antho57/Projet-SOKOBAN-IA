@@ -55,35 +55,11 @@ public class MenuChoixNiv extends JPanel {
 		jp3.setLayout(new GridLayout(1, 2));
 
 		String[] res = {};
-		String[] niveauxF = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5", "Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10", "Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
-//		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
-//		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
+		String[] niveauxF = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
+		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
+		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
 		String[] difficulte = {"Facile", "Normal", "Difficile"};
-
-		JComboBox jcb2= new JComboBox(difficulte);
-		jcb2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				JComboBox jcb = (JComboBox) e.getSource();
-				choixDifficulte(jcb.getSelectedIndex());
-//				switch (jcb.getSelectedIndex()) {
-//				case 0:
-//					System.arraycopy(niveauxF, 0, res, 0, niveauxF.length);
-//					break;
-//				case 1:
-//					System.arraycopy(niveauxN, 0, res, 0, niveauxN.length);
-//					break;
-//				case 2:
-//					System.arraycopy(niveauxD, 0, res, 0, niveauxD.length);
-//					break;
-//
-//				default:
-//					break;
-//			}
-			}
-		});
-
+		
 		JComboBox jcb1 = new JComboBox(niveauxF);
 		jcb1.addActionListener(new ActionListener() {
 
@@ -93,6 +69,35 @@ public class MenuChoixNiv extends JPanel {
 				choixNiveau(jcb.getSelectedIndex());
 			}
 		});
+
+		JComboBox jcb2= new JComboBox(difficulte);
+		jcb2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox jcb = (JComboBox) e.getSource();
+				choixDifficulte(jcb.getSelectedIndex());
+				switch (jcb.getSelectedIndex()) {
+				case 0:
+					jcb1.setModel(new DefaultComboBoxModel<String>(niveauxF));
+					repaint();
+					break;
+				case 1:
+					jcb1.setModel(new DefaultComboBoxModel<String>(niveauxN));
+					repaint();
+					break;
+				case 2:
+					jcb1.setModel(new DefaultComboBoxModel<String>(niveauxD));
+					repaint();
+					break;
+
+				default:
+					break;
+			}
+			}
+		});
+
+		
 
 		jcb1.setPreferredSize(new Dimension(300, 50));
 
