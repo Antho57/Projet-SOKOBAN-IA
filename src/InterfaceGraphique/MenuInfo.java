@@ -28,7 +28,7 @@ public class MenuInfo extends JPanel {
 
         this.f = f;
         this.setSize(new Dimension(767, 955));
-        this.setLayout(new GridLayout(2, 1));
+        this.setLayout(new GridLayout(3, 1));
         this.setBackground(new Color(78, 48, 150));
 
 
@@ -41,7 +41,9 @@ public class MenuInfo extends JPanel {
         JLabel titre = new JLabel("A propos !");
         titre.setFont(new Font("Sans-Serif", Font.BOLD, 50));
         titre.setForeground(new Color(195, 195, 195));
+        
         jp.add(titre);
+        
         this.add(jp);
 
 
@@ -49,8 +51,26 @@ public class MenuInfo extends JPanel {
         jp2.setSize(new Dimension(767, 200));
         jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
         jp2.setBackground(new Color(78, 48, 150));
+        
+        JLabel titreProjet = new JLabel("Le projet :");
+        titreProjet.setFont(new Font("Sans-Serif", Font.BOLD, 30));
+        titreProjet.setForeground(Color.black);
+        
+        jp2.add(titreProjet);
+        
+//        JLabel titreIA = new JLabel("L'IA :");
+//        titreProjet.setFont(new Font("Sans-Serif", Font.BOLD, 30));
+//        titreProjet.setForeground(Color.black);
+//        
+//        jp2.add(titreIA);
 
+        this.add(jp2);
 
+        JPanel jp3 = new JPanel();
+        jp3.setSize(new Dimension(767, 200));
+        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 567, 130));
+        jp3.setBackground(new Color(78, 48, 150));
+        
         JButton jb = new JButton("J'ai compris");
         jb.setPreferredSize(new Dimension(300, 50));
         jb.addActionListener(new ActionListener() {
@@ -61,59 +81,14 @@ public class MenuInfo extends JPanel {
             }
         });
         
-//        JButton jb3 = new JButton("Quitter");
-//        jb3.setPreferredSize(new Dimension(200, 50));
-//        jb3.setBackground(new Color(195, 195, 195));
-//        jb3.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.exit(0);
-//                System.out.println("Vous avez quitt�.");
-//            }
-//        });
-//
-        jp2.add(jb);
-//
-//        jp2.add(jb3);
-//
-        this.add(jp2);
+        jp3.add(jb);
 
-//        JPanel jp3 = new JPanel();
-//        jp3.setSize(new Dimension(767, 200));
-//        jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 567, 130));
-//        jp3.setBackground(new Color(78, 48, 150));
-//
-//        JButton jb2= new JButton("Credits");
-//        jb2.setPreferredSize(new Dimension(75, 50));
-//        jb2.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                credits();
-//            }
-//        });
-        
-//        JButton jb3= new JButton("Quitter");
-//        jb3.setPreferredSize(new Dimension(75, 50));
-//        jb3.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.exit(0);
-//            }
-//        });
-
-//        jp3.add(jb2);
-//        jp3.add(jb3);
-//
-//
-//        this.add(jp3);
+        this.add(jp3);
 
     }
 
     /*
-    Méthode qui permet de jouer (affiche le menu de choix de niveau
+    Méthode qui permet d'afficher le menu pour afficher les infos sur le projet
      */
     public void goChoisirNiv(){
 
@@ -121,14 +96,5 @@ public class MenuInfo extends JPanel {
         this.f.changer(m);
 
     }
-
-    /*
-    Méthode qui permet d'afficher les crédits
-     */
-//    public void credits(){
-//        MenuCredits m = new MenuCredits(this.f);
-//        this.f.changer(m);
-//    }
-
 
 }
