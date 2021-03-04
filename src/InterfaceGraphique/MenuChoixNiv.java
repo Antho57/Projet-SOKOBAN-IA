@@ -99,8 +99,21 @@ public class MenuChoixNiv extends JPanel {
                 jouer();
             }
         });
+        
+        JButton jb2 = new JButton("Retour");
+        jb2.setPreferredSize(new Dimension(200, 50));
+        jb2.setBackground(new Color(195, 195, 195));
+        jb2.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //retour en arriere vers le menu principale
+            }
+        });
 
         jp4.add(jb);
+        jp4.add(jb2);
+        
         this.add(jp4);
 
     }

@@ -60,8 +60,22 @@ public class MenuPrincipale extends JPanel {
                 jouer();
             }
         });
+        
+        JButton jb3 = new JButton("Quitter");
+        jb3.setPreferredSize(new Dimension(200, 50));
+        jb3.setBackground(new Color(195, 195, 195));
+        jb3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+                System.out.println("Vous avez quitté.");
+            }
+        });
 
         jp2.add(jb);
+
+        jp2.add(jb3);
 
         this.add(jp2);
 
@@ -79,8 +93,20 @@ public class MenuPrincipale extends JPanel {
                 credits();
             }
         });
+        
+//        JButton jb3= new JButton("Quitter");
+//        jb3.setPreferredSize(new Dimension(75, 50));
+//        jb3.addActionListener(new ActionListener() {
+//
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                System.exit(0);
+//            }
+//        });
 
         jp3.add(jb2);
+//        jp3.add(jb3);
+
 
         this.add(jp3);
 
