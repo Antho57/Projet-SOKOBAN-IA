@@ -53,21 +53,23 @@ public class MenuInfo extends JPanel {
         jp2.setSize(new Dimension(767, 200));
         jp2.setBackground(new Color(78, 48, 150, 0));
         
-        JTextArea titreProjet = new JTextArea("Le projet :\n\n Gardien d'entrepôt (divisé en cases carrées), "
+        JTextArea titreProjet = new JTextArea("Le projet :\n Gardien d'entrepôt (divisé en cases carrées), "
         		+ "le joueur doit ranger des caisses sur des cases cibles. Il peut se déplacer dans les quatre directions, "
         		+ "et pousser (mais pas tirer) une seule caisse à la fois. Une fois toutes les caisses rangées (c'est parfois un vrai casse-tête), "
         		+ "le niveau est réussi et le joueur passe au niveau suivant, plus difficile en général. "
-        		+ "L'idéal est de réussir avec le moins de coups possibles (déplacements et poussées).\n\n\n"
-        		+ "L'IA :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-        		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
-        		+ "when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
+        		+ "L'idéal est de réussir avec le moins de coups possibles (déplacements et poussées).\n\n"
+        		+ "L'IA :\n A* est un algorithme de résolution que l’on peut représenter sous forme d’arbre d’état. "
+        		+ "Chaque état possède une valeur heuristique (composé du coût réel pour arriver au nœud courant + le coût "
+        		+ "prévisionnel admissible pour arriver à l'état final) correspondant au coût de la distance entre l’état initial et l’état final. "
+        		+ "A chaque itération, on se positionne sur l’état ayant la plus petite valeur heuristique parmi tous les nœuds de l’arbre non visités et "
+        		+ "fils d’un noeud déjà visité jusqu’à arriver à l'état final par le chemin le plus court possible.");
         titreProjet.setLineWrap(true);
         titreProjet.setWrapStyleWord(true);
         titreProjet.setEditable(false);
         titreProjet.setOpaque(false);
         titreProjet.setSize(new Dimension(740, 310));
         
-        titreProjet.setFont(new Font("Sans-Serif", Font.PLAIN, 17));
+        titreProjet.setFont(new Font("Sans-Serif", Font.PLAIN, 16));
         titreProjet.setForeground(Color.lightGray);
         
         jp2.add(titreProjet);
