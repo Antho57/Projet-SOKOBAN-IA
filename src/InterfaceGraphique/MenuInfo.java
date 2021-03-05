@@ -32,17 +32,17 @@ public class MenuInfo extends JPanel {
         this.f = f;
         this.setSize(new Dimension(767, 955));
         this.setLayout(new GridLayout(3, 1));
-        this.setBackground(new Color(78, 48, 150, 0));
+        this.setBackground(new Color(78, 48, 150));
 
 
         JPanel jp = new JPanel();
-        jp.setSize(new Dimension(767, 200));
+        jp.setSize(new Dimension(767, 150));
         jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
-        jp.setBackground(new Color(78, 48, 150, 0));
+        jp.setBackground(new Color(78, 48, 150));
 
 
         JLabel titre = new JLabel("A propos !");
-        titre.setFont(new Font("Sans-Serif", Font.BOLD, 50));
+        titre.setFont(new Font("Sans-Serif", Font.ITALIC, 40));
         titre.setForeground(new Color(195, 195, 195));
         
         jp.add(titre);
@@ -52,11 +52,24 @@ public class MenuInfo extends JPanel {
 
         JPanel jp2 = new JPanel();
         jp2.setSize(new Dimension(767, 200));
-        jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
-        jp2.setBackground(new Color(78, 48, 150, 0));
+        jp2.setBackground(new Color(78, 48, 150));
         
-        JLabel titreProjet = new JLabel("Le projet :");
-        titreProjet.setFont(new Font("Sans-Serif", Font.BOLD, 30));
+        
+        
+        JTextArea titreProjet = new JTextArea("Le projet :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
+        		+ "when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+        		+ "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\n"
+        		+ "L'IA :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
+        		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
+        		+ "when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
+        titreProjet.setLineWrap(true);
+        titreProjet.setWrapStyleWord(true);
+        titreProjet.setEditable(false);
+        titreProjet.setOpaque(false);
+        titreProjet.setSize(new Dimension(740, 310));
+        
+        titreProjet.setFont(new Font("Sans-Serif", Font.PLAIN, 17));
         titreProjet.setForeground(Color.black);
         
         jp2.add(titreProjet);
@@ -70,12 +83,12 @@ public class MenuInfo extends JPanel {
         this.add(jp2);
 
         JPanel jp3 = new JPanel();
-        jp3.setSize(new Dimension(767, 200));
+        jp3.setSize(new Dimension(767, 150));
         jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 567, 130));
-        jp3.setBackground(new Color(78, 48, 150, 0));
+        jp3.setBackground(new Color(78, 48, 150));
         
         JButton jb = new JButton("J'ai compris");
-        jb.setPreferredSize(new Dimension(300, 50));
+        jb.setPreferredSize(new Dimension(200, 50));
         jb.addActionListener(new ActionListener() {
 
             @Override
@@ -88,8 +101,6 @@ public class MenuInfo extends JPanel {
 
         this.add(jp3);
 
-        this.repaint();
-
     }
 
     /*
@@ -101,16 +112,16 @@ public class MenuInfo extends JPanel {
         this.f.changer(m);
 
     }
-
+    
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Image img = null;
-        try {
-            img = ImageIO.read(new File("Ressources/Images/Fond_Sans_Titre.jpg")).getScaledInstance(767, 965, Image.SCALE_REPLICATE);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        g.drawImage(img, 0, 0, null);
-    }
+		super.paintComponent(g);
+		Image img = null;
+		try {
+			img = ImageIO.read(new File("Ressources/Images/Fond_Sans_Titre.jpg")).getScaledInstance(767, 965, Image.SCALE_REPLICATE);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		g.drawImage(img, 0, 0, null);
+	}
 
 }
