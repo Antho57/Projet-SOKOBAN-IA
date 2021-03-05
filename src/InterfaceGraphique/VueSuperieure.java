@@ -37,25 +37,26 @@ public class VueSuperieure extends JPanel implements Observateur{
         this.mouvements=0;
         this.setSize(new Dimension(900, 100));
         this.setLayout(new GridLayout(1,3));
-        this.setBackground(new Color(134, 134, 134));
+        this.setBackground(new Color(26, 45, 85));
 
 
-        JLabel dep = new JLabel(" DÈplacement :  " + this.mouvements);
-        dep.setFont(new Font("Sans-Serif",Font.BOLD, 20));
-        dep.setForeground(new Color(195, 195, 195));
+        JLabel dep = new JLabel(" Deplacements :  " + this.mouvements);
+        dep.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
+        dep.setForeground(new Color(89, 181, 201));
         this.add(dep);
 
         JLabel titre = new JLabel(titre(niveau, difficulte));
-        titre.setFont(new Font("Sans-Serif",Font.BOLD, 20));
-        titre.setForeground(new Color(195, 195, 195));
+        titre.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
+        titre.setForeground(new Color(89, 181, 201));
         this.add(titre);
 
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(50, 100));
         jp.setLayout(new GridLayout(1,2));
-        jp.setBackground(new Color(255, 5, 204));
+        jp.setBackground(new Color(26, 45, 85));
 
         JButton jb1 = new JButton("MENU");
+        jb1.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
         jb1.setPreferredSize(new Dimension(40, 40));
         jb1.addActionListener(new ActionListener() {
 
@@ -67,10 +68,12 @@ public class VueSuperieure extends JPanel implements Observateur{
         });
 
         JButton jb2 = new JButton("AIDE");
+        jb2.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
         jb2.setPreferredSize(new Dimension(40, 40));
 
-        JButton jb3 = new JButton("RESET");
-        jb2.setPreferredSize(new Dimension(60, 40));
+        JButton jb3 = new JButton("RESEt");
+        jb3.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
+        jb3.setPreferredSize(new Dimension(70, 40));
         jb3.addActionListener(new ActionListener() {
 
             @Override
@@ -93,7 +96,7 @@ public class VueSuperieure extends JPanel implements Observateur{
     @param dif, la difficult√© du niveau
      */
     public String titre(int niv, int dif){
-        String s = "<html><p style='text-align: CENTER'>Niveau n∞" +niv;
+        String s = "<html><p style='text-align: CENTER'>Niveau " +niv;
         switch(dif){
             case(0):
                 s +=" &emsp Facile</p></html>";
@@ -126,9 +129,9 @@ public class VueSuperieure extends JPanel implements Observateur{
             }
         }
         if (this.mouvements <= 1) {
-        	j[0].setText(" DÈplacement :  " + this.mouvements);
+        	j[0].setText(" Deplacements :  " + this.mouvements);
 		} else {
-			j[0].setText(" DÈplacements :  " + this.mouvements);
+			j[0].setText(" Deplacements :  " + this.mouvements);
 		}
         this.repaint();
         this.revalidate();

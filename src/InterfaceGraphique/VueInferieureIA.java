@@ -37,6 +37,7 @@ public class VueInferieureIA extends JPanel{
 
 
         JButton jb1 = new JButton("JOUEUR");
+        jb1.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
         jb1.setPreferredSize(new Dimension(40, 40));
         jb1.addActionListener(new ActionListener() {
 
@@ -55,8 +56,9 @@ public class VueInferieureIA extends JPanel{
         titre.setForeground(new Color(195, 195, 195));
         this.add(S);
 
-        JButton jb2 = new JButton("AUTO");
-        jb1.setPreferredSize(new Dimension(40, 40));
+        JButton jb2 = new JButton("AUtO");
+        jb2.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
+        jb2.setPreferredSize(new Dimension(40, 40));
         this.add(jb2);
     }
 

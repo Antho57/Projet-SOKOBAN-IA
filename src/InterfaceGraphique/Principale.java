@@ -7,6 +7,10 @@ package InterfaceGraphique;
  * @author Benoit Nicol
  */
 
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Class principale qui permet de lancer le jeu
  */
@@ -18,6 +22,13 @@ public class Principale {
      */
 
     public static void main(String[] args) {
+
+        try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File("Ressources/font/BUBBLEBOY2.ttf")));
+        } catch (IOException |FontFormatException e) {
+            //Handle exception
+        }
 
         Fenetre jeu = new Fenetre();
     }
