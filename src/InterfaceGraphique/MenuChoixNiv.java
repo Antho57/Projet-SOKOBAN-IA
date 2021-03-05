@@ -45,7 +45,7 @@ public class MenuChoixNiv extends JPanel {
 
 		JLabel titre = new JLabel("Choix du niveau");
 		titre.setFont(new Font("BUBBLEBOY2", Font.BOLD, 45));
-		titre.setForeground(Color.white);
+		titre.setForeground(new Color(89, 181, 201));
 		titre.setBounds(145,20, 500,100);
 
 
