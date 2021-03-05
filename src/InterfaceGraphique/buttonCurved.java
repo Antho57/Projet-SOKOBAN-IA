@@ -95,7 +95,7 @@ public class buttonCurved extends JButton {
             GP = new GradientPaint(0, 0, startColor, 0, h, endColor, true);
         }
 
-        //Ellipse2D.Float r2d = new Ellipse2D.Float(0, 0, w - 1, h - 1);
+        //Création de la forme du button
         Shape clip = g2d.getClip();
         Rectangle2D.Float r2d = new Rectangle2D.Float(0, 0, 149, 49);
         g2d.clip(r2d);
@@ -136,27 +136,5 @@ public class buttonCurved extends JButton {
      */
     public Color getEndColor() {
         return endColor;
-    }
-
-    public static void main(String args[]) {
-        JFrame frame = new JFrame("Custom Panels Demo");
-        frame.setLayout(new FlowLayout());
-        buttonCurved standardButton = new buttonCurved("Tt");
-        standardButton.setPreferredSize(new Dimension(130, 28));
-        frame.add(standardButton.getButtonsPanel());
-        frame.getContentPane().setBackground(Color.WHITE);
-        frame.setBackground(Color.WHITE);
-        frame.setSize(700, 700);
-        frame.setVisible(true);
-    }
-    public JPanel getButtonsPanel(){
-        JPanel panel = new JPanel();
-        panel.setBackground(Color.WHITE);
-        buttonCurved standardButton = new buttonCurved("Test");
-        standardButton.setPreferredSize(new Dimension(100, 50));
-
-        panel.add(standardButton);
-        return panel;
-
     }
 }
