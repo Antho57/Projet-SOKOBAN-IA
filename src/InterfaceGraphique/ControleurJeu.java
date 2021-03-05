@@ -4,6 +4,8 @@ import Jeu.Labyrinthe;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  * @author Anthony Briot
  * @author Lucas Saker
@@ -17,6 +19,9 @@ Class qui permet de gérer l'appui sur une touche
 public class ControleurJeu implements KeyListener {
 
     private Labyrinthe lab; //labyrinthe courant
+    
+    private Timer timer = new Timer();
+    
 
     /*
     Constructeur du controleur du jeu
@@ -44,16 +49,40 @@ public class ControleurJeu implements KeyListener {
         switch(e.getKeyCode()){
 
             case KeyEvent.VK_Q:
-                this.lab.move("gauche");
+            	timer.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("gauche");  // display the data
+                    }
+                }, 100);
                 break;
             case KeyEvent.VK_D:
-                this.lab.move("droite");
+            	timer.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("droite");  // display the data
+                    }
+                }, 100);
                 break;
             case KeyEvent.VK_Z:
-                this.lab.move("haut");
+            	timer.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("haut");  // display the data
+                    }
+                }, 100);
                 break;
             case KeyEvent.VK_S:
-                this.lab.move("bas");
+            	timer.schedule(new TimerTask()
+                {
+                    public void run()
+                    {
+                        lab.move("bas");  // display the data
+                    }
+                }, 100);
                 break;
         }
     }
