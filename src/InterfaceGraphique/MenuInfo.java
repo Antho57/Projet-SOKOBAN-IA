@@ -107,6 +107,10 @@ public class MenuInfo extends JPanel {
 
     }
     
+    /*
+	 * Methode qui permet de generer l'image de fond
+	 * @param g
+	 */
     protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Image img = null;

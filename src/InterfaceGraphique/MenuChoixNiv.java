@@ -181,11 +181,18 @@ public class MenuChoixNiv extends JPanel {
 		this.f.changer(m);
 	}
 
+	/*
+	 * Methode qui permet de se diriger vers le  menu des infos du projet
+	 */
 	public void goInfo(){
 		MenuInfo m = new MenuInfo(this.f);
 		this.f.changer(m);
 	}
 
+	/*
+	 * Methode qui permet de generer l'image de fond
+	 * @param g
+	 */
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Image img = null;
