@@ -73,12 +73,6 @@ public class MenuInfo extends JPanel {
         titreProjet.setForeground(Color.black);
         
         jp2.add(titreProjet);
-        
-//        JLabel titreIA = new JLabel("L'IA :");
-//        titreProjet.setFont(new Font("Sans-Serif", Font.BOLD, 30));
-//        titreProjet.setForeground(Color.black);
-//        
-//        jp2.add(titreIA);
 
         this.add(jp2);
 
