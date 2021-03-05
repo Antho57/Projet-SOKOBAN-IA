@@ -58,7 +58,6 @@ public class MenuChoixNiv extends JPanel {
 		JPanel jp3 = new JPanel();
 		jp3.setLayout(new GridLayout(1, 2));
 
-		String[] res = {};
 		String[] niveauxF = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
 		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
 		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};

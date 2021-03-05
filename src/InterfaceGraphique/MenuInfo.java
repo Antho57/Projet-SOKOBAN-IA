@@ -34,7 +34,6 @@ public class MenuInfo extends JPanel {
         this.setLayout(new GridLayout(3, 1));
         this.setBackground(new Color(78, 48, 150));
 
-
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(767, 150));
         jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
@@ -49,12 +48,9 @@ public class MenuInfo extends JPanel {
         
         this.add(jp);
 
-
         JPanel jp2 = new JPanel();
         jp2.setSize(new Dimension(767, 200));
         jp2.setBackground(new Color(78, 48, 150));
-        
-        
         
         JTextArea titreProjet = new JTextArea("Le projet :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
         		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
