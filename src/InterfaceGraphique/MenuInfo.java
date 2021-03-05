@@ -67,7 +67,7 @@ public class MenuInfo extends JPanel {
         titreProjet.setWrapStyleWord(true);
         titreProjet.setEditable(false);
         titreProjet.setOpaque(false);
-        titreProjet.setSize(new Dimension(740, 310));
+        titreProjet.setSize(new Dimension(720, 310));
         
         titreProjet.setFont(new Font("Sans-Serif", Font.PLAIN, 16));
         titreProjet.setForeground(Color.lightGray);
