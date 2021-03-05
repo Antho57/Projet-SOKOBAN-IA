@@ -32,12 +32,12 @@ public class MenuInfo extends JPanel {
         this.f = f;
         this.setSize(new Dimension(767, 955));
         this.setLayout(new GridLayout(3, 1));
-        this.setBackground(new Color(78, 48, 150));
+        this.setBackground(new Color(78, 48, 150, 0));
 
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(767, 150));
         jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
-        jp.setBackground(new Color(78, 48, 150));
+        jp.setBackground(new Color(78, 48, 150, 0));
 
 
         JLabel titre = new JLabel("A propos !");
@@ -50,7 +50,7 @@ public class MenuInfo extends JPanel {
 
         JPanel jp2 = new JPanel();
         jp2.setSize(new Dimension(767, 200));
-        jp2.setBackground(new Color(78, 48, 150));
+        jp2.setBackground(new Color(78, 48, 150, 0));
         
         JTextArea titreProjet = new JTextArea("Le projet :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
         		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
@@ -66,7 +66,7 @@ public class MenuInfo extends JPanel {
         titreProjet.setSize(new Dimension(740, 310));
         
         titreProjet.setFont(new Font("Sans-Serif", Font.PLAIN, 17));
-        titreProjet.setForeground(Color.black);
+        titreProjet.setForeground(Color.lightGray);
         
         jp2.add(titreProjet);
 
@@ -75,7 +75,7 @@ public class MenuInfo extends JPanel {
         JPanel jp3 = new JPanel();
         jp3.setSize(new Dimension(767, 150));
         jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 567, 130));
-        jp3.setBackground(new Color(78, 48, 150));
+        jp3.setBackground(new Color(78, 48, 150, 0));
         
         JButton jb = new JButton("J'ai compris");
         jb.setPreferredSize(new Dimension(200, 50));
