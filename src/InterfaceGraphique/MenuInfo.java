@@ -53,13 +53,13 @@ public class MenuInfo extends JPanel {
         jp2.setSize(new Dimension(767, 200));
         jp2.setBackground(new Color(78, 48, 150, 0));
         
-        JTextArea titreProjet = new JTextArea("Le projet :\n Gardien d'entrepét (divisé en cases carrées), "
+        JTextArea titreProjet = new JTextArea("Le projet :\n Gardien d'entrepôt (divisé en cases carrées), "
         		+ "le joueur doit ranger des caisses sur des cases cibles. Il peut se déplacer dans les quatre directions, "
-        		+ "et pousser (mais pas tirer) une seule caisse é la fois. Une fois toutes les caisses rangées (c'est parfois un vrai casse-tète), "
+        		+ "et pousser (mais pas tirer) une seule caisse à la fois. Une fois toutes les caisses rangées (c'est parfois un vrai casse-tête), "
         		+ "le niveau est réussi et le joueur passe au niveau suivant, plus difficile en général. "
         		+ "L'idéal est de réussir avec le moins de coups possibles (déplacements et poussées).\n\n"
         		+ "L'IA :\n A* est un algorithme de résolution que l'on peut représenter sous forme d'arbre d'état. "
-        		+ "Chaque état posséde une valeur heuristique (composé du coût réel pour arriver au néud courant + le coût "
+        		+ "Chaque état possède une valeur heuristique (composé du coût réel pour arriver au noeud courant + le coût "
         		+ "prévisionnel admissible pour arriver à l'état final) correspondant au coût de la distance entre l'état initial et l'état final. "
         		+ "A chaque itération, on se positionne sur l'état ayant la plus petite valeur heuristique parmi tous les noeuds de l'arbre non visités et "
         		+ "fils d'un noeud déjà visité jusqu'à arriver à l'état final par le chemin le plus court possible.");
