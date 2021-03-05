@@ -43,7 +43,7 @@ public class MenuInfo extends JPanel {
         JLabel titre = new JLabel("A propos !");
         titre.setFont(new Font("BUBBLEBOY2", Font.BOLD, 40));
         titre.setForeground(Color.white);
-        titre.setBounds(275,200, 500,100);
+        titre.setBounds(260,200, 500,100);
         
         jp.add(titre);
         
