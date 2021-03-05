@@ -45,7 +45,7 @@ public class MenuChoixNiv extends JPanel {
 
 		JLabel titre = new JLabel("Choix du niveau");
 		titre.setFont(new Font("Sans-Serif", Font.BOLD, 50));
-		titre.setForeground(new Color(195, 195, 195));
+		titre.setForeground(Color.white);
 		jp.add(titre);
 		this.add(jp);
 

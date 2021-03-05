@@ -43,7 +43,7 @@ public class MenuInfo extends JPanel {
 
         JLabel titre = new JLabel("A propos !");
         titre.setFont(new Font("Sans-Serif", Font.ITALIC, 40));
-        titre.setForeground(new Color(195, 195, 195));
+        titre.setForeground(Color.white);
         
         jp.add(titre);
         
