@@ -53,10 +53,11 @@ public class MenuInfo extends JPanel {
         jp2.setSize(new Dimension(767, 200));
         jp2.setBackground(new Color(78, 48, 150, 0));
         
-        JTextArea titreProjet = new JTextArea("Le projet :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
-        		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
-        		+ "when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
-        		+ "It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\n\n"
+        JTextArea titreProjet = new JTextArea("Le projet :\n\n Gardien d'entrepôt (divisé en cases carrées), "
+        		+ "le joueur doit ranger des caisses sur des cases cibles. Il peut se déplacer dans les quatre directions, "
+        		+ "et pousser (mais pas tirer) une seule caisse à la fois. Une fois toutes les caisses rangées (c'est parfois un vrai casse-tête), "
+        		+ "le niveau est réussi et le joueur passe au niveau suivant, plus difficile en général. "
+        		+ "L'idéal est de réussir avec le moins de coups possibles (déplacements et poussées).\n\n\n"
         		+ "L'IA :\n\n Lorem Ipsum is simply dummy text of the printing and typesetting industry. "
         		+ "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, "
         		+ "when an unknown printer took a galley of type and scrambled it to make a type specimen book.");
