@@ -73,7 +73,6 @@ public class MenuPrincipale extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
-                System.out.println("Vous avez quitt�.");
             }
         });
 
@@ -97,19 +96,8 @@ public class MenuPrincipale extends JPanel {
                 credits();
             }
         });
-        
-//        JButton jb3= new JButton("Quitter");
-//        jb3.setPreferredSize(new Dimension(75, 50));
-//        jb3.addActionListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.exit(0);
-//            }
-//        });
 
         jp3.add(jb2);
-//        jp3.add(jb3);
 
 
         this.add(jp3);
