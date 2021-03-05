@@ -36,13 +36,14 @@ public class MenuInfo extends JPanel {
 
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(767, 150));
-        jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
+        jp.setLayout(null);
         jp.setBackground(new Color(78, 48, 150, 0));
 
 
         JLabel titre = new JLabel("A propos !");
-        titre.setFont(new Font("Sans-Serif", Font.ITALIC, 40));
+        titre.setFont(new Font("Sans-Serif", Font.BOLD, 40));
         titre.setForeground(Color.white);
+        titre.setBounds(285,200, 500,100);
         
         jp.add(titre);
         
