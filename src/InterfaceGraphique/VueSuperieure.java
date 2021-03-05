@@ -40,15 +40,29 @@ public class VueSuperieure extends JPanel implements Observateur{
         this.setBackground(new Color(26, 45, 85));
 
 
-        JLabel dep = new JLabel(" Deplacement: " + this.mouvements);
+        JPanel jpDep = new JPanel();
+        jpDep.setSize(new Dimension(50, 100));
+        jpDep.setLayout(null);
+        jpDep.setBackground(new Color(26, 45, 85));
+
+        JLabel dep = new JLabel(" Deplacements : " + this.mouvements);
         dep.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
         dep.setForeground(new Color(89, 181, 201));
-        this.add(dep);
+        dep.setBounds(5, -15, 300, 80);
+        jpDep.add(dep);
+        this.add(jpDep);
+
+        JPanel jpTitre = new JPanel();
+        jpTitre.setSize(new Dimension(50, 100));
+        jpTitre.setLayout(null);
+        jpTitre.setBackground(new Color(26, 45, 85));
 
         JLabel titre = new JLabel(titre(niveau, difficulte));
         titre.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
         titre.setForeground(new Color(89, 181, 201));
-        this.add(titre);
+        titre.setBounds(0, -15, 300, 80);
+        jpTitre.add(titre);
+        this.add(jpTitre);
 
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(50, 100));
@@ -56,7 +70,7 @@ public class VueSuperieure extends JPanel implements Observateur{
         jp.setBackground(new Color(26, 45, 85));
 
         JButton jb1 = new JButton("Menu");
-        jb1.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
+        jb1.setFont(new Font("Sans-serif",Font.BOLD, 14));
         jb1.setPreferredSize(new Dimension(40, 40));
         jb1.addActionListener(new ActionListener() {
 
@@ -68,11 +82,11 @@ public class VueSuperieure extends JPanel implements Observateur{
         });
 
         JButton jb2 = new JButton("Aide");
-        jb2.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
+        jb2.setFont(new Font("Sans-serif",Font.BOLD, 14));
         jb2.setPreferredSize(new Dimension(40, 40));
 
         JButton jb3 = new JButton("Reset");
-        jb3.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
+        jb3.setFont(new Font("Sans-serif",Font.BOLD, 14));
         jb3.setPreferredSize(new Dimension(70, 40));
         jb3.addActionListener(new ActionListener() {
 
@@ -123,16 +137,19 @@ public class VueSuperieure extends JPanel implements Observateur{
         JLabel[] j = new JLabel[2];
         int i= 0;
         for (Component c : this.getComponents()){
-            if (c instanceof JLabel){
-                j[i]= (JLabel) c;
-                i++;
+            if (c instanceof JPanel) {
+                if (((JPanel) c).getComponent(0) instanceof JLabel){
+                    JLabel jl = (JLabel) ((JPanel) c).getComponent(0);
+                    j[i] = jl;
+                    i++;
+                }
             }
         }
         if (this.mouvements <= 1) {
-        	j[0].setText(" Deplacement: " + this.mouvements);
-		} else {
-			j[0].setText("Deplacements: " + this.mouvements);
-		}
+            j[0].setText(" Deplacements : " + this.mouvements);
+        } else {
+            j[0].setText(" Deplacements : " + this.mouvements);
+        }
         this.repaint();
         this.revalidate();
     }

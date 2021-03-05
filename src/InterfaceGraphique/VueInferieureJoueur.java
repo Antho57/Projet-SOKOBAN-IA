@@ -37,7 +37,7 @@ public class VueInferieureJoueur extends JPanel {
 
 
         JButton jb1 = new JButton("IA");
-        jb1.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
+        jb1.setFont(new Font("Sans-serif",Font.BOLD, 14));
         jb1.setPreferredSize(new Dimension(40, 40));
         jb1.addActionListener(new ActionListener() {
 

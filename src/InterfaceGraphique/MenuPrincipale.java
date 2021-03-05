@@ -32,7 +32,7 @@ public class MenuPrincipale extends JPanel {
 
         this.f = f;
         this.setSize(new Dimension(767, 955));
-        this.setLayout(new GridLayout(4, 1));
+        this.setLayout(new GridLayout(5, 1));
         this.setBackground(new Color(78,48,150, 0));
 
 
@@ -48,15 +48,20 @@ public class MenuPrincipale extends JPanel {
         jp.add(titre);
         this.add(jp);
 
+        JPanel jp1 = new JPanel();
+        jp1.setSize(new Dimension(767, 200));
+        jp1.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
+        jp1.setBackground(new Color(78, 48, 150, 0));
+        this.add(jp1);
+
 
         JPanel jp2 = new JPanel();
         jp2.setSize(new Dimension(767, 200));
-        jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 180));
+        jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 50));
         jp2.setBackground(new Color(78, 48, 150, 0));
 
 
-        JButton jb = new JButton("Jouer");
-        jb.setPreferredSize(new Dimension(300, 50));
+        buttonCurved jb = new buttonCurved("Jouer");
         jb.addActionListener(new ActionListener() {
 
             @Override
@@ -64,18 +69,17 @@ public class MenuPrincipale extends JPanel {
                 jouer();
             }
         });
-        
+
         jp2.add(jb);
-        
+
         this.add(jp2);
-        
+
         JPanel jp4 = new JPanel();
         jp4.setSize(new Dimension(767, 200));
-        jp4.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 180));
+        jp4.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 50));
         jp4.setBackground(new Color(78, 48, 150, 0));
-        
-        JButton jb3 = new JButton("Quitter");
-        jb3.setPreferredSize(new Dimension(200, 50));
+
+        buttonCurved jb3 = new buttonCurved("Quitter");
         jb3.setBackground(new Color(195, 195, 195));
         jb3.addActionListener(new ActionListener() {
 
@@ -91,11 +95,10 @@ public class MenuPrincipale extends JPanel {
 
         JPanel jp3 = new JPanel();
         jp3.setSize(new Dimension(767, 200));
-        jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 567, 130));
+        jp3.setLayout(new FlowLayout(FlowLayout.LEFT, 567, 50));
         jp3.setBackground(new Color(78, 48, 150, 0));
 
-        JButton jb2= new JButton("Credits");
-        jb2.setPreferredSize(new Dimension(75, 50));
+        buttonCurved jb2= new buttonCurved("Credits");
         jb2.addActionListener(new ActionListener() {
 
             @Override
@@ -131,9 +134,9 @@ public class MenuPrincipale extends JPanel {
     }
 
     /*
-	 * Methode qui permet de generer l'image de fond
-	 * @param g
-	 */
+     * Methode qui permet de generer l'image de fond
+     * @param g
+     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Image img = null;

@@ -36,17 +36,18 @@ public class MenuCredits extends JPanel{
 
         JPanel jp = new JPanel();
         jp.setSize(new Dimension(767, 200));
-        jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 30));
+        jp.setLayout(null);
         jp.setBackground(new Color(78, 48, 150, 0));
 
 
-        JLabel titre = new JLabel("<html> <p style='text-align: center; text-decoration: underline'> CREDITS</p> <br> " +
-                "<p style='text-align: center; text-decoration: underline'>CREATEURS </p><br> " +
-                "<p style='text-align: center'>BRIOT ANTHONY <br> VRIGNON QUENTIN <br> NICOL BENOIT <br> SAKER LUCAS </p><br>" +
-                "<p style='text-align: center; text-decoration: underline'>TUTEUR </p><br>" +
-                "<p style='text-align: center'>VINCENT THOMAS </html>");
-        titre.setFont(new Font("Sans-Serif", Font.BOLD, 30));
-        titre.setForeground(new Color(0, 0, 0));
+        JLabel titre = new JLabel("<html> <p style='text-align: center; text-decoration: underline'> Credits</p> <br> " +
+                "<p style='text-align: center; text-decoration: underline'>Createurs </p><br> " +
+                "<p style='text-align: center'>Briot Anthony <br><br> Vrignon Quentin <br><br> Nicol Benoit <br><br> Saker Lucas </p><br><br>" +
+                "<p style='text-align: center; text-decoration: underline'>tuteur </p><br>" +
+                "<p style='text-align: center'>Vicent thomas </html>");
+        titre.setFont(new Font("BUBBLEBOY2" , Font.PLAIN, 30));
+        titre.setForeground(new Color(89, 181, 201));
+        titre.setBounds(220, 80 ,800, 800);
         jp.add(titre);
         this.add(jp, BorderLayout.CENTER);
 
@@ -56,8 +57,7 @@ public class MenuCredits extends JPanel{
         jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 50));
         jp3.setBackground(new Color(78, 48, 150, 0));
 
-        JButton jb2= new JButton("Retour");
-        jb2.setPreferredSize(new Dimension(75, 50));
+        buttonCurved jb2= new buttonCurved("Retour");
         jb2.addActionListener(new ActionListener() {
 
             @Override

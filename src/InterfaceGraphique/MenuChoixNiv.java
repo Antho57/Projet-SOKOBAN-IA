@@ -125,8 +125,7 @@ public class MenuChoixNiv extends JPanel {
 		jp4.setBackground(new Color(78, 48, 150, 0));
 
 
-		JButton jb = new JButton("Jouer");
-		jb.setPreferredSize(new Dimension(300, 50));
+		buttonCurved jb = new buttonCurved("Jouer");
 		jb.addActionListener(new ActionListener() {
 
 			@Override
@@ -135,8 +134,7 @@ public class MenuChoixNiv extends JPanel {
 			}
 		});
 
-		JButton jb2 = new JButton("Retour");
-		jb2.setPreferredSize(new Dimension(200, 50));
+		buttonCurved jb2 = new buttonCurved("Retour");
 		jb2.setBackground(new Color(195, 195, 195));
 		jb2.addActionListener(new ActionListener() {
 
