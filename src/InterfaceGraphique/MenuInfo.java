@@ -53,16 +53,16 @@ public class MenuInfo extends JPanel {
         jp2.setSize(new Dimension(767, 200));
         jp2.setBackground(new Color(78, 48, 150, 0));
         
-        JTextArea titreProjet = new JTextArea("Le projet :\n Gardien d'entrepôt (divisé en cases carrées), "
-        		+ "le joueur doit ranger des caisses sur des cases cibles. Il peut se déplacer dans les quatre directions, "
-        		+ "et pousser (mais pas tirer) une seule caisse à la fois. Une fois toutes les caisses rangées (c'est parfois un vrai casse-tête), "
-        		+ "le niveau est réussi et le joueur passe au niveau suivant, plus difficile en général. "
-        		+ "L'idéal est de réussir avec le moins de coups possibles (déplacements et poussées).\n\n"
-        		+ "L'IA :\n A* est un algorithme de résolution que l’on peut représenter sous forme d’arbre d’état. "
-        		+ "Chaque état possède une valeur heuristique (composé du coût réel pour arriver au nœud courant + le coût "
-        		+ "prévisionnel admissible pour arriver à l'état final) correspondant au coût de la distance entre l’état initial et l’état final. "
-        		+ "A chaque itération, on se positionne sur l’état ayant la plus petite valeur heuristique parmi tous les nœuds de l’arbre non visités et "
-        		+ "fils d’un noeud déjà visité jusqu’à arriver à l'état final par le chemin le plus court possible.");
+        JTextArea titreProjet = new JTextArea("Le projet :\n Gardien d'entrepÃ©t (divisÃ© en cases carrÃ©es), "
+        		+ "le joueur doit ranger des caisses sur des cases cibles. Il peut se dÃ©placer dans les quatre directions, "
+        		+ "et pousser (mais pas tirer) une seule caisse Ã© la fois. Une fois toutes les caisses rangÃ©es (c'est parfois un vrai casse-tÃ¨te), "
+        		+ "le niveau est rÃ©ussi et le joueur passe au niveau suivant, plus difficile en gÃ©nÃ©ral. "
+        		+ "L'idÃ©al est de rÃ©ussir avec le moins de coups possibles (dÃ©placements et poussÃ©es).\n\n"
+        		+ "L'IA :\n A* est un algorithme de rÃ©solution que l'on peut reprÃ©senter sous forme d'arbre d'Ã©tat. "
+        		+ "Chaque Ã©tat possÃ©de une valeur heuristique (composÃ© du coÃ»t rÃ©el pour arriver au nÃ©ud courant + le coÃ»t "
+        		+ "prÃ©visionnel admissible pour arriver Ã  l'Ã©tat final) correspondant au coÃ»t de la distance entre l'Ã©tat initial et l'Ã©tat final. "
+        		+ "A chaque itÃ©ration, on se positionne sur l'Ã©tat ayant la plus petite valeur heuristique parmi tous les noeuds de l'arbre non visitÃ©s et "
+        		+ "fils d'un noeud dÃ©jÃ  visitÃ© jusqu'Ã  arriver Ã  l'Ã©tat final par le chemin le plus court possible.");
         titreProjet.setLineWrap(true);
         titreProjet.setWrapStyleWord(true);
         titreProjet.setEditable(false);

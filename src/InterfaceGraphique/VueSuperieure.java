@@ -40,7 +40,7 @@ public class VueSuperieure extends JPanel implements Observateur{
         this.setBackground(new Color(26, 45, 85));
 
 
-        JLabel dep = new JLabel(" Deplacements :  " + this.mouvements);
+        JLabel dep = new JLabel("Deplacement: " + this.mouvements);
         dep.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
         dep.setForeground(new Color(89, 181, 201));
         this.add(dep);
@@ -55,7 +55,7 @@ public class VueSuperieure extends JPanel implements Observateur{
         jp.setLayout(new GridLayout(1,2));
         jp.setBackground(new Color(26, 45, 85));
 
-        JButton jb1 = new JButton("MENU");
+        JButton jb1 = new JButton("Menu");
         jb1.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
         jb1.setPreferredSize(new Dimension(40, 40));
         jb1.addActionListener(new ActionListener() {
@@ -67,11 +67,11 @@ public class VueSuperieure extends JPanel implements Observateur{
             }
         });
 
-        JButton jb2 = new JButton("AIDE");
+        JButton jb2 = new JButton("Aide");
         jb2.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
         jb2.setPreferredSize(new Dimension(40, 40));
 
-        JButton jb3 = new JButton("RESEt");
+        JButton jb3 = new JButton("Reset");
         jb3.setFont(new Font("BUBBLEBOY2",Font.BOLD, 10));
         jb3.setPreferredSize(new Dimension(70, 40));
         jb3.addActionListener(new ActionListener() {
@@ -129,9 +129,9 @@ public class VueSuperieure extends JPanel implements Observateur{
             }
         }
         if (this.mouvements <= 1) {
-        	j[0].setText(" Deplacements :  " + this.mouvements);
+        	j[0].setText("Deplacement: " + this.mouvements);
 		} else {
-			j[0].setText(" Deplacements :  " + this.mouvements);
+			j[0].setText("Deplacements: " + this.mouvements);
 		}
         this.repaint();
         this.revalidate();
