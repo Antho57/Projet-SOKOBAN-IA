@@ -32,7 +32,7 @@ public class MenuPrincipale extends JPanel {
 
         this.f = f;
         this.setSize(new Dimension(767, 955));
-        this.setLayout(new GridLayout(3, 1));
+        this.setLayout(new GridLayout(4, 1));
         this.setBackground(new Color(78,48,150, 0));
 
 
@@ -65,6 +65,15 @@ public class MenuPrincipale extends JPanel {
             }
         });
         
+        jp2.add(jb);
+        
+        this.add(jp2);
+        
+        JPanel jp4 = new JPanel();
+        jp4.setSize(new Dimension(767, 200));
+        jp4.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 180));
+        jp4.setBackground(new Color(78, 48, 150, 0));
+        
         JButton jb3 = new JButton("Quitter");
         jb3.setPreferredSize(new Dimension(200, 50));
         jb3.setBackground(new Color(195, 195, 195));
@@ -76,11 +85,9 @@ public class MenuPrincipale extends JPanel {
             }
         });
 
-        jp2.add(jb);
+        jp4.add(jb3);
 
-        jp2.add(jb3);
-
-        this.add(jp2);
+        this.add(jp4);
 
         JPanel jp3 = new JPanel();
         jp3.setSize(new Dimension(767, 200));
