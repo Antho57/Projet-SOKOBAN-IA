@@ -38,23 +38,31 @@ public class MenuChoixNiv extends JPanel {
 
 
 		JPanel jp = new JPanel();
-		jp.setSize(new Dimension(760, 200));
-		jp.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 70));
+		jp.setSize(new Dimension(760, 150));
+		jp.setLayout(null);
 		jp.setBackground(new Color(78, 48, 150, 0));
-
+		this.add(jp);
 
 		JLabel titre = new JLabel("Choix du niveau");
-		titre.setFont(new Font("Sans-Serif", Font.BOLD, 50));
+		titre.setFont(new Font("BubbleBoy2", Font.BOLD, 45));
 		titre.setForeground(Color.white);
-		jp.add(titre);
-		this.add(jp);
+		titre.setBounds(150,20, 500,100);
 
 
 		JPanel jp2 = new JPanel();
 		jp2.setSize(new Dimension(760, 200));
-		jp2.setLayout(new FlowLayout(FlowLayout.CENTER, 450, 100));
+		jp2.setLayout(new GridLayout(2,1));
 		jp2.setBackground(new Color(78, 48, 150, 0));
 
+		JPanel jpaux = new JPanel();
+		jpaux.setLayout(null);
+		jpaux.setBackground(new Color(78, 48, 150, 0));
+		jpaux.add(titre);
+		jp2.add(jpaux);
+
+		JPanel jpaux2 = new JPanel();
+		jpaux2.setLayout(null);
+		jpaux2.setBackground(new Color(78, 48, 150, 0));
 		JPanel jp3 = new JPanel();
 		jp3.setLayout(new GridLayout(1, 2));
 
@@ -72,6 +80,7 @@ public class MenuChoixNiv extends JPanel {
 				choixNiveau(jcb.getSelectedIndex());
 			}
 		});
+		jp3.setBounds(170,50, 400, 50);
 
 		JComboBox jcb2= new JComboBox(difficulte);
 		jcb2.addActionListener(new ActionListener() {
@@ -106,7 +115,8 @@ public class MenuChoixNiv extends JPanel {
 
 		jp3.add(jcb1);
 		jp3.add(jcb2);
-		jp2.add(jp3);
+		jpaux2.add(jp3);
+		jp2.add(jpaux2);
 		this.add(jp2);
 
 		JPanel jp4 = new JPanel();
