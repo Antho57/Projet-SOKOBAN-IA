@@ -78,10 +78,17 @@ public class MenuInfo extends JPanel {
 
         JPanel jp3 = new JPanel();
         jp3.setSize(new Dimension(400, 150));
-        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 125, 50));
+        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 30));
         jp3.setBackground(new Color(78, 48, 150, 0));
         
-        JLabel test = new JLabel(new ImageIcon("Ressources/Gif/A"));
+        JLabel gif = new JLabel(new ImageIcon("Ressources/Gif/A"));
+        
+        //JLabel gifTest = new JLabel(new ImageIcon("Ressources/Gif/Sokoban_ani.gif"));
+        
+        ImageIcon icon = new ImageIcon("Ressources/Gif/Sokoban_ani.gif");
+        Image scaleImage = icon.getImage().getScaledInstance(230, 280,Image.SCALE_DEFAULT);
+        ImageIcon bahbinks = new ImageIcon(scaleImage);
+        JLabel gif2 = new JLabel(bahbinks);
 
         buttonCurved jb = new buttonCurved("J'ai compris");
         jb.addActionListener(new ActionListener() {
@@ -92,8 +99,9 @@ public class MenuInfo extends JPanel {
             }
         });
         
-        jp3.add(test);
+        jp3.add(gif);
         jp3.add(jb);
+        jp3.add(gif2);
        
         this.add(jp3);
 
