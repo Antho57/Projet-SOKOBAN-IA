@@ -15,6 +15,7 @@ Main, qui permet de créer et lancer l'IA
         Labyrinthe lab = new Labyrinthe(0); // Juste pour enlever l'erreur, main appeler quand on appui sur la touche
         double timeStart = System.currentTimeMillis();
         IA ia = new IA(lab);
+        ia.chercherSolution();
         double timeEnd = System.currentTimeMillis();
         System.out.println("Temps d'éxécution : " +((timeEnd-timeStart)/1000)+" secondes");
     }

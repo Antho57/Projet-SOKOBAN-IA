@@ -31,7 +31,7 @@ public class Etat {
                         else rep[j][i] = new Sol(j ,i, null, false);
                         break;
                     case "Emplacement":
-                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
+                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, true), true);
                         else rep[j][i] = new Emplacement(j ,i, null, false);
                         break;
                     case "Mur":
@@ -70,9 +70,8 @@ public class Etat {
     }
 
     public boolean estGagnant() {
-        ArrayList<Caisse> liste = this.getListeCaisses();
-        for (int i = 0; i < liste.size(); i++) {
-            if (!liste.get(i).estBienPlace()){
+        for (int i = 0; i < this.listeCaisses.size(); i++) {
+            if (!this.listeCaisses.get(i).estBienPlace()){
                 return false;
             }
         }
@@ -95,19 +94,19 @@ public class Etat {
         int ySuiv2 = ySuiv;
 
         switch(direction){
-            case "droite":
+            case "Droite":
                 xSuiv += 1;
                 xSuiv2 += 2;
                 break;
-            case "gauche":
+            case "Gauche":
                 xSuiv -= 1;
                 xSuiv2 -= 2;
                 break;
-            case "haut":
+            case "Haut":
                 ySuiv -= 1;
                 ySuiv2 -= 2;
                 break;
-            case "bas":
+            case "Bas":
                 ySuiv += 1;
                 ySuiv2 += 2;
                 break;
@@ -121,7 +120,7 @@ public class Etat {
 
                 Case move2 = rep[xSuiv2][ySuiv2];
 
-                if (!(move2.isOccupe() || move2.isMur())){
+                if (!move2.isOccupe() && !move2.isMur()){
                     Personnage p = new Personnage(xSuiv, ySuiv);
                     Caisse c = rep[xSuiv][ySuiv].getOccupantCaisse();
 

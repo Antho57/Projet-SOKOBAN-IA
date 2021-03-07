@@ -50,11 +50,47 @@ public class VueInferieureIA extends JPanel{
         this.add(jb1);
 
 
-        JSlider S = new JSlider();
-        JLabel titre = new JLabel("");
-        titre.setFont(new Font("Sans-Serif",Font.BOLD, 20));
-        titre.setForeground(new Color(195, 195, 195));
-        this.add(S);
+//        JSlider S = new JSlider();
+//        JLabel titre = new JLabel("");
+//        titre.setFont(new Font("Sans-Serif",Font.BOLD, 20));
+//        titre.setForeground(new Color(195, 195, 195));
+//        this.add(S);
+        JPanel jpDirection = new JPanel();
+        jpDirection.setSize(new Dimension(900, 100));
+        jpDirection.setLayout(new GridLayout(1,2));
+        jpDirection.setBackground(new Color(134, 134, 134, 0));
+
+        JButton jbGauche = new JButton("<");
+        jbGauche.setFont(new Font("Sans-serif",Font.BOLD, 20));
+        jbGauche.setPreferredSize(new Dimension(40, 40));
+
+        jbGauche.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                menu.avancerIA("Gauche");
+            }
+        });
+
+        JButton jbDroite = new JButton(">");
+        jbDroite.setFont(new Font("Sans-serif",Font.BOLD, 20));
+        jbDroite.setPreferredSize(new Dimension(40, 40));
+
+        jbDroite.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                menu.avancerIA("Droite");
+            }
+        });
+
+        jpDirection.add(jbGauche);
+        jpDirection.add(jbDroite);
+
+        this.add(jpDirection);
+
 
         JButton jb2 = new JButton("Auto");
         jb2.setFont(new Font("Sans-serif",Font.BOLD, 14));

@@ -33,7 +33,6 @@ public class IA {
         listeFerme = new ArrayList<Noeud>();
         Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null, null);
         this.listeOuverte.add(depart);
-        this.chercherSolution();
     }
 
 
@@ -41,7 +40,7 @@ public class IA {
     Methode de recherche de solution pour le niveau courant
     @param objectif, l'Etat qui représente l'objectif
      */
-    public void chercherSolution() {
+    public ArrayList<String> chercherSolution() {
         while (!this.win && listeOuverte.size()> 0) {
             int v =0;
             while (v<this.listeOuverte.size() && !this.win) {
@@ -71,7 +70,7 @@ public class IA {
                     Etat e = n.getEtat();
 
                     //Liste des mouvements a tester
-                    String[] mouvements = {"droite", "gauche", "haut", "bas"};
+                    String[] mouvements = {"Droite", "Gauche", "Haut", "Bas"};
 
                     //Recherche et ajout des prochains Noeud dans la listeOuverte
                     for (int k=0; k<mouvements.length; k++){
@@ -84,14 +83,23 @@ public class IA {
                 //Récupère le Noeud final (correspond à la victoire)
                 Noeud n = this.fin;
                 System.out.println("Nombre de tests : " +nb);
-
+                ArrayList<String> rep = new ArrayList<String>();
+                int j = 0;
                 //Parcoure les Noeuds précédents pour récupérer les mouvements
                 while (n.getPrecedent() != null) {
-                    System.out.println(n.getMouvement());
+                    rep.add(0, n.getMouvement());
+                    System.out.println("Mouvement " +j +" : "+n.getMouvement());
+                    j++;
+                    for (int i=0; i<n.getEtat().getListeCaisses().size(); i++){
+                        System.out.print(" Caisse n" +(i+1) +" : ");
+                        System.out.println(n.getEtat().getListeCaisses().get(i).getPosX() +" - " +n.getEtat().getListeCaisses().get(i).getPosY());
+                    }
                     n = n.getPrecedent();
                 }
+                return rep;
             }
         }
+        return null;
     }
 
 }

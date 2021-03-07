@@ -1,6 +1,5 @@
 package InterfaceGraphique;
 import Jeu.Labyrinthe;
-import Jeu.Personnage;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,16 +21,16 @@ Class qui représente le MenuChoixNiv
  */
 public class MenuChoixNiv extends JPanel {
 
-	private Fenetre f; //fenêtre de l'application
+	private Fenetre window; //fenêtre de l'application
 	private int niveau; //niveau courant
 	private int difficulte; //difficulté du niveau courant
 
 	/*
     Constructeur du MenuChoixNiv
-    @param f, fenêtre de l'apllication
+    @param window, fenêtre de l'apllication
 	 */
-	public MenuChoixNiv(Fenetre f){
-		this.f = f;
+	public MenuChoixNiv(Fenetre window){
+		this.window = window;
 		this.setSize(new Dimension(760, 955));
 		this.setLayout(new GridLayout(3, 1));
 		this.setBackground(new Color(78, 48, 150, 0));
@@ -66,7 +65,7 @@ public class MenuChoixNiv extends JPanel {
 		JPanel jp3 = new JPanel();
 		jp3.setLayout(new GridLayout(1, 2));
 
-		String[] niveauxF = {"Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
+		String[] niveauxF = {"Niveau 0", "Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
 		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
 		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
 		String[] difficulte = {"Facile", "Normal", "Difficile"};
@@ -159,8 +158,10 @@ public class MenuChoixNiv extends JPanel {
 	public void jouer(){
 
 		int[] choix= {this.niveau+1, this.difficulte};
-		MenuJeu m = new MenuJeu(this.f, choix, new Labyrinthe(this.niveau+1));
-		this.f.changer(m);
+		Labyrinthe l = new Labyrinthe(this.niveau);
+		l.chercherSolutionIA();
+		MenuJeu m = new MenuJeu(this.window, choix, l);
+		this.window.changer(m);
 
 	}
 
@@ -184,16 +185,16 @@ public class MenuChoixNiv extends JPanel {
 	 * Methode qui permet de revenir au menu principale
 	 */
 	public void retourMenuPrincipale(){
-		MenuPrincipale m = new MenuPrincipale(this.f);
-		this.f.changer(m);
+		MenuPrincipale m = new MenuPrincipale(this.window);
+		this.window.changer(m);
 	}
 
 	/*
 	 * Methode qui permet de se diriger vers le  menu des infos du projet
 	 */
 	public void goInfo(){
-		MenuInfo m = new MenuInfo(this.f);
-		this.f.changer(m);
+		MenuInfo m = new MenuInfo(this.window);
+		this.window.changer(m);
 	}
 
 	/*

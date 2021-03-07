@@ -17,20 +17,21 @@ qui contient la VueSupérieur et Inférieur ainsi que la VueJeu
  */
 public class MenuJeu extends JPanel {
 
-    private Fenetre f; //fenêtre d'affichage du jeu
+    private Fenetre window; //fenêtre d'affichage du jeu
     private int niveau; //niveau courant
     private int difficulte; //difficulté du niveau
     private Labyrinthe Lab; //Labyrinthe courant
     private JPanel inf; //VueInférieur
+    private JPanel jeu; //Vue du jeu
 
     /*
     Constructeur MenuJeu
-    @param f, fenetre de l'application
+    @param window, fenetre de l'application
     @param choix, tableau qui représente le choix du niveau et de la difficulté
     @param l, labyrinthe courant
      */
-    public MenuJeu(Fenetre f, int[] choix, Labyrinthe l){
-        this.f = f;
+    public MenuJeu(Fenetre window, int[] choix, Labyrinthe l){
+        this.window = window;
         this.Lab = l;
         this.niveau = choix[0];
         this.difficulte = choix[1];
@@ -46,10 +47,11 @@ public class MenuJeu extends JPanel {
 
         VueJeu jp2 = new VueJeu(Lab, this);
         ControleurJeu ctrl = new ControleurJeu(Lab);
-        f.addKeyListener(ctrl);
-        f.requestFocus();
+        window.addKeyListener(ctrl);
+        window.requestFocus();
         Lab.enregistrerObservateur(jp2);
         Lab.enregistrerObservateur(vs);
+        this.jeu = jp2;
         this.add(jp2, BorderLayout.CENTER);
     }
 
@@ -58,8 +60,8 @@ public class MenuJeu extends JPanel {
      */
     public void retour(){
 
-        MenuPrincipale m = new MenuPrincipale(this.f);
-        this.f.changer(m);
+        MenuPrincipale m = new MenuPrincipale(this.window);
+        this.window.changer(m);
 
     }
 
@@ -68,7 +70,7 @@ public class MenuJeu extends JPanel {
      */
     public void gagner(){
         VueGagner vg = new VueGagner(this.Lab, this);
-        this.f.changer(vg);
+        this.window.changer(vg);
     }
 
     /*
@@ -78,8 +80,8 @@ public class MenuJeu extends JPanel {
 
         int[] choix= {this.niveau, this.difficulte};
 
-        MenuJeu m = new MenuJeu(this.f, choix,new Labyrinthe(this.niveau));
-        this.f.changer(m);
+        MenuJeu m = new MenuJeu(this.window, choix,new Labyrinthe(this.niveau));
+        this.window.changer(m);
     }
 
     /*
@@ -105,6 +107,10 @@ public class MenuJeu extends JPanel {
         this.inf = v;
         this.revalidate();
         this.repaint();
+    }
+
+    public void avancerIA(String direction){
+        Lab.mouvementIA(direction);
     }
 
 }

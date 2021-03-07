@@ -53,7 +53,7 @@ public class ControleurJeu implements KeyListener {
                 {
                     public void run()
                     {
-                        lab.move("gauche");  // display the data
+                        lab.move("Gauche");  // display the data
                     }
                 }, 100);
                 break;
@@ -62,7 +62,7 @@ public class ControleurJeu implements KeyListener {
                 {
                     public void run()
                     {
-                        lab.move("droite");  // display the data
+                        lab.move("Droite");  // display the data
                     }
                 }, 100);
                 break;
@@ -71,7 +71,7 @@ public class ControleurJeu implements KeyListener {
                 {
                     public void run()
                     {
-                        lab.move("haut");  // display the data
+                        lab.move("Haut");  // display the data
                     }
                 }, 100);
                 break;
@@ -80,7 +80,7 @@ public class ControleurJeu implements KeyListener {
                 {
                     public void run()
                     {
-                        lab.move("bas");  // display the data
+                        lab.move("Bas");  // display the data
                     }
                 }, 100);
                 break;

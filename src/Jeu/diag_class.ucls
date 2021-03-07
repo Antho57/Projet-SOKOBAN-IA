@@ -320,7 +320,7 @@
   </association>  
   <association id="51">    
     <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="52" name="f">        
+      <attribute id="52" name="window">
         <position height="0" width="0" x="1098" y="-336"/>      
       </attribute>      
       <multiplicity id="53" minimum="0" maximum="1">        
@@ -348,7 +348,7 @@
   </realization>  
   <association id="58">    
     <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="59" name="f">        
+      <attribute id="59" name="window">
         <position height="0" width="0" x="1098" y="-336"/>      
       </attribute>      
       <multiplicity id="60" minimum="0" maximum="1">        
@@ -360,7 +360,7 @@
   </association>  
   <association id="61">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="62" name="f">        
+      <attribute id="62" name="window">
         <position height="0" width="0" x="1098" y="-336"/>      
       </attribute>      
       <multiplicity id="63" minimum="0" maximum="1">        
@@ -464,7 +464,7 @@
   </generalization>  
   <association id="86">    
     <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="87" name="f">        
+      <attribute id="87" name="window">
         <position height="0" width="0" x="1098" y="-336"/>      
       </attribute>      
       <multiplicity id="88" minimum="0" maximum="1">        

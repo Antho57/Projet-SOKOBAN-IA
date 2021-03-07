@@ -1,5 +1,6 @@
 package Jeu;
 
+import IA.IA;
 import InterfaceGraphique.Observateur;
 
 import java.io.*;
@@ -22,6 +23,9 @@ public class Labyrinthe implements Sujet{
 	private int nbCaisse; //Nombre de caisses dans le labyrinthe
 	private int mouvements; //Nombre de mouvement effectué par le joueur
 	private boolean win; //Boolean qui indique si la partie est gagné
+	private IA ia; //Class IA qui résout le niveau en cour
+	private ArrayList<String> solution; //Solution du niveau courant donnée par l'IA
+	private int emplacement; //Emplacement courant dans la liste de mouvements
 
 	private ArrayList<Observateur> observateurs; //Lise d'observateur pour le model MVC
 
@@ -36,6 +40,7 @@ public class Labyrinthe implements Sujet{
 		this.nbCaisse = 0;
 		this.win = false;
 		this.observateurs = new ArrayList<Observateur>();
+		this.emplacement = 0;
 
 		try{
 			//Récupération du fichier de jeu en .xsb qui représente le labyritnhe a charger
@@ -99,6 +104,7 @@ public class Labyrinthe implements Sujet{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		this.ia = new IA(this);
 	}
 
 	/*
@@ -111,19 +117,19 @@ public class Labyrinthe implements Sujet{
 	public Case getCaseSuivante(int x, int y, String dir) {
 		Case res = null;
 		switch (dir) {
-			case "haut":
+			case "Haut":
 				if (y >= 1)
 					res = this.grille[x][y-1];
 				break;
-			case "bas":
+			case "Bas":
 				if (y<=7)
 					res = this.grille[x][y+1];
 				break;
-			case "droite":
+			case "Droite":
 				if (x <= 6)
 					res = this.grille[x+1][y];
 				break;
-			case "gauche":
+			case "Gauche":
 				if (x >= 1)
 					res = this.grille[x-1][y];
 				break;
@@ -294,8 +300,9 @@ public class Labyrinthe implements Sujet{
 	public void gagner(){
 		this.setPersonnage(1,1);
 		this.notifierObservateurs();
-		String[] move = {"droite", "droite", "droite", "droite", "droite", "bas", "bas", "bas", "bas", "bas", "bas", "gauche", "gauche", "gauche", "gauche", "gauche", "haut", "haut", "haut", "haut", "haut", "haut" };
+		String[] move = {"Droite", "Droite", "Droite", "Droite", "Droite", "Bas", "Bas", "Bas", "Bas", "Bas", "Bas", "Gauche", "Gauche", "Gauche", "Gauche", "Gauche", "Haut", "Haut", "Haut", "Haut", "Haut", "Haut" };
 		for (int i=0; i< move.length; i++){
+			this.mouvements--;
 			this.move(move[i]);
 			long time = System.currentTimeMillis();
 			while(System.currentTimeMillis()<time+500){
@@ -312,5 +319,34 @@ public class Labyrinthe implements Sujet{
 
 	public Case[][] getGrille(){
 		return this.grille;
+	}
+
+	public void chercherSolutionIA(){
+		this.solution = this.ia.chercherSolution();
+	}
+
+	public void mouvementIA(String direction){
+		if (direction.equals("Gauche") && this.emplacement>0) {
+			this.mouvements -=2;
+			switch (this.solution.get(this.emplacement-1)){
+				case "Haut":
+					this.move("Bas");
+					break;
+				case "Bas":
+					this.move("Haut");
+					break;
+				case "Gauche":
+					this.move("Droite");
+					break;
+				case "Droite":
+					this.move("Gauche");
+					break;
+			}
+			this.emplacement--;
+		}else if (direction.equals("Droite") && this.emplacement<this.solution.size()) {
+			this.move(this.solution.get(this.emplacement));
+			this.emplacement++;
+		}
+
 	}
 }
