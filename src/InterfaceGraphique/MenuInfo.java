@@ -78,7 +78,7 @@ public class MenuInfo extends JPanel {
 
         JPanel jp3 = new JPanel();
         jp3.setSize(new Dimension(400, 150));
-        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 30));
+        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 15));
         jp3.setBackground(new Color(78, 48, 150, 0));
         
         JLabel gif = new JLabel(new ImageIcon("Ressources/Gif/A"));
