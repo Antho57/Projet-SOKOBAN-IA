@@ -77,9 +77,11 @@ public class MenuInfo extends JPanel {
         this.add(jp2);
 
         JPanel jp3 = new JPanel();
-        jp3.setSize(new Dimension(767, 150));
-        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 567, 130));
+        jp3.setSize(new Dimension(400, 150));
+        jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 75, 50));
         jp3.setBackground(new Color(78, 48, 150, 0));
+        
+        JLabel test = new JLabel(new ImageIcon("Ressources/Gif/A"));
 
         buttonCurved jb = new buttonCurved("J'ai compris");
         jb.addActionListener(new ActionListener() {
@@ -89,9 +91,10 @@ public class MenuInfo extends JPanel {
                 goChoisirNiv();
             }
         });
-
+        
+        jp3.add(test);
         jp3.add(jb);
-
+       
         this.add(jp3);
 
     }
@@ -113,12 +116,15 @@ public class MenuInfo extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Image img = null;
+        Image imgGif = null;
         try {
             img = ImageIO.read(new File("Ressources/Images/Fond_Sans_Titre.jpg")).getScaledInstance(767, 965, Image.SCALE_REPLICATE);
+            //imgGif = ImageIO.read(new File("Ressources/Gif/A")).getScaledInstance(350, 275, Image.SCALE_REPLICATE);
         } catch (IOException e) {
             e.printStackTrace();
         }
         g.drawImage(img, 0, 0, null);
+        //g.drawImage(imgGif, 15, 625, null);
     }
 
 }
