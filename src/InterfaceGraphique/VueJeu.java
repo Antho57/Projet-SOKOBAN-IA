@@ -102,7 +102,7 @@ public class VueJeu extends JPanel implements Observateur{
         }
         if (nb == this.lab.getNbCaisse() && !this.win){
             this.win = true;
-            this.lab.gagner();
+            //this.lab.gagner();
             this.mj.gagner();
         }
     }

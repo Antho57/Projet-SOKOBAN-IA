@@ -111,7 +111,26 @@ public class Etat {
                 ySuiv2 += 2;
                 break;
         }
-        Case[][] rep = this.grille;
+        Case[][] rep = new Case[8][9];
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j <= 7; j++) {
+                Case c = this.grille[j][i];
+                switch (c.getClass().getSimpleName()) {
+                    case "Sol":
+                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Sol(j ,i, new Caisse(j, i, false), true);
+                        else rep[j][i] = new Sol(j ,i, null, false);
+                        break;
+                    case "Emplacement":
+                        if (c.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, true), true);
+                        else rep[j][i] = new Emplacement(j ,i, null, false);
+                        break;
+                    case "Mur":
+                        rep[j][i] = new Mur(j, i);
+                        break;
+                }
+            }
+        }
 
         Case move = rep[xSuiv][ySuiv];
 
