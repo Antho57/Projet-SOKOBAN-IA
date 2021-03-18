@@ -20,6 +20,7 @@ public class IA {
     private boolean win; //Boolean qui représente la reussite de l'IA
     private Noeud fin; //Noeud qui vas correspondre à l'objectif
     private static int nb;
+    private Probleme pb; //Class probleme pour créer les prochains mouvements
 
 
     /*
@@ -30,8 +31,23 @@ public class IA {
         this.listeOuverte = new ArrayList<Noeud>();
         this.lab = lab;
         this.win = false;
+        this.pb = new Probleme(lab);
         listeFerme = new ArrayList<Noeud>();
-        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), this.lab.getGrille()), null, null);
+
+        ArrayList<Caisse> rep = new ArrayList<Caisse>();
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j <= 7; j++) {
+                switch (this.lab.getGrille()[j][i].getClass().getSimpleName()) {
+                    case "Sol":
+                        if (this.lab.getGrille()[j][i].getOccupantCaisse() != null) rep.add(new Caisse(j, i, false));
+                        break;
+                    case "Emplacement":
+                        if (this.lab.getGrille()[j][i].getOccupantCaisse() != null) rep.add(new Caisse(j, i, true));
+                        break;
+                }
+            }
+        }
+        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), rep), null, null);
         this.listeOuverte.add(depart);
     }
 
@@ -75,7 +91,7 @@ public class IA {
                     //Recherche et ajout des prochains Noeud dans la listeOuverte
                     for (int k=0; k<mouvements.length; k++){
                         String m = mouvements[k];
-                        Etat etat = e.chercherProchainMouvement(m);
+                        Etat etat = pb.chercherProchainMouvement(m, e);
                         if (etat != null) this.listeOuverte.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), etat, n, m));
                     }
                 }
@@ -99,6 +115,7 @@ public class IA {
                 return rep;
             }
         }
+        System.out.println("Perdu");
         return null;
     }
 

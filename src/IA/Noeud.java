@@ -78,7 +78,15 @@ public class Noeud implements Comparable{
         return this.heuristique;
     }
 
+    /*
+    Methode qui retourne le Noeud precedent
+    @return Noeud, le Noeud precedent
+     */
     public Noeud getPrecedent(){ return this.precedent; }
 
+    /*
+    Methode qui retourne le mouvement fait pour arriver au Noeud courant
+    @return String, le mouvement effectué
+     */
     public String getMouvement(){ return this.mouvement; }
 }

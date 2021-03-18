@@ -6,19 +6,38 @@ import Jeu.Labyrinthe;
 import Jeu.Personnage;
 
 import java.util.ArrayList;
-
+/*
+Class qui permet de créer les prochains Etats
+ */
 public class Probleme {
 
-    private Case[][] grille;
+    private Case[][] grille;//La grille du labyrinthe
 
 
+    /*
+    Constructeur de la class Probleme
+    @param lab, le labyrinthe de base
+     */
     public Probleme(Labyrinthe lab){
         this.grille = lab.getGrille();
     }
 
-
+    /*
+    Methode qui permet de chercher le prochain Etat dans la direction passé en paramettre
+    @return Etat, le procjhain Etat
+    @param direction , la direction choisie
+    @param e, l'Etat courant
+     */
     public Etat chercherProchainMouvement(String direction, Etat e){
         Personnage perso = e.getPersonnage();
+        ArrayList<Caisse> firstListe= e.getListeCaisses();
+
+        ArrayList<Caisse> liste = new ArrayList<Caisse>();
+        for (int i =0; i< firstListe.size(); i++){
+            Caisse caisse = firstListe.get(i);
+            liste.add(new Caisse(caisse.getPosX(), caisse.getPosY(), caisse.estBienPlace()));
+        }
+
 
         int xSuiv = perso.getPosX();
         int ySuiv = perso.getPosY();
@@ -27,55 +46,61 @@ public class Probleme {
         int ySuiv2 = ySuiv;
 
         switch(direction){
-            case "droite":
+            case "Droite":
                 xSuiv += 1;
                 xSuiv2 += 2;
                 break;
-            case "gauche":
+            case "Gauche":
                 xSuiv -= 1;
                 xSuiv2 -= 2;
                 break;
-            case "haut":
+            case "Haut":
                 ySuiv -= 1;
                 ySuiv2 -= 2;
                 break;
-            case "bas":
+            case "Bas":
                 ySuiv += 1;
                 ySuiv2 += 2;
                 break;
         }
-        Case[][] rep = this.grille;
 
-        Case move = rep[xSuiv][ySuiv];
+        Caisse move = null;
+        Caisse move2 = null;
 
-        if (!move.isMur()){
-            ArrayList<Caisse> listeC = e.getListeCaisses();
-            Caisse move1 = null;
-            Caisse move2 = null;
-            for (int i=0; i<listeC.size(); i++){
-                Caisse c = listeC.get(i);
-                if (c.getPosX() == xSuiv && c.getPosY() == ySuiv){
-                    move1 = c;
-                }else if (c.getPosX() == xSuiv2 && c.getPosY() == ySuiv2){
-                    move2 = c;
-                }
+        for (int i = 0; i < liste.size(); i++) {
+            Caisse c = liste.get(i);
+            if (c.getPosX() == xSuiv && c.getPosY() == ySuiv ){
+                move =  new Caisse(xSuiv, ySuiv, c.estBienPlace());
+            }else if (c.getPosX() == xSuiv2 && c.getPosY() == ySuiv2){
+                move2 = new Caisse(xSuiv2, ySuiv2, c.estBienPlace());
             }
-            
-            if(move1 != null){
+        }
 
-                if (move2 == null && !rep[xSuiv2][ySuiv2].isMur()){
+
+        if (!this.grille[xSuiv][ySuiv].isMur()){
+            if(move != null){
+                if (move2 == null && !this.grille[xSuiv2][ySuiv2].isMur()){
                     Personnage p = new Personnage(xSuiv, ySuiv);
-
-                    move1.setPosition(xSuiv2, ySuiv2);
-                    if (rep[xSuiv2][ySuiv2].getClass().getSimpleName().equals("Emplacement")) {
-                        move1.setBienPlace(true);
+                    move.setPosition(xSuiv2, ySuiv2);
+                    if (this.grille[xSuiv2][ySuiv2].getClass().getSimpleName().equals("Emplacement")) {
+                        move.setBienPlace(true);
+                    }else{
+                        move.setBienPlace(false);
                     }
+                    int size = liste.size();
 
-                    return new Etat(p, rep);
+                    for (int i = 0; i < size; i++){
+                        Caisse cais = liste.get(i);
+                        if (cais.getPosX() == xSuiv && cais.getPosY() == ySuiv){
+                            liste.remove(i);
+                            liste.add(i, move);
+                        }
+                    }
+                    return new Etat(p, liste);
                 }
             }else{
                 Personnage p = new Personnage(xSuiv, ySuiv);
-                return new Etat(p, rep);
+                return new Etat(p, liste);
             }
         }
         return null;
