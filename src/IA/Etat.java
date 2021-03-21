@@ -20,11 +20,12 @@ public class Etat {
      */
     public Etat(Personnage p, ArrayList<Caisse> c) {
         this.personnage = p;
-        ArrayList<Caisse> liste = new ArrayList<Caisse>();
-        for (int i =0; i<c.size(); i++){
-            Caisse caisse = c.get(i);
-            liste.add(new Caisse(caisse.getPosX(), caisse.getPosY(), caisse.estBienPlace()));
-        }
+        ArrayList<Caisse> liste = (ArrayList<Caisse>) c.clone();
+        //Amélioration du temps d'execution (passe de 0.5 à 0.2 seconde pour le niveau)
+//        for (int i =0; i<c.size(); i++){
+//            Caisse caisse = c.get(i);
+//            liste.add(new Caisse(caisse.getPosX(), caisse.getPosY(), caisse.estBienPlace()));
+//        }
 
         this.listeCaisses = liste;
     }

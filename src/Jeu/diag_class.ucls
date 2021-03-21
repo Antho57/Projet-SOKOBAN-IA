@@ -37,16 +37,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="Jeu.Joueur" project="Projet-SOKOBAN-IA" 
-    file="/Projet-SOKOBAN-IA/src/Jeu/Joueur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1171" y="701"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="Jeu.Mur" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/Jeu/Mur.java" 
+  <class id="5" language="java" name="Jeu.Mur" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/Jeu/Mur.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="909" y="238"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,16 +46,16 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="Jeu.Personnage" project="Projet-SOKOBAN-IA" 
+  <class id="6" language="java" name="Jeu.Personnage" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/Jeu/Personnage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="967" y="486"/>    
+    <position height="-1" width="-1" x="1071" y="439"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="Jeu.Sol" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/Jeu/Sol.java" 
+  <class id="7" language="java" name="Jeu.Sol" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/Jeu/Sol.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="759" y="310"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="9" language="java" name="Jeu.Sujet" project="Projet-SOKOBAN-IA" 
+  <interface id="8" language="java" name="Jeu.Sujet" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/Jeu/Sujet.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="838" y="13"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,25 +73,16 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <interface id="10" language="java" name="Jeu.Utilisateur" project="Projet-SOKOBAN-IA" 
-    file="/Projet-SOKOBAN-IA/src/Jeu/Utilisateur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1169" y="564"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="false" package="false" protected="false" private="false" static="true"/>    
-    </display>  
-  </interface>  
-  <class id="11" language="java" name="InterfaceGraphique.ControleurJeu" project="Projet-SOKOBAN-IA" 
+  <class id="9" language="java" name="InterfaceGraphique.ControleurJeu" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/ControleurJeu.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1152" y="435"/>    
+    <position height="-1" width="-1" x="1208" y="457"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="InterfaceGraphique.Fenetre" project="Projet-SOKOBAN-IA" 
+  <class id="10" language="java" name="InterfaceGraphique.Fenetre" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/Fenetre.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1594" y="287"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +91,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="InterfaceGraphique.MenuChoixNiv" project="Projet-SOKOBAN-IA" 
+  <class id="11" language="java" name="InterfaceGraphique.MenuChoixNiv" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/MenuChoixNiv.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1604" y="504"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +100,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="InterfaceGraphique.MenuCredits" project="Projet-SOKOBAN-IA" 
+  <class id="12" language="java" name="InterfaceGraphique.MenuCredits" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/MenuCredits.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1413" y="550"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +109,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="InterfaceGraphique.MenuJeu" project="Projet-SOKOBAN-IA" 
+  <class id="13" language="java" name="InterfaceGraphique.MenuJeu" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/MenuJeu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1596" y="144"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +118,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="InterfaceGraphique.MenuPrincipale" project="Projet-SOKOBAN-IA" 
+  <class id="14" language="java" name="InterfaceGraphique.MenuPrincipale" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/MenuPrincipale.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1822" y="400"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +127,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <interface id="17" language="java" name="InterfaceGraphique.Observateur" project="Projet-SOKOBAN-IA" 
+  <interface id="15" language="java" name="InterfaceGraphique.Observateur" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/Observateur.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1329" y="8"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +136,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </interface>  
-  <class id="18" language="java" name="InterfaceGraphique.Principale" project="Projet-SOKOBAN-IA" 
+  <class id="16" language="java" name="InterfaceGraphique.Principale" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/Principale.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1076" y="16"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,7 +145,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="InterfaceGraphique.VueGagner" project="Projet-SOKOBAN-IA" 
+  <class id="17" language="java" name="InterfaceGraphique.VueGagner" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/VueGagner.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1334" y="426"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,7 +154,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="20" language="java" name="InterfaceGraphique.VueInferieureIA" project="Projet-SOKOBAN-IA" 
+  <class id="18" language="java" name="InterfaceGraphique.VueInferieureIA" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/VueInferieureIA.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1338" y="311"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -181,7 +163,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="21" language="java" name="InterfaceGraphique.VueJeu" project="Projet-SOKOBAN-IA" 
+  <class id="19" language="java" name="InterfaceGraphique.VueJeu" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/VueJeu.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1592" y="30"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,7 +172,7 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="22" language="java" name="InterfaceGraphique.VueSuperieure" project="Projet-SOKOBAN-IA" 
+  <class id="20" language="java" name="InterfaceGraphique.VueSuperieure" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/InterfaceGraphique/VueSuperieure.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1337" y="214"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -199,34 +181,34 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="IA.Noeud" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/IA/Noeud.java" 
+  <class id="21" language="java" name="IA.Noeud" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/IA/Noeud.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="495" y="610"/>    
+    <position height="-1" width="-1" x="553" y="579"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="IA.IA" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/IA/IA.java" 
+  <class id="22" language="java" name="IA.IA" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/IA/IA.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="751" y="512"/>    
+    <position height="-1" width="-1" x="819" y="460"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="IA.Etat" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/IA/Etat.java" 
+  <class id="23" language="java" name="IA.Etat" project="Projet-SOKOBAN-IA" file="/Projet-SOKOBAN-IA/src/IA/Etat.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="609" y="739"/>    
+    <position height="-1" width="-1" x="735" y="684"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="IA.Probleme" project="Projet-SOKOBAN-IA" 
+  <class id="24" language="java" name="IA.Probleme" project="Projet-SOKOBAN-IA" 
     file="/Projet-SOKOBAN-IA/src/IA/Probleme.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="505" y="460"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="false" 
@@ -235,366 +217,370 @@
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <association id="27">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="28" name="window">        
-        <position height="0" width="0" x="1083" y="-347"/>      
-      </attribute>      
-      <multiplicity id="29" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1083" y="-347"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="31" name="menu">        
-        <position height="0" width="0" x="769" y="-276"/>      
-      </attribute>      
-      <multiplicity id="32" minimum="0" maximum="1">        
-        <position height="0" width="0" x="769" y="-276"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="33">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="10"/>  
+  <realization id="25">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="8"/>  
   </realization>  
-  <association id="34">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="35" name="grille"/>      
-      <multiplicity id="36" minimum="0" maximum="2147483647"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="27" name="occupantCaisse">        
+        <position height="0" width="0" x="20" y="-552"/>      
+      </attribute>      
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="20" y="-552"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="30" name="grille">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="37">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="38" name="listeFerme">        
-        <position height="0" width="0" x="-76" y="21"/>      
+  <association id="32">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="33" name="menu">        
+        <position height="0" width="0" x="769" y="-276"/>      
       </attribute>      
-      <multiplicity id="39" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-76" y="21"/>      
+      <multiplicity id="34" minimum="0" maximum="1">        
+        <position height="0" width="0" x="769" y="-276"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="35">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="36" name="lab">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </attribute>      
+      <multiplicity id="37" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="38">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="39" name="window">        
+        <position height="0" width="0" x="1083" y="-347"/>      
+      </attribute>      
+      <multiplicity id="40" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1083" y="-347"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="41">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <association id="42">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="43" name="grille">        
+        <position height="0" width="0" x="358" y="-1020"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="358" y="-1020"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="45">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="46" name="modele">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </attribute>      
+      <multiplicity id="47" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="48">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="49" name="listeOuverte">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </attribute>      
+      <multiplicity id="50" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="51">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="52" name="fin">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </attribute>      
+      <multiplicity id="53" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="54">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="55" name="Lab">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </attribute>      
+      <multiplicity id="56" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="57">    
+    <end type="SOURCE" refId="20" navigable="false">      
+      <attribute id="58" name="lab">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="60">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="61" name="listeFerme">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="64" name="etat">        
+        <position height="0" width="0" x="-104" y="84"/>      
+      </attribute>      
+      <multiplicity id="65" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-104" y="84"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="40">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="41">    
+  <realization id="66">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="15"/>  
+  </realization>  
+  <generalization id="67">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="42">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="43" name="etat">        
-        <position height="0" width="0" x="-230" y="139"/>      
-      </attribute>      
-      <multiplicity id="44" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-230" y="139"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="45">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="17"/>  
-  </realization>  
-  <association id="46">    
+  <association id="68">    
     <end type="SOURCE" refId="20" navigable="false">      
-      <attribute id="47" name="modele">        
-        <position height="0" width="0" x="-18" y="-621"/>      
+      <attribute id="69" name="menu">        
+        <position height="0" width="0" x="769" y="-276"/>      
       </attribute>      
-      <multiplicity id="48" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-18" y="-621"/>      
+      <multiplicity id="70" minimum="0" maximum="1">        
+        <position height="0" width="0" x="769" y="-276"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="49">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="50">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="51" name="lab">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="71">    
+    <bendpoint x="352" y="686"/>    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="72" name="listeCaisses">        
+        <position height="0" width="0" x="-172" y="-33"/>      
       </attribute>      
-      <multiplicity id="52" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="73" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-172" y="-33"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
+    <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="53">    
+  <association id="74">    
+    <bendpoint x="476" y="560"/>    
+    <bendpoint x="474" y="585"/>    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="75" name="precedent">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </attribute>      
+      <multiplicity id="76" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-10"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="21" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="77">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="54" name="observateurs">        
+      <attribute id="78" name="observateurs">        
         <position height="0" width="0" x="579" y="-1063"/>      
       </attribute>      
-      <multiplicity id="55" minimum="0" maximum="2147483647">        
+      <multiplicity id="79" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="579" y="-1063"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="56">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="57" name="listeOuverte">        
-        <position height="0" width="0" x="-76" y="21"/>      
+  <association id="80">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="81" name="mj">        
+        <position height="0" width="0" x="769" y="-276"/>      
       </attribute>      
-      <multiplicity id="58" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-76" y="21"/>      
+      <multiplicity id="82" minimum="0" maximum="1">        
+        <position height="0" width="0" x="769" y="-276"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="83">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="84" name="objectif">        
+        <position height="0" width="0" x="-104" y="84"/>      
+      </attribute>      
+      <multiplicity id="85" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-104" y="84"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="23" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="59">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="60" name="lab">        
+  <association id="86">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="87" name="position">        
+        <position height="0" width="0" x="358" y="-1020"/>      
+      </attribute>      
+      <multiplicity id="88" minimum="0" maximum="1">        
+        <position height="0" width="0" x="358" y="-1020"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="89">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="90" name="window">        
+        <position height="0" width="0" x="1083" y="-347"/>      
+      </attribute>      
+      <multiplicity id="91" minimum="0" maximum="1">        
+        <position height="0" width="0" x="1083" y="-347"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="93" name="p">        
+        <position height="0" width="0" x="126" y="-713"/>      
+      </attribute>      
+      <multiplicity id="94" minimum="0" maximum="1">        
+        <position height="0" width="0" x="126" y="-713"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <bendpoint x="1187" y="278"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="96" name="lab">        
         <position height="0" width="0" x="-18" y="-621"/>      
       </attribute>      
-      <multiplicity id="61" minimum="0" maximum="1">        
+      <multiplicity id="97" minimum="0" maximum="1">        
         <position height="0" width="0" x="-18" y="-621"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="62">    
-    <end type="SOURCE" refId="6"/>    
+  <association id="98">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="99" name="lab">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </attribute>      
+      <multiplicity id="100" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-18" y="-621"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="102" name="personnage">        
+        <position height="0" width="0" x="63" y="19"/>      
+      </attribute>      
+      <multiplicity id="103" minimum="0" maximum="1">        
+        <position height="0" width="0" x="63" y="19"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="104">    
+    <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="63">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="64" name="objectif">        
-        <position height="0" width="0" x="-230" y="139"/>      
-      </attribute>      
-      <multiplicity id="65" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-230" y="139"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="67" name="position">        
-        <position height="0" width="0" x="358" y="-1020"/>      
-      </attribute>      
-      <multiplicity id="68" minimum="0" maximum="1">        
-        <position height="0" width="0" x="358" y="-1020"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="69">    
-    <bendpoint x="418" y="591"/>    
-    <bendpoint x="416" y="616"/>    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="70" name="precedent">        
-        <position height="0" width="0" x="-76" y="21"/>      
-      </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-76" y="21"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="72">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="73" name="occupantCaisse">        
-        <position height="0" width="0" x="20" y="-552"/>      
-      </attribute>      
-      <multiplicity id="74" minimum="0" maximum="1">        
-        <position height="0" width="0" x="20" y="-552"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="75">    
-    <bendpoint x="1187" y="278"/>    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="76" name="lab">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </attribute>      
-      <multiplicity id="77" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="78">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="79" name="personnage">        
-        <position height="0" width="0" x="-41" y="66"/>      
-      </attribute>      
-      <multiplicity id="80" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-41" y="66"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="81">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="82" name="lab">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </attribute>      
-      <multiplicity id="83" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="84">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="85" name="lab">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </attribute>      
-      <multiplicity id="86" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="87">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="88" name="p">        
-        <position height="0" width="0" x="22" y="-666"/>      
-      </attribute>      
-      <multiplicity id="89" minimum="0" maximum="1">        
-        <position height="0" width="0" x="22" y="-666"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="90">    
-    <bendpoint x="326" y="733"/>    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="91" name="listeCaisses">        
-        <position height="0" width="0" x="-172" y="-33"/>      
-      </attribute>      
-      <multiplicity id="92" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-172" y="-33"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="93">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="94" name="window">        
-        <position height="0" width="0" x="1083" y="-347"/>      
-      </attribute>      
-      <multiplicity id="95" minimum="0" maximum="1">        
-        <position height="0" width="0" x="1083" y="-347"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="96">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="97" name="mj">        
-        <position height="0" width="0" x="769" y="-276"/>      
-      </attribute>      
-      <multiplicity id="98" minimum="0" maximum="1">        
-        <position height="0" width="0" x="769" y="-276"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="99">    
-    <end type="SOURCE" refId="19" navigable="false">      
-      <attribute id="100" name="mj">        
-        <position height="0" width="0" x="769" y="-276"/>      
-      </attribute>      
-      <multiplicity id="101" minimum="0" maximum="1">        
-        <position height="0" width="0" x="769" y="-276"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="102">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="103" name="fin">        
-        <position height="0" width="0" x="-76" y="21"/>      
-      </attribute>      
-      <multiplicity id="104" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-76" y="21"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="23" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="105">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="106" name="Lab">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </attribute>      
-      <multiplicity id="107" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-18" y="-621"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="1" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="108">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="109" name="pb"/>      
-      <multiplicity id="110" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="111">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="112" name="grille">        
-        <position height="0" width="0" x="358" y="-1020"/>      
-      </attribute>      
-      <multiplicity id="113" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="358" y="-1020"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="114">    
+  <generalization id="105">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="106">    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="115" name="menu">        
+      <attribute id="107" name="lab">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="108" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="19" navigable="false">      
+      <attribute id="110" name="mj">        
         <position height="0" width="0" x="769" y="-276"/>      
       </attribute>      
-      <multiplicity id="116" minimum="0" maximum="1">        
+      <multiplicity id="111" minimum="0" maximum="1">        
         <position height="0" width="0" x="769" y="-276"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
+    <end type="TARGET" refId="13" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="117">    
-    <end type="SOURCE" refId="21"/>    
-    <end type="TARGET" refId="17"/>  
-  </realization>  
+  <association id="112">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="113" name="pb">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="114" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
