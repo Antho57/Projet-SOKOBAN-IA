@@ -45,6 +45,8 @@ public class VueInferieureIA extends JPanel{
             public void actionPerformed(ActionEvent e) {
 
                 menu.modeJoueur();
+                menu.getWindow().requestFocus();
+                modele.viderSolution();
             }
         });
         this.add(jb1);
@@ -69,7 +71,7 @@ public class VueInferieureIA extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                menu.avancerIA("Gauche");
+                modele.mouvementIA("Gauche");
             }
         });
 
@@ -82,7 +84,7 @@ public class VueInferieureIA extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                menu.avancerIA("Droite");
+                modele.mouvementIA("Droite");
             }
         });
 

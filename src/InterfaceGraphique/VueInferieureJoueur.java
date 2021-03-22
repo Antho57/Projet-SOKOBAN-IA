@@ -45,6 +45,7 @@ public class VueInferieureJoueur extends JPanel {
             public void actionPerformed(ActionEvent e) {
 
                 menu.modeIA();
+                modele.chercherSolutionIA();
             }
         });
         this.add(jb1);

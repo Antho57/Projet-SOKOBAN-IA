@@ -159,7 +159,6 @@ public class MenuChoixNiv extends JPanel {
 
 		int[] choix= {this.niveau+1, this.difficulte};
 		Labyrinthe l = new Labyrinthe(this.niveau);
-		l.chercherSolutionIA();
 		MenuJeu m = new MenuJeu(this.window, choix, l);
 		this.window.changer(m);
 

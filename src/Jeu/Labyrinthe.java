@@ -325,6 +325,11 @@ public class Labyrinthe implements Sujet{
 		this.solution = this.ia.chercherSolution();
 	}
 
+	public void viderSolution() {
+		this.solution = null;
+		this.ia = new IA(this);
+	}
+
 	public void mouvementIA(String direction){
 		if (direction.equals("Gauche") && this.emplacement>0) {
 			this.mouvements -=2;

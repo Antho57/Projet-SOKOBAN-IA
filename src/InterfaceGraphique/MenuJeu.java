@@ -109,8 +109,12 @@ public class MenuJeu extends JPanel {
         this.repaint();
     }
 
-    public void avancerIA(String direction){
-        Lab.mouvementIA(direction);
+//    public void avancerIA(String direction){
+//        Lab.mouvementIA(direction);
+//    }
+
+    public Fenetre getWindow(){
+        return this.window;
     }
 
 }
