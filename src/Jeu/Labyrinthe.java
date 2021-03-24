@@ -5,7 +5,7 @@ import InterfaceGraphique.Observateur;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.TimerTask;
+
 /**
  * @author Anthony Briot
  * @author Lucas Saker
@@ -29,6 +29,8 @@ public class Labyrinthe implements Sujet{
 
 	private ArrayList<Observateur> observateurs; //Lise d'observateur pour le model MVC
 
+	private ArrayList<Case[][]> listeMouvementsIA; //Liste des labyrinthes pour le mouvement de l'IA
+
 	/*
 	Constructeur du labyrinthe
 	@param niv, le niveau du jeu choisi
@@ -40,6 +42,7 @@ public class Labyrinthe implements Sujet{
 		this.nbCaisse = 0;
 		this.win = false;
 		this.observateurs = new ArrayList<Observateur>();
+		this.listeMouvementsIA = new ArrayList<Case[][]>();
 		this.emplacement = 0;
 
 		try{
@@ -168,7 +171,7 @@ public class Labyrinthe implements Sujet{
 	Méthode qui permet de faire bouger le personnage dans la direction indiqué
 	@param direction, la direction choisi
 	 */
-	public void move(String direction) {
+	public Case[][] move(String direction) {
 		// r�cup�ration de la position du personnage
 		int x= this.p.getPosX();
 		int y= this.p.getPosY();
@@ -187,6 +190,26 @@ public class Labyrinthe implements Sujet{
 			}else {
 				Case caseSuivante2 = this.getCaseSuivante(xSuiv, ySuiv, direction);
 				if (!this.isOccupe(caseSuivante2) && !this.isMur(caseSuivante2)) {
+					Case[][] rep = new Case[8][9];
+					for (int i = 0; i < 9; i++) {
+						for (int j = 0; j <= 7; j++) {
+							Case place = this.grille[j][i];
+							switch (place.getClass().getSimpleName()) {
+								case "Sol":
+									if (place.getOccupantCaisse() !=null) rep[j][i] = new Sol(j ,i, new Caisse(j, i, false), true);
+									else rep[j][i] = new Sol(j ,i, null, false);
+									break;
+								case "Emplacement":
+									if (place.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
+									else rep[j][i] = new Emplacement(j ,i, null, false);
+									break;
+								case "Mur":
+									rep[j][i] = new Mur(j, i);
+									break;
+							}
+						}
+					}
+
 					this.p.setPosition(xSuiv, ySuiv);
 
 					Caisse c = grille[xSuiv][ySuiv].getOccupantCaisse();
@@ -206,9 +229,11 @@ public class Labyrinthe implements Sujet{
 					grille[caseSuivante2.getX()][caseSuivante2.getY()].occuperCaisse(c);
 
 					this.notifierObservateurs();
+					return rep;
 				}
 			}
 		}
+		return null;
 	}
 
 	/*
@@ -332,24 +357,38 @@ public class Labyrinthe implements Sujet{
 
 	public void mouvementIA(String direction){
 		if (direction.equals("Gauche") && this.emplacement>0) {
-			this.mouvements -=2;
+			this.mouvements -=1;
 			switch (this.solution.get(this.emplacement-1)){
 				case "Haut":
-					this.move("Bas");
+					this.p.setPosition(this.p.getPosX(), this.p.getPosY()+1);
+					//this.move("Bas");
 					break;
 				case "Bas":
-					this.move("Haut");
+					this.p.setPosition(this.p.getPosX(), this.p.getPosY()-1);
+					//this.move("Haut");
 					break;
 				case "Gauche":
-					this.move("Droite");
+					this.p.setPosition(this.p.getPosX()+1, this.p.getPosY());
+					//this.move("Droite");
 					break;
 				case "Droite":
-					this.move("Gauche");
+					this.p.setPosition(this.p.getPosX()-1, this.p.getPosY());
+					//this.move("Gauche");
 					break;
 			}
+			System.out.println(this.listeMouvementsIA.size()-1);
+			Case[][] tab= this.listeMouvementsIA.get(this.listeMouvementsIA.size()-1);
+			if (tab != null){
+				System.out.println("ok");
+				this.grille=tab;
+			}
+			this.listeMouvementsIA.remove(this.listeMouvementsIA.size()-1);
+			this.notifierObservateurs();
 			this.emplacement--;
 		}else if (direction.equals("Droite") && this.emplacement<this.solution.size()) {
-			this.move(this.solution.get(this.emplacement));
+			Case[][] val = this.move(this.solution.get(this.emplacement));
+			System.out.println(val +"   " +this.emplacement);
+			this.listeMouvementsIA.add(val);
 			this.emplacement++;
 		}
 
