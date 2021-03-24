@@ -51,16 +51,23 @@ public class VueInferieureIA extends JPanel{
         });
         this.add(jb1);
 
+        JPanel jpDirecton1 = new JPanel();
+        jpDirecton1.setSize(new Dimension(900, 100));
+        jpDirecton1.setLayout(new GridLayout(1,2));
+        jpDirecton1.setBackground(new Color(134, 134, 134, 0));
 
-//        JSlider S = new JSlider();
-//        JLabel titre = new JLabel("");
-//        titre.setFont(new Font("Sans-Serif",Font.BOLD, 20));
-//        titre.setForeground(new Color(195, 195, 195));
-//        this.add(S);
-        JPanel jpDirection = new JPanel();
-        jpDirection.setSize(new Dimension(900, 100));
-        jpDirection.setLayout(new GridLayout(1,2));
-        jpDirection.setBackground(new Color(134, 134, 134, 0));
+        JButton jbFullGauche = new JButton("<<");
+        jbFullGauche.setFont(new Font("Sans-serif",Font.BOLD, 20));
+        jbFullGauche.setPreferredSize(new Dimension(40, 40));
+
+        jbFullGauche.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modele.mouvementCompletIA("Gauche");
+            }
+        });
+
+        jpDirecton1.add(jbFullGauche);
 
         JButton jbGauche = new JButton("<");
         jbGauche.setFont(new Font("Sans-serif",Font.BOLD, 20));
@@ -74,6 +81,14 @@ public class VueInferieureIA extends JPanel{
                 modele.mouvementIA("Gauche");
             }
         });
+        jpDirecton1.add(jbGauche);
+
+        this.add(jpDirecton1);
+
+        JPanel jpDirecton2 = new JPanel();
+        jpDirecton2.setSize(new Dimension(900, 100));
+        jpDirecton2.setLayout(new GridLayout(1,2));
+        jpDirecton2.setBackground(new Color(134, 134, 134, 0));
 
         JButton jbDroite = new JButton(">");
         jbDroite.setFont(new Font("Sans-serif",Font.BOLD, 20));
@@ -88,16 +103,22 @@ public class VueInferieureIA extends JPanel{
             }
         });
 
-        jpDirection.add(jbGauche);
-        jpDirection.add(jbDroite);
+        jpDirecton2.add(jbDroite);
 
-        this.add(jpDirection);
+        JButton jbFullDroite = new JButton(">>");
+        jbFullDroite.setFont(new Font( "Sans-serif",Font.BOLD, 20));
+        jbFullDroite.setPreferredSize(new Dimension(40, 40));
 
+        jbFullDroite.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                modele.mouvementCompletIA("Droite");
+            }
+        });
 
-        JButton jb2 = new JButton("Auto");
-        jb2.setFont(new Font("Sans-serif",Font.BOLD, 14));
-        jb2.setPreferredSize(new Dimension(40, 40));
-        this.add(jb2);
+        jpDirecton2.add(jbFullDroite);
+
+        this.add(jpDirecton2);
     }
 
 

@@ -30,6 +30,8 @@ public class Labyrinthe implements Sujet{
 	private ArrayList<Observateur> observateurs; //Lise d'observateur pour le model MVC
 
 	private ArrayList<Case[][]> listeMouvementsIA; //Liste des labyrinthes pour le mouvement de l'IA
+	private Case[][] grilleDeBase; //Tableau de cases qui représente le labyrinthe de base (aucun mouvements)
+	private boolean modeIA; //boolean qui indique si nous somme en mode IA ou en mode joueur
 
 	/*
 	Constructeur du labyrinthe
@@ -38,12 +40,14 @@ public class Labyrinthe implements Sujet{
 	public Labyrinthe(int niv) {
 		this.p = null;
 		this.grille = new Case[8][9];
+		this.grilleDeBase = new Case[8][9];
 		this.mouvements = 0;
 		this.nbCaisse = 0;
 		this.win = false;
 		this.observateurs = new ArrayList<Observateur>();
 		this.listeMouvementsIA = new ArrayList<Case[][]>();
 		this.emplacement = 0;
+		this.modeIA = false;
 
 		try{
 			//Récupération du fichier de jeu en .xsb qui représente le labyritnhe a charger
@@ -68,36 +72,49 @@ public class Labyrinthe implements Sujet{
 						case "#":
 							//murs
 							this.grille[j][i] = new Mur(j, i);
+							this.grilleDeBase[j][i] = new Mur(j, i);
 							break;
 						case ".":
 							//cases cibles (zones de rangement des caisses)
 							this.grille[j][i] = new Emplacement(j, i, null, false);
+							this.grilleDeBase[j][i] = new Emplacement(j, i, null, false);
 							break;
 						case "$":
 							//caisses lorsqu’elles ne sont pas dans une cible de rangement
 							Caisse caisse = new Caisse(j, i, false);
 							this.grille[j][i] = new Sol(j, i, caisse,true);
+
+							Caisse caisseB = new Caisse(j, i, false);
+							this.grilleDeBase[j][i] = new Sol(j, i, caisseB,true);
+
 							this.nbCaisse++;
 							break;
 						case "*":
 							//caisses lorsqu’elles sont sur une case cible
 							Caisse caisse2 = new Caisse(j, i, true);
 							this.grille[j][i] = new Emplacement(j, i, caisse2, true);
+
+							Caisse caisse3 = new Caisse(j, i, true);
+							this.grilleDeBase[j][i] = new Emplacement(j, i, caisse3, true);
+
 							this.nbCaisse++;
 							break;
 						case "@":
 							//personnage (personnage mobile) lorsqu’il n’est pas sur une cible de rangement
 							this.grille[j][i] = new Sol(j, i, null, false);
+							this.grilleDeBase[j][i] = new Sol(j, i, null, false);
 							this.p = new Personnage(j, i);
 							break;
 						case "+":
 							//personnage lorsqu’il est sur une case cible
 							this.grille[j][i] = new Emplacement(j, i, null, false);
+							this.grilleDeBase[j][i] = new Emplacement(j, i, null, false);
 							this.p = new Personnage(j, i);
 							break;
 						case " ":
 							//sol simple (sans caisse ni personnage)
 							this.grille[j][i] = new Sol(j, i, null, false);
+							this.grilleDeBase[j][i] = new Sol(j, i, null, false);
 							break;
 					}
 				}
@@ -361,25 +378,19 @@ public class Labyrinthe implements Sujet{
 			switch (this.solution.get(this.emplacement-1)){
 				case "Haut":
 					this.p.setPosition(this.p.getPosX(), this.p.getPosY()+1);
-					//this.move("Bas");
 					break;
 				case "Bas":
 					this.p.setPosition(this.p.getPosX(), this.p.getPosY()-1);
-					//this.move("Haut");
 					break;
 				case "Gauche":
 					this.p.setPosition(this.p.getPosX()+1, this.p.getPosY());
-					//this.move("Droite");
 					break;
 				case "Droite":
 					this.p.setPosition(this.p.getPosX()-1, this.p.getPosY());
-					//this.move("Gauche");
 					break;
 			}
-			System.out.println(this.listeMouvementsIA.size()-1);
 			Case[][] tab= this.listeMouvementsIA.get(this.listeMouvementsIA.size()-1);
 			if (tab != null){
-				System.out.println("ok");
 				this.grille=tab;
 			}
 			this.listeMouvementsIA.remove(this.listeMouvementsIA.size()-1);
@@ -387,10 +398,56 @@ public class Labyrinthe implements Sujet{
 			this.emplacement--;
 		}else if (direction.equals("Droite") && this.emplacement<this.solution.size()) {
 			Case[][] val = this.move(this.solution.get(this.emplacement));
-			System.out.println(val +"   " +this.emplacement);
 			this.listeMouvementsIA.add(val);
 			this.emplacement++;
 		}
 
+	}
+
+	public void mouvementCompletIA(String sens){
+		switch(sens){
+			case "Gauche":
+				Case[][] rep = new Case[8][9];
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j <= 7; j++) {
+						Case place = this.grilleDeBase[j][i];
+						switch (place.getClass().getSimpleName()) {
+							case "Sol":
+								if (place.getOccupantCaisse() !=null) rep[j][i] = new Sol(j ,i, new Caisse(j, i, false), true);
+								else rep[j][i] = new Sol(j ,i, null, false);
+								break;
+							case "Emplacement":
+								if (place.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
+								else rep[j][i] = new Emplacement(j ,i, null, false);
+								break;
+							case "Mur":
+								rep[j][i] = new Mur(j, i);
+								break;
+						}
+					}
+				}
+				this.grille = rep;
+				this.listeMouvementsIA = new ArrayList<Case[][]>();
+				this.p.setPosition(1,1);
+				this.emplacement = 0;
+				this.mouvements = 0;
+				this.notifierObservateurs();
+				break;
+			case "Droite":
+				for(int i=this.emplacement; i<this.solution.size(); i++){
+					Case[][] val = this.move(this.solution.get(i));
+					this.listeMouvementsIA.add(val);
+					this.emplacement++;
+				}
+				break;
+		}
+	}
+
+	public void setModeIA(boolean b){
+		this.modeIA = b;
+	}
+
+	public boolean getModeIA(){
+		return this.modeIA;
 	}
 }

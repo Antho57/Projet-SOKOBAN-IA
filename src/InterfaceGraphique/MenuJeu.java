@@ -88,6 +88,7 @@ public class MenuJeu extends JPanel {
     Méthode qui permet de passer au modeIA
      */
     public void modeIA(){
+        this.Lab.setModeIA(true);
         VueInferieureIA v = new VueInferieureIA(this.Lab, this);
         this.remove(this.inf);
         this.add(v, BorderLayout.SOUTH);
@@ -101,6 +102,7 @@ public class MenuJeu extends JPanel {
     Méthode qui permet de passer au modeJoueur
      */
     public void modeJoueur(){
+        this.Lab.setModeIA(false);
         VueInferieureJoueur v = new VueInferieureJoueur(this.Lab, this);
         this.remove(this.inf);
         this.add(v, BorderLayout.SOUTH);
