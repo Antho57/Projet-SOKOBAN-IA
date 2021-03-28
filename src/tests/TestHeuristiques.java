@@ -42,7 +42,7 @@ public class TestHeuristiques {
 		c.add(new Caisse(5, 5, false));
 		c.add(new Caisse(3,3, false));
 		Etat e = new Etat(new Personnage(1, 1), this.c);
-		Noeud n = new Noeud(0, 0, e, null, null);
+		Noeud n = new Noeud(0, null, e, null, null);
 		int val = n.calculerHeuristique();
 
 		assertEquals("La valeur de l'heuristique devrait être de 4", 4, val);
@@ -58,7 +58,7 @@ public class TestHeuristiques {
 		c.add(new Caisse(5, 5, false));
 		c.add(new Caisse(3,3, true));
 		Etat e = new Etat(new Personnage(1, 1), this.c);
-		Noeud n = new Noeud(0, 0, e, null, null);
+		Noeud n = new Noeud(0, null, e, null, null);
 		int val = n.calculerHeuristique();
 
 		assertEquals("La valeur de l'heuristique devrait être de 8", 8, val);

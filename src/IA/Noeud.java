@@ -16,6 +16,7 @@ public class Noeud implements Comparable{
     private Etat etat; //Etat courant du labyrinthe pour ce noeud
     private Noeud precedent; //Noeud precedent afin de récupérer le chemin parcouru
     private String mouvement; //Mouvement qui a mené à ce noeud
+    private ArrayList<int[]> listeEmplacement; //Liste des emplacements dans le niveau courant
 
 
     /*
@@ -24,14 +25,14 @@ public class Noeud implements Comparable{
     @param heuristique, mouvements qu'il reste a faire pour finir le niveau
     @param e, Etat courant du labyrinthe
      */
-    public Noeud(int dep, int heuristique, Etat e, Noeud prec, String mouv){
+    public Noeud(int dep, ArrayList<int[]> l, Etat e, Noeud prec, String mouv){
         this.etat = e;
         this.precedent = prec;
         this.mouvement = mouv;
         this.deplacements = dep;
+        this.listeEmplacement = l;
         this.heuristique = this.calculerHeuristique();
         this.cout = dep + this.heuristique;
-        //System.out.println("Cout : " +this.cout +" Heuristique : " +this.heuristique +"Dep : " +this.deplacements);
     }
     
     
@@ -67,10 +68,16 @@ public class Noeud implements Comparable{
     public int calculerHeuristique(){
         ArrayList<Caisse> liste = this.etat.getListeCaisses();
         Personnage p = this.etat.getPersonnage();
-        int valeurLaPlusPetite = 1000;
+        int valeurLaPlusPetite = 100;
         for(int i=0; i<liste.size(); i++){
             if (!liste.get(i).estBienPlace()){
                 int valCourante = (Math.abs(liste.get(i).getPosX()-p.getPosX())+Math.abs(liste.get(i).getPosY()-p.getPosY()));
+                int distanceCaisseEmplacement = 30;
+                for (int j=0; j<listeEmplacement.size(); j++){
+                    int distanceCourante = (Math.abs(liste.get(i).getPosX()-this.listeEmplacement.get(j)[0])+Math.abs(liste.get(i).getPosY()-this.listeEmplacement.get(j)[1]));
+                    if (distanceCourante < distanceCaisseEmplacement) distanceCaisseEmplacement = distanceCourante;
+                }
+                valCourante +=distanceCaisseEmplacement;
                 if (valCourante < valeurLaPlusPetite) valeurLaPlusPetite = valCourante;
             }
         }
@@ -114,4 +121,6 @@ public class Noeud implements Comparable{
     public String getMouvement(){ return this.mouvement; }
 
     public int getCout(){return  this.cout;}
+
+    public ArrayList<int[]> getListeEmplacement(){ return this.listeEmplacement;}
 }

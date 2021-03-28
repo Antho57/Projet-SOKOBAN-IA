@@ -30,6 +30,7 @@ public class IA {
         this.win = false;
         this.grille = lab.getGrille();
         listeFerme = new ArrayList<Noeud>();
+        ArrayList<int[]> listeEmplacement = new ArrayList<int[]>();
 
         ArrayList<Caisse> rep = new ArrayList<Caisse>();
         for (int i = 0; i < 9; i++) {
@@ -40,11 +41,13 @@ public class IA {
                         break;
                     case "Emplacement":
                         if (this.lab.getGrille()[j][i].getOccupantCaisse() != null) rep.add(new Caisse(j, i, true));
+                        int[] tab = {j, i};
+                        listeEmplacement.add(tab);
                         break;
                 }
             }
         }
-        Noeud depart = new Noeud(0,0,new Etat(this.lab.getPersonnage(), rep), null, null);
+        Noeud depart = new Noeud(0,listeEmplacement,new Etat(this.lab.getPersonnage(), rep), null, null);
         this.listeOuverte.add(depart);
     }
 
@@ -56,9 +59,7 @@ public class IA {
     public ArrayList<String> chercherSolution() {
         while (!this.win && listeOuverte.size()> 0) {
             Collections.sort(this.listeOuverte);
-            for(int w=0; w<this.listeOuverte.size(); w++){
-                System.out.println("Noeud " +w +" : " +this.listeOuverte.get(w).getDeplacements());
-            }
+            Collections.reverse(this.listeOuverte);
             int v =0;
             while (v<this.listeOuverte.size() && !this.win) {
 
@@ -90,7 +91,7 @@ public class IA {
                     for (int k=0; k<mouvements.length; k++){
                         String m = mouvements[k];
                         Etat etat = this.chercherProchainMouvement(m, e);
-                        if (etat != null) this.listeOuverte.add(new Noeud(n.getDeplacements()+1, n.getHeuristique(), etat, n, m));
+                        if (etat != null) this.listeOuverte.add(new Noeud(n.getDeplacements()+1, n.getListeEmplacement(), etat, n, m));
                     }
                 }
             } else {
