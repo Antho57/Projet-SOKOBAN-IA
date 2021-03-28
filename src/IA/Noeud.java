@@ -1,5 +1,10 @@
 package IA;
 
+import Jeu.Caisse;
+import Jeu.Personnage;
+
+import java.util.ArrayList;
+
 /*
 Class qui represente un noeud dans la recherche
  */
@@ -20,12 +25,13 @@ public class Noeud implements Comparable{
     @param e, Etat courant du labyrinthe
      */
     public Noeud(int dep, int heuristique, Etat e, Noeud prec, String mouv){
-        this.deplacements = dep;
-        this.heuristique = heuristique;
-        this.cout = dep + heuristique;
         this.etat = e;
         this.precedent = prec;
         this.mouvement = mouv;
+        this.deplacements = dep;
+        this.heuristique = this.calculerHeuristique();
+        this.cout = dep + this.heuristique;
+        //System.out.println("Cout : " +this.cout +" Heuristique : " +this.heuristique +"Dep : " +this.deplacements);
     }
     
     
@@ -52,6 +58,23 @@ public class Noeud implements Comparable{
     public boolean equals(Object obj){
         Noeud n = (Noeud)obj;
         return this.etat.equals(n.etat);
+    }
+
+    /*
+    Fonction d'heuristique, qui vas permettre de trier les Etat en fonction de leur importance
+    @return int, la valeur de l'heuristique pour le Noeud courant
+     */
+    public int calculerHeuristique(){
+        ArrayList<Caisse> liste = this.etat.getListeCaisses();
+        Personnage p = this.etat.getPersonnage();
+        int valeurLaPlusPetite = 1000;
+        for(int i=0; i<liste.size(); i++){
+            if (!liste.get(i).estBienPlace()){
+                int valCourante = (Math.abs(liste.get(i).getPosX()-p.getPosX())+Math.abs(liste.get(i).getPosY()-p.getPosY()));
+                if (valCourante < valeurLaPlusPetite) valeurLaPlusPetite = valCourante;
+            }
+        }
+        return valeurLaPlusPetite;
     }
 
     /*
@@ -89,4 +112,6 @@ public class Noeud implements Comparable{
     @return String, le mouvement effectué
      */
     public String getMouvement(){ return this.mouvement; }
+
+    public int getCout(){return  this.cout;}
 }

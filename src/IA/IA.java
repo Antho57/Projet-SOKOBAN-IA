@@ -2,10 +2,7 @@ package IA;
 
 import Jeu.*;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.TreeSet;
+import java.util.*;
 
 
 /*
@@ -58,6 +55,10 @@ public class IA {
      */
     public ArrayList<String> chercherSolution() {
         while (!this.win && listeOuverte.size()> 0) {
+            Collections.sort(this.listeOuverte);
+            for(int w=0; w<this.listeOuverte.size(); w++){
+                System.out.println("Noeud " +w +" : " +this.listeOuverte.get(w).getDeplacements());
+            }
             int v =0;
             while (v<this.listeOuverte.size() && !this.win) {
 
