@@ -81,14 +81,10 @@ public class VueSuperieure extends JPanel implements Observateur{
             }
         });
 
-        JButton jb2 = new JButton("Aide");
+        JButton jb2 = new JButton("Reset");
         jb2.setFont(new Font("Sans-serif",Font.BOLD, 14));
-        jb2.setPreferredSize(new Dimension(40, 40));
-
-        JButton jb3 = new JButton("Reset");
-        jb3.setFont(new Font("Sans-serif",Font.BOLD, 14));
-        jb3.setPreferredSize(new Dimension(70, 40));
-        jb3.addActionListener(new ActionListener() {
+        jb2.setPreferredSize(new Dimension(70, 40));
+        jb2.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,7 +94,6 @@ public class VueSuperieure extends JPanel implements Observateur{
         });
 
         jp.add(jb2);
-        jp.add(jb3);
         jp.add(jb1);
         this.add(jp);
     }

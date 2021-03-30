@@ -1,5 +1,6 @@
 package IA;
 
+import InterfaceGraphique.Observateur;
 import Jeu.*;
 
 import java.util.*;
@@ -8,7 +9,7 @@ import java.util.*;
 /*
 Class qui permet de faire fonctionner l'IA
  */
-public class IA {
+public class IA implements Sujet{
 
     private ArrayList<Noeud> listeOuverte; //Liste de noeuds qu'il faut encore explorer
     private ArrayList<Noeud> listeFerme; //Liste de noeuds que nous avons deja explore
@@ -18,6 +19,8 @@ public class IA {
     private boolean win; //Boolean qui représente la reussite de l'IA
     private Noeud fin; //Noeud qui vas correspondre à l'objectif
     private static int nb;
+    private ArrayList<Observateur> observateurs; //Lise d'observateur pour le model MVC
+    private int taille;
 
 
     /*
@@ -30,6 +33,7 @@ public class IA {
         this.win = false;
         this.grille = lab.getGrille();
         listeFerme = new ArrayList<Noeud>();
+        this.observateurs = new ArrayList<Observateur>();
         ArrayList<int[]> listeEmplacement = new ArrayList<int[]>();
 
         ArrayList<Caisse> rep = new ArrayList<Caisse>();
@@ -57,6 +61,7 @@ public class IA {
     @param objectif, l'Etat qui représente l'objectif
      */
     public ArrayList<String> chercherSolution() {
+        taille = this.listeOuverte.size();
         while (!this.win && listeOuverte.size()> 0) {
             Collections.sort(this.listeOuverte);
             Collections.reverse(this.listeOuverte);
@@ -93,6 +98,10 @@ public class IA {
                         Etat etat = this.chercherProchainMouvement(m, e);
                         if (etat != null) this.listeOuverte.add(new Noeud(n.getDeplacements()+1, n.getListeEmplacement(), etat, n, m));
                     }
+                    if (this.listeOuverte.size()-this.taille >=200){
+                        notifierObservateurs();
+                        this.taille = this.listeOuverte.size();
+                    }
                 }
             } else {
                 //Récupère le Noeud final (correspond à la victoire)
@@ -111,6 +120,8 @@ public class IA {
 //                    }
                     n = n.getPrecedent();
                 }
+                this.lab.setSolution(rep);
+                this.notifierObservateurs();
                 return rep;
             }
         }
@@ -204,4 +215,48 @@ public class IA {
         return null;
     }
 
+
+    public ArrayList<Noeud> getListeOuverte(){
+        return this.listeOuverte;
+    }
+
+    public ArrayList<Noeud> getListeFerme(){
+        return this.listeFerme;
+    }
+
+    /*
+	Méthode qui permet d'enregistrer un observateur
+	@param o, observateur qu'il faut enregistrer
+	 */
+    @Override
+    public void enregistrerObservateur(Observateur o) {
+        this.observateurs.add(o);
+
+    }
+
+    /*
+    Méthode qui permet de supprimer un observateur de la liste
+    @param o, l'observateur que l'on veut supprimer
+     */
+    @Override
+    public void supprimerObservateur(Observateur o) {
+        int i =this.observateurs.indexOf(o);
+        if (i>= 0)
+            this.observateurs.remove(i);
+    }
+
+    /*
+    Méthode qui permet de notifier tous les observateurs de la liste
+    après la modification d'un attribut de la class
+     */
+    @Override
+    public void notifierObservateurs() {
+        if (!this.observateurs.isEmpty()) {
+            for (int i = 0; i < this.observateurs.size(); i++) {
+                Observateur obs = this.observateurs.get(i);
+                obs.actualiser(this);
+            }
+        }
+
+    }
 }

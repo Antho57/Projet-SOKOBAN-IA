@@ -450,4 +450,8 @@ public class Labyrinthe implements Sujet{
 	public boolean getModeIA(){
 		return this.modeIA;
 	}
+
+	public void setSolution(ArrayList<String> s){
+		this.solution = s;
+	}
 }

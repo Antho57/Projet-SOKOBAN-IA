@@ -1,5 +1,6 @@
 package InterfaceGraphique;
 
+import IA.IA;
 import Jeu.Labyrinthe;
 
 import javax.swing.*;
@@ -96,6 +97,15 @@ public class MenuJeu extends JPanel {
         this.revalidate();
         this.repaint();
 
+    }
+
+    public void lancementIA(){
+        VueInferieureLancementIA v = new VueInferieureLancementIA(this.Lab, this);
+        this.remove(this.inf);
+        this.add(v, BorderLayout.SOUTH);
+        this.inf = v;
+        this.revalidate();
+        this.repaint();
     }
 
     /*
