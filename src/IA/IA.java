@@ -20,7 +20,7 @@ public class IA implements Sujet{
     private Noeud fin; //Noeud qui vas correspondre à l'objectif
     private static int nb;
     private ArrayList<Observateur> observateurs; //Lise d'observateur pour le model MVC
-    private int taille;
+    private int taille; //taille de la liste fermé
 
 
     /*
@@ -141,11 +141,6 @@ public class IA implements Sujet{
         Personnage perso = e.getPersonnage();
 
         ArrayList<Caisse> liste = (ArrayList<Caisse>) e.getListeCaisses().clone();
-        //Amélioration de la vitesse d'execution (passe de 0.260 à 0.186)
-//        for (int i =0; i< firstListe.size(); i++){
-//            Caisse caisse = firstListe.get(i);
-//            liste.add(new Caisse(caisse.getPosX(), caisse.getPosY(), caisse.estBienPlace()));
-//        }
 
 
         int xSuiv = perso.getPosX();

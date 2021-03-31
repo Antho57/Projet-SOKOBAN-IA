@@ -1,5 +1,7 @@
 package Jeu;
 
+import IA.Noeud;
+
 import java.awt.Image;
 /**
  * @author Anthony Briot
@@ -11,7 +13,7 @@ import java.awt.Image;
 /*
 Class qui représente les caisses présentes dans le lalbyrinthe
  */
-public class Caisse {
+public class Caisse implements Comparable{
 
 
 	private Case position; //Case sur laquelle la caisse est positionné
@@ -68,4 +70,17 @@ public class Caisse {
 		return this.bienPlace;
 	}
 
+	@Override
+	public int compareTo(Object o) {
+		Caisse c = (Caisse)o;
+		if (this.getPosX() < c.getPosX())
+			return 1;
+		else if(this.getPosX() == c.getPosX()) {
+			if (this.getPosY() < c.getPosY())
+				return 1;
+			else if (this.getPosY() == c.getPosY())
+				return 0;
+			else return -1;
+		}else return -1;
+	}
 }

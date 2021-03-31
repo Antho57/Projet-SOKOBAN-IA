@@ -3,6 +3,7 @@ package IA;
 import Jeu.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 
 /*
@@ -13,7 +14,6 @@ public class Etat {
 
     private ArrayList<Caisse> listeCaisses; //liste de caisses du labyrinthe courant
     private Personnage personnage; //personnage du labyrinthe courant
-    //private Case[][] grille; //La grille du labyrinthe
 
     /*
     Constructeur de l'etat courant du labyrinthe
@@ -21,11 +21,6 @@ public class Etat {
     public Etat(Personnage p, ArrayList<Caisse> c) {
         this.personnage = p;
         ArrayList<Caisse> liste = (ArrayList<Caisse>) c.clone();
-        //Amélioration du temps d'execution (passe de 0.5 à 0.2 seconde pour le niveau)
-//        for (int i =0; i<c.size(); i++){
-//            Caisse caisse = c.get(i);
-//            liste.add(new Caisse(caisse.getPosX(), caisse.getPosY(), caisse.estBienPlace()));
-//        }
 
         this.listeCaisses = liste;
     }
@@ -43,7 +38,9 @@ public class Etat {
             return false;
         }else {
             ArrayList<Caisse> liste = this.getListeCaisses();
+            Collections.sort(liste);
             ArrayList<Caisse> listeE = e.getListeCaisses();
+            Collections.sort(listeE);
             for (int i = 0; i < liste.size(); i++) {
                 if (liste.get(i).getPosX() != listeE.get(i).getPosX() || liste.get(i).getPosY() != listeE.get(i).getPosY()) {
                     return false;
