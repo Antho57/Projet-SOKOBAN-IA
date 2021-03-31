@@ -37,7 +37,7 @@ public class VueJeu extends JPanel implements Observateur{
     @param l, labyrinthe courant
     @param mj, menu générale du jeu
      */
-    public VueJeu(Labyrinthe l, MenuJeu mj){
+    public VueJeu(Labyrinthe l, MenuJeu mj, String personnage){
         this.lab = l;
         this.mj= mj;
         this.win= false;
@@ -47,7 +47,7 @@ public class VueJeu extends JPanel implements Observateur{
             this.sol = ImageIO.read(new File("Ressources/Images/sol.png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
             this.mur = ImageIO.read(new File("Ressources/Images/mur.png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
             this.emplacement = ImageIO.read(new File("Ressources/Images/emplacement.png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
-            this.joueur = ImageIO.read(new File("Ressources/Images/personnage.png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
+            this.joueur = ImageIO.read(new File("Ressources/Images/" +personnage +".png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
             this.caisse = ImageIO.read(new File("Ressources/Images/caisse.png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
             this.caissev = ImageIO.read(new File("Ressources/Images/caissev.png")).getScaledInstance(95 , 95, Image.SCALE_SMOOTH);
 

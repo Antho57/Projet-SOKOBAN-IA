@@ -24,6 +24,7 @@ public class MenuChoixNiv extends JPanel {
 	private Fenetre window; //fenêtre de l'application
 	private int niveau; //niveau courant
 	private int difficulte; //difficulté du niveau courant
+	private String personnage; //theme courant
 
 	/*
     Constructeur du MenuChoixNiv
@@ -34,6 +35,7 @@ public class MenuChoixNiv extends JPanel {
 		this.setSize(new Dimension(760, 955));
 		this.setLayout(new GridLayout(3, 1));
 		this.setBackground(new Color(78, 48, 150, 0));
+		this.personnage = "personnage_original";
 
 
 		JPanel jp = new JPanel();
@@ -63,12 +65,13 @@ public class MenuChoixNiv extends JPanel {
 		jpaux2.setLayout(null);
 		jpaux2.setBackground(new Color(78, 48, 150, 0));
 		JPanel jp3 = new JPanel();
-		jp3.setLayout(new GridLayout(1, 2));
+		jp3.setLayout(new GridLayout(1, 3));
 
 		String[] niveauxF = {"Niveau 0", "Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
 		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
 		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
 		String[] difficulte = {"Facile", "Normal", "Difficile"};
+		String[] personnage = {"Skin Original", "Skin Lapin", "Skin Among Us"};
 
 		JComboBox jcb1 = new JComboBox(niveauxF);
 		jcb1.addActionListener(new ActionListener() {
@@ -107,6 +110,28 @@ public class MenuChoixNiv extends JPanel {
 				}
 			}
 		});
+		JComboBox jcb3= new JComboBox(personnage);
+		jcb3.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JComboBox jcb = (JComboBox) e.getSource();
+				choixDifficulte(jcb.getSelectedIndex());
+				switch (jcb.getSelectedIndex()) {
+					case 0:
+						choixPersonnage("personnage_original");
+						break;
+					case 1:
+						choixPersonnage("personnage_lapin");
+						break;
+					case 2:
+						choixPersonnage("personnage_among_us");
+						break;
+					default:
+						break;
+				}
+			}
+		});
 
 
 
@@ -114,6 +139,7 @@ public class MenuChoixNiv extends JPanel {
 
 		jp3.add(jcb1);
 		jp3.add(jcb2);
+		jp3.add(jcb3);
 		jpaux2.add(jp3);
 		jp2.add(jpaux2);
 		this.add(jp2);
@@ -159,7 +185,7 @@ public class MenuChoixNiv extends JPanel {
 
 		int[] choix= {this.niveau+1, this.difficulte};
 		Labyrinthe l = new Labyrinthe(this.niveau);
-		MenuJeu m = new MenuJeu(this.window, choix, l);
+		MenuJeu m = new MenuJeu(this.window, choix, l, this.personnage);
 		this.window.changer(m);
 
 	}
@@ -178,6 +204,10 @@ public class MenuChoixNiv extends JPanel {
 	 */
 	public void choixDifficulte (int d){
 		this.difficulte=d;
+	}
+
+	public void choixPersonnage(String p){
+		this.personnage = p;
 	}
 
 	/*

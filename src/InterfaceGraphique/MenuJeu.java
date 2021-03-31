@@ -24,6 +24,7 @@ public class MenuJeu extends JPanel {
     private Labyrinthe Lab; //Labyrinthe courant
     private JPanel inf; //VueInférieur
     private JPanel jeu; //Vue du jeu
+    private String personnage; //Theme choisi
 
     /*
     Constructeur MenuJeu
@@ -31,11 +32,12 @@ public class MenuJeu extends JPanel {
     @param choix, tableau qui représente le choix du niveau et de la difficulté
     @param l, labyrinthe courant
      */
-    public MenuJeu(Fenetre window, int[] choix, Labyrinthe l){
+    public MenuJeu(Fenetre window, int[] choix, Labyrinthe l, String personnage){
         this.window = window;
         this.Lab = l;
         this.niveau = choix[0];
         this.difficulte = choix[1];
+        this.personnage = personnage;
         this.setSize(new Dimension(767, 925));
         this.setLayout(new BorderLayout());
         this.setBackground(new Color(78, 48, 150));
@@ -46,7 +48,7 @@ public class MenuJeu extends JPanel {
         VueSuperieure vs = new VueSuperieure(this.Lab, this, this.niveau, this.difficulte);
         this.add(vs, BorderLayout.NORTH);
 
-        VueJeu jp2 = new VueJeu(Lab, this);
+        VueJeu jp2 = new VueJeu(Lab, this, this.personnage);
         ControleurJeu ctrl = new ControleurJeu(Lab);
         window.addKeyListener(ctrl);
         window.requestFocus();
@@ -81,7 +83,7 @@ public class MenuJeu extends JPanel {
 
         int[] choix= {this.niveau, this.difficulte};
 
-        MenuJeu m = new MenuJeu(this.window, choix,new Labyrinthe(this.niveau));
+        MenuJeu m = new MenuJeu(this.window, choix,new Labyrinthe(this.niveau), this.personnage);
         this.window.changer(m);
     }
 
