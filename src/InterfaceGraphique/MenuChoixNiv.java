@@ -67,7 +67,7 @@ public class MenuChoixNiv extends JPanel {
 		JPanel jp3 = new JPanel();
 		jp3.setLayout(new GridLayout(1, 3));
 
-		String[] niveauxF = {"Niveau 0", "Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
+		String[] niveauxF = {"Niveau IA", "Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
 		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
 		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
 		String[] difficulte = {"Facile", "Normal", "Difficile"};
@@ -160,7 +160,6 @@ public class MenuChoixNiv extends JPanel {
 		});
 
 		buttonCurved jb2 = new buttonCurved("Retour");
-		jb2.setBackground(new Color(195, 195, 195));
 		jb2.addActionListener(new ActionListener() {
 
 			@Override
@@ -183,7 +182,7 @@ public class MenuChoixNiv extends JPanel {
 	 */
 	public void jouer(){
 
-		int[] choix= {this.niveau+1, this.difficulte};
+		int[] choix= {this.niveau, this.difficulte};
 		Labyrinthe l = new Labyrinthe(this.niveau);
 		MenuJeu m = new MenuJeu(this.window, choix, l, this.personnage);
 		this.window.changer(m);

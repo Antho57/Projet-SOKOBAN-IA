@@ -105,7 +105,13 @@ public class VueSuperieure extends JPanel implements Observateur{
     @param dif, la difficulté du niveau
      */
     public String titre(int niv, int dif){
-        String s = "<html><p style='text-align: CENTER'>Niveau " +niv;
+        String s = "";
+
+        if (niv == 0){
+            s = "<html><p style='text-align: CENTER'>Niveau IA";
+        }else {
+            s = "<html><p style='text-align: CENTER'>Niveau " +niv;
+        }
         switch(dif){
             case(0):
                 s +=" &emsp Facile</p></html>";
