@@ -336,25 +336,6 @@ public class Labyrinthe implements Sujet{
 
 	}
 
-	/*
-	Méthode qui permet de créer l'animation quand l'on a gagné la partie
-	 */
-	public void gagner(){
-		this.setPersonnage(1,1);
-		this.notifierObservateurs();
-		String[] move = {"Droite", "Droite", "Droite", "Droite", "Droite", "Bas", "Bas", "Bas", "Bas", "Bas", "Bas", "Gauche", "Gauche", "Gauche", "Gauche", "Gauche", "Haut", "Haut", "Haut", "Haut", "Haut", "Haut" };
-		for (int i=0; i< move.length; i++){
-			this.mouvements--;
-			this.move(move[i]);
-			long time = System.currentTimeMillis();
-			while(System.currentTimeMillis()<time+500){
-
-			}
-			System.out.println(this.getPersonnage().getPosX() +" - " +this.getPersonnage().getPosY());
-
-		}
-	}
-
 	public void setPersonnage(int x, int y){
 		this.p.setPosition(x, y);
 	}
