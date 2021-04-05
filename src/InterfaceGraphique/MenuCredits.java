@@ -44,10 +44,12 @@ public class MenuCredits extends JPanel{
                 "<p style='text-align: center; text-decoration: underline'>Createurs </p><br> " +
                 "<p style='text-align: center'>Briot Anthony <br><br> Vrignon Quentin <br><br> Nicol Benoit <br><br> Saker Lucas </p><br><br>" +
                 "<p style='text-align: center; text-decoration: underline'>tuteur </p><br>" +
-                "<p style='text-align: center'>Vicent thomas </html>");
-        titre.setFont(new Font("BUBBLEBOY2" , Font.PLAIN, 30));
+                "<p style='text-align: center'>Vicent thomas </p><br><br>" +
+                "<p style='text-align: center'> Gif A* : Subh83</p><br>" +
+                "<p style='text-align: center'>Gif Sokoban : Borgar Þorsteinsson </p></html>");
+        titre.setFont(new Font("BUBBLEBOY2" , Font.PLAIN, 23));
         titre.setForeground(new Color(89, 181, 201));
-        titre.setBounds(220, 80 ,800, 800);
+        titre.setBounds(150, 80 ,800, 800);
         jp.add(titre);
         this.add(jp, BorderLayout.CENTER);
 

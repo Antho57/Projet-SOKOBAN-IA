@@ -350,6 +350,7 @@ public class Labyrinthe implements Sujet{
 
 	public void viderSolution() {
 		this.solution = null;
+		this.emplacement = 0;
 		this.ia = new IA(this);
 	}
 

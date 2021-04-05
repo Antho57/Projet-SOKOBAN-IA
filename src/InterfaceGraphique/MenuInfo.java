@@ -53,16 +53,15 @@ public class MenuInfo extends JPanel {
         jp2.setSize(new Dimension(767, 200));
         jp2.setBackground(new Color(78, 48, 150, 0));
 
-        JTextArea titreProjet = new JTextArea("Le projet :\n Gardien d'entrepôt (divisé en cases carrées), "
-                + "le joueur doit ranger des caisses sur des cases cibles. Il peut se déplacer dans les quatre directions, "
-                + "et pousser (mais pas tirer) une seule caisse à la fois. Une fois toutes les caisses rangées (c'est parfois un vrai casse-tête), "
-                + "le niveau est réussi et le joueur passe au niveau suivant, plus difficile en général. "
-                + "L'idéal est de réussir avec le moins de coups possibles (déplacements et poussées).\n\n"
-                + "L'IA :\n A* est un algorithme de résolution que l'on peut représenter sous forme d'arbre d'état. "
-                + "Chaque état possède une valeur heuristique (composé du coût réel pour arriver au noeud courant + le coût "
-                + "prévisionnel admissible pour arriver à l'état final) correspondant au coût de la distance entre l'état initial et l'état final. "
-                + "A chaque itération, on se positionne sur l'état ayant la plus petite valeur heuristique parmi tous les noeuds de l'arbre non visités et "
-                + "fils d'un noeud déjà visité jusqu'à arriver à l'état final par le chemin le plus court possible.");
+        JTextArea titreProjet = new JTextArea("Le jeu :\n"+
+                "- Sokoban est un casse-tête dans lequel le but est de placer toutes les caisses sur des emplacements.\n"+
+                "- Le joueur controle un personnage qui peut bouger dans quatre directions : haut, bas, gauche, droite.\n"+
+                "- Une caisse ne peut être poussée que s’il n'y a rien derrière elle, si elle se trouve contre un mur ou une autre caisse cette caisse est donc bloquée.\n"+
+                "- Le joueur doit donc pousser les caisses pour les placer sur leurs emplacements, si toutes les caisses sont bien palcées, la partie est gagnée.\n\n" +
+                "L'IA :\n" +
+                "- Pour notre IA, nous avons utilisé l'algorithme de recherche de chemin A* (exemple ci-dessous).\n"+
+                "- Cet algorithme calcule la distance la plus courte possible entre l'emplacement courant et l'objectif à atteindre sans se préoccuper des obstacles.\n" +
+                "- Grace à ce calcule nous allons pouvoir trier les déplacements possibles, cela va donc permettre de guider l’IA dans ses choix.\n\n");
         titreProjet.setLineWrap(true);
         titreProjet.setWrapStyleWord(true);
         titreProjet.setEditable(false);
@@ -80,15 +79,14 @@ public class MenuInfo extends JPanel {
         jp3.setSize(new Dimension(400, 150));
         jp3.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 15) );
         jp3.setBackground(new Color(78, 48, 150, 0));
-        
+
         JLabel gif = new JLabel(new ImageIcon("Ressources/Gif/A"));
-        
-        //JLabel gifTest = new JLabel(new ImageIcon("Ressources/Gif/Sokoban_ani.gif"));
-        
+
+
         ImageIcon icon = new ImageIcon("Ressources/Gif/Sokoban_ani.gif");
-        Image scaleImage = icon.getImage().getScaledInstance(230, 280,Image.SCALE_DEFAULT);
-        ImageIcon bahbinks = new ImageIcon(scaleImage);
-        JLabel gif2 = new JLabel(bahbinks);
+        Image scaleImage = icon.getImage().getScaledInstance(205, 250,Image.SCALE_DEFAULT);
+        ImageIcon imageResize = new ImageIcon(scaleImage);
+        JLabel gif2 = new JLabel(imageResize);
 
         buttonCurved jb = new buttonCurved("J'ai compris");
         jb.addActionListener(new ActionListener() {
@@ -98,11 +96,11 @@ public class MenuInfo extends JPanel {
                 goChoisirNiv();
             }
         });
-        
+
         jp3.add(gif);
         jp3.add(jb);
         jp3.add(gif2);
-       
+
         this.add(jp3);
 
     }

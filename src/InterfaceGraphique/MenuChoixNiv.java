@@ -70,8 +70,8 @@ public class MenuChoixNiv extends JPanel {
 		String[] niveauxF = {"Niveau IA", "Niveau 1", "Niveau 2", "Niveau 3", "Niveau 4", "Niveau 5"};
 		String[] niveauxN = {"Niveau 6", "Niveau 7", "Niveau 8", "Niveau 9", "Niveau 10"};
 		String[] niveauxD = {"Niveau 11", "Niveau 12", "Niveau 13", "Niveau 14", "Niveau 15"};
-		String[] difficulte = {"Facile", "Normal", "Difficile"};
-		String[] personnage = {"Skin Original", "Skin Lapin", "Skin Among Us"};
+		String[] Choixdifficulte = {"Facile", "Normal", "Difficile"};
+		String[] personnage = {"Skin Original", "Skin Lapin"};
 
 		JComboBox jcb1 = new JComboBox(niveauxF);
 		jcb1.addActionListener(new ActionListener() {
@@ -79,12 +79,18 @@ public class MenuChoixNiv extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				JComboBox jcb = (JComboBox) e.getSource();
-				choixNiveau(jcb.getSelectedIndex());
+				if (difficulte == 0){
+					choixNiveau(jcb.getSelectedIndex());
+				}else if (difficulte == 1){
+					choixNiveau(jcb.getSelectedIndex()+6);
+				}else {
+					choixNiveau(jcb.getSelectedIndex()+11);
+				}
 			}
 		});
 		jp3.setBounds(170,50, 400, 50);
 
-		JComboBox jcb2= new JComboBox(difficulte);
+		JComboBox jcb2= new JComboBox(Choixdifficulte);
 		jcb2.addActionListener(new ActionListener() {
 
 			@Override
@@ -123,9 +129,6 @@ public class MenuChoixNiv extends JPanel {
 						break;
 					case 1:
 						choixPersonnage("personnage_lapin");
-						break;
-					case 2:
-						choixPersonnage("personnage_among_us");
 						break;
 					default:
 						break;
