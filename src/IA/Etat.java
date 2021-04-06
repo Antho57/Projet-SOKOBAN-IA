@@ -38,9 +38,9 @@ public class Etat {
             return false;
         }else {
             ArrayList<Caisse> liste = this.getListeCaisses();
-            Collections.sort(liste);
+            //Collections.sort(liste);
             ArrayList<Caisse> listeE = e.getListeCaisses();
-            Collections.sort(listeE);
+            //Collections.sort(listeE);
             for (int i = 0; i < liste.size(); i++) {
                 if (liste.get(i).getPosX() != listeE.get(i).getPosX() || liste.get(i).getPosY() != listeE.get(i).getPosY()) {
                     return false;
