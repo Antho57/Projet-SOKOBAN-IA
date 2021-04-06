@@ -31,6 +31,7 @@ public class Labyrinthe implements Sujet{
 
 	private ArrayList<Case[][]> listeMouvementsIA; //Liste des labyrinthes pour le mouvement de l'IA
 	private Case[][] grilleDeBase; //Tableau de cases qui représente le labyrinthe de base (aucun mouvements)
+	private Personnage personnageDeBase; //Personnage avant le lancement de l'IA
 	private boolean modeIA; //boolean qui indique si nous somme en mode IA ou en mode joueur
 
 	/*
@@ -410,7 +411,7 @@ public class Labyrinthe implements Sujet{
 				}
 				this.grille = rep;
 				this.listeMouvementsIA = new ArrayList<Case[][]>();
-				this.p.setPosition(1,1);
+				this.p.setPosition(this.personnageDeBase.getPosX(),this.personnageDeBase.getPosY());
 				this.emplacement = 0;
 				this.mouvements = 0;
 				this.notifierObservateurs();
@@ -435,5 +436,31 @@ public class Labyrinthe implements Sujet{
 
 	public void setSolution(ArrayList<String> s){
 		this.solution = s;
+	}
+
+
+	public void majGrilleDeBase(){
+		Case[][] rep = new Case[8][9];
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j <= 7; j++) {
+				Case place = this.grille[j][i];
+				switch (place.getClass().getSimpleName()) {
+					case "Sol":
+						if (place.getOccupantCaisse() !=null) rep[j][i] = new Sol(j ,i, new Caisse(j, i, false), true);
+						else rep[j][i] = new Sol(j ,i, null, false);
+						break;
+					case "Emplacement":
+						if (place.getOccupantCaisse() !=null) rep[j][i] = new Emplacement(j ,i, new Caisse(j, i, false), true);
+						else rep[j][i] = new Emplacement(j ,i, null, false);
+						break;
+					case "Mur":
+						rep[j][i] = new Mur(j, i);
+						break;
+				}
+			}
+		}
+		this.personnageDeBase = new Personnage(this.p.getPosX(), this.p.getPosY());
+		this.grilleDeBase = rep;
+
 	}
 }

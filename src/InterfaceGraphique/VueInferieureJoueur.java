@@ -44,6 +44,7 @@ public class VueInferieureJoueur extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                modele.majGrilleDeBase();
                 menu.lancementIA();
             }
         });
