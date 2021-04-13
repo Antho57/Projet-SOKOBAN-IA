@@ -5,6 +5,7 @@ import IA.IA;
 import Jeu.Labyrinthe;
 import Jeu.Sujet;
 import IA.LancementIA;
+import IA.heuristiques.HeuristiqueCaisseEtPersonnage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,7 +35,7 @@ public class VueInferieureLancementIA extends JPanel implements Observateur{
     public VueInferieureLancementIA(Labyrinthe modele, MenuJeu menu){
         this.modele = modele;
         this.menu = menu;
-        this.ia = new IA(modele);
+        this.ia = new IA(modele, new HeuristiqueCaisseEtPersonnage());
         this.ia.enregistrerObservateur(this);
 
         this.setSize(new Dimension(900, 100));

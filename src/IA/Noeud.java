@@ -5,6 +5,8 @@ import Jeu.Personnage;
 
 import java.util.ArrayList;
 
+import IA.heuristiques.Heuristique;
+
 /*
 Class qui represente un noeud dans la recherche
  */
@@ -25,13 +27,13 @@ public class Noeud implements Comparable{
     @param heuristique, mouvements qu'il reste a faire pour finir le niveau
     @param e, Etat courant du labyrinthe
      */
-    public Noeud(int dep, ArrayList<int[]> l, Etat e, Noeud prec, String mouv){
+    public Noeud(int dep, ArrayList<int[]> l, Etat e, Noeud prec, String mouv, Heuristique h){
         this.etat = e;
         this.precedent = prec;
         this.mouvement = mouv;
         this.deplacements = dep;
         this.listeEmplacement = l;
-        this.heuristique = this.calculerHeuristique();
+        this.heuristique = h.calculerHeuristique(this.etat,this.listeEmplacement);
         this.cout = dep + this.heuristique;
     }
     

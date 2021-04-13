@@ -2,6 +2,7 @@ package tests;
 
 import IA.Etat;
 import IA.Noeud;
+import IA.heuristiques.HeuristiqueCaisseEtPersonnage;
 import Jeu.Caisse;
 import Jeu.Personnage;
 import org.junit.Before;
@@ -20,12 +21,12 @@ import static org.junit.Assert.assertTrue;
  */
 
 /*
-Class de test pour le l'heuristique
+ * Class de test pour le l'heuristique
  */
 public class TestHeuristiques {
-	
+
 	private ArrayList<Caisse> c;
-	
+
 	/**
 	 * methode qui prepare les donnees
 	 */
@@ -33,22 +34,21 @@ public class TestHeuristiques {
 	public void avant() {
 		c = new ArrayList<Caisse>();
 	}
-	
+
 	/**
 	 * methode qui teste l'heuristique avec une caisse mal placée
 	 */
 	@Test
 	public void testHeuristiqueMalPlace() {
 		c.add(new Caisse(5, 5, false));
-		c.add(new Caisse(3,3, false));
+		c.add(new Caisse(3, 3, false));
 		Etat e = new Etat(new Personnage(1, 1), this.c);
-		Noeud n = new Noeud(0, null, e, null, null);
+		Noeud n = new Noeud(0, null, e, null, null, new HeuristiqueCaisseEtPersonnage());
 		int val = n.calculerHeuristique();
 
 		assertEquals("La valeur de l'heuristique devrait être de 4", 4, val);
 
 	}
-
 
 	/**
 	 * methode qui teste l'heuristique avec une caisse bien placée
@@ -56,9 +56,9 @@ public class TestHeuristiques {
 	@Test
 	public void testHeuristiqueBienPlace() {
 		c.add(new Caisse(5, 5, false));
-		c.add(new Caisse(3,3, true));
+		c.add(new Caisse(3, 3, true));
 		Etat e = new Etat(new Personnage(1, 1), this.c);
-		Noeud n = new Noeud(0, null, e, null, null);
+		Noeud n = new Noeud(0, null, e, null, null, new HeuristiqueCaisseEtPersonnage());
 		int val = n.calculerHeuristique();
 
 		assertEquals("La valeur de l'heuristique devrait être de 8", 8, val);
