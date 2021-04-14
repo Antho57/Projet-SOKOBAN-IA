@@ -40,6 +40,10 @@ public class HeuristiqueFactory {
 		case "HeuristiqueEtudiants":
 			return new HeuristiqueEtudiants();
 
+		// heuristique developpee par etudiants sur les caisses
+		case "HeuristiqueEtudiantCaisse":
+			return new HeuristiqueEtudiantCaisse();
+
 		default:
 			throw new Error("Heuristique " + s + " inconnue");
 

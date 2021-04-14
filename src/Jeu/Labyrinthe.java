@@ -202,22 +202,22 @@ public class Labyrinthe implements Sujet {
 	 * @param direction, la direction choisi
 	 */
 	public Case[][] move(String direction) {
-		// r�cup�ration de la position du personnage
+		// recuperation de la position du personnage
 		int x = this.p.getPosX();
 		int y = this.p.getPosY();
 		Case caseSuivante;
-		// r�cup�ration de la case suivante en fonction de sa direction si le
+		// recuperation de la case suivante en fonction de sa direction si le
 		// deplacement est possible
 		caseSuivante = this.getCaseSuivante(x, y, direction);
 		int xSuiv = caseSuivante.getX();
 		int ySuiv = caseSuivante.getY();
-		// v�rification de la case suivante (case libre, mur ou caisse)
+		// verification de la case suivante (case libre, mur ou caisse)
 		if (!this.isMur(caseSuivante)) {
 			if (!this.isOccupe(caseSuivante)) {
 				this.p.setPosition(xSuiv, ySuiv);
 				this.mouvements++;
 				this.notifierObservateurs();
-				// si caisse, v�rification de la possibilt� de d�placement de celle ci
+				// si caisse, verification de la possibilte de deplacement de celle ci
 			} else {
 				Case caseSuivante2 = this.getCaseSuivante(xSuiv, ySuiv, direction);
 				if (!this.isOccupe(caseSuivante2) && !this.isMur(caseSuivante2)) {

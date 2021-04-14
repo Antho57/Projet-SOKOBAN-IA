@@ -19,12 +19,13 @@ public class PrincipaleHeuristiques {
 	public static void main(String[] args) {
 
 		// les heuristiques à tester
-		String[] nomsHeuristiques = {"CaissePerso", "CaissePersoPlusGrand", "HeuristiqueEtudiants", "Dijkstra" };
+		String[] nomsHeuristiques = { "CaissePersoPlusGrand", "CaissePerso", "HeuristiqueEtudiants",
+				"HeuristiqueEtudiantCaisse", "Dijkstra" };
 
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {
 			// creation du niveau
-			Labyrinthe lab = new Labyrinthe(0);
+			Labyrinthe lab = new Labyrinthe(1);
 
 			// recuperation heuristique avec Factory
 			Heuristique heuristique = HeuristiqueFactory.getHeuristique(nom);

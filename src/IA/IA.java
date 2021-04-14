@@ -6,23 +6,27 @@ import Jeu.*;
 import java.util.*;
 
 import IA.heuristiques.Heuristique;
-import IA.heuristiques.HeuristiqueCaisseEtPersonnage;
 
-/*
-Class qui permet de faire fonctionner l'IA
+/**
+ * Class qui permet de faire fonctionner l'IA
  */
 public class IA implements Sujet {
 
+	// TODO plutot une liste triée pour ne pas la parcourir
 	private ArrayList<Noeud> listeOuverte; // Liste de noeuds qu'il faut encore explorer
+
+	// TODO transformer en HashSet (besoin de hashcode de noeud)
 	private ArrayList<Noeud> listeFerme; // Liste de noeuds que nous avons deja explore
+
+	// TODO dans la classe probleme
 	private Labyrinthe lab; // Le labyrinthe courant
-	private Etat objectif; // Etat qui représente l'objectif de l'IA
-	private Case[][] grille;// La grille du labyrinthe
+
+	// TODO plutot des variables que des attributs
 	private boolean win; // Boolean qui représente la reussite de l'IA
 	private Noeud fin; // Noeud qui vas correspondre à l'objectif
-	private int nb;
+
+	// MVC
 	private ArrayList<Observateur> observateurs; // Lise d'observateur pour le model MVC
-	private int taille; // taille de la liste fermé
 
 	/**
 	 * heuristique utilisée
@@ -39,15 +43,17 @@ public class IA implements Sujet {
 		this.listeOuverte = new ArrayList<Noeud>();
 		this.lab = lab;
 		this.win = false;
-		this.grille = lab.getGrille();
 		listeFerme = new ArrayList<Noeud>();
 		this.observateurs = new ArrayList<Observateur>();
-		ArrayList<int[]> listeEmplacement = new ArrayList<int[]>();
 
 		// stocke heuristique
 		this.heuristique = heuristique;
 
+		// creation de la liste des caisses et de la liste des emplacements
 		ArrayList<Caisse> rep = new ArrayList<Caisse>();
+		ArrayList<int[]> listeEmplacement = new ArrayList<int[]>();
+		// remplissage initial des listes
+		// TODO plutot méthode de labyrinthe
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j <= 7; j++) {
 				switch (this.lab.getGrille()[j][i].getClass().getSimpleName()) {
@@ -69,17 +75,25 @@ public class IA implements Sujet {
 		this.listeOuverte.add(depart);
 	}
 
-	/*
+	/**
 	 * Methode de recherche de solution pour le niveau courant
 	 * 
 	 * @param objectif, l'Etat qui représente l'objectif
 	 */
 	public ArrayList<String> chercherSolution() {
-		taille = this.listeOuverte.size();
+		int taille = this.listeOuverte.size();
+		int nbIterations = 0;
+
 		while (!this.win && listeOuverte.size() > 0) {
+
+			// TODO tres tres bourrin de trier a chaque fois
 			Collections.sort(this.listeOuverte);
 			Collections.reverse(this.listeOuverte);
+
+			// cherche si solution dans la liste ouverte !!
+			// TODO inutile, a remplacer 
 			int v = 0;
+			System.out.println(v);
 			while (v < this.listeOuverte.size() && !this.win) {
 
 				if (this.listeOuverte.get(v).getEtat().estGagnant()) {
@@ -88,9 +102,16 @@ public class IA implements Sujet {
 				}
 				v++;
 			}
+
+			// si pas solution
 			if (!this.win) {
 				// Récupère le Noeud et le supprime de la liste
-				this.nb++;
+				nbIterations++;
+
+				// affichage
+				if (nbIterations % 1000 == 0)
+					System.out.println("  - it " + nbIterations);
+
 				Noeud n = listeOuverte.get(0);
 				this.listeOuverte.remove(0);
 
@@ -117,15 +138,15 @@ public class IA implements Sujet {
 							this.listeOuverte.add(noeud);
 						}
 					}
-					if (this.listeOuverte.size() - this.taille >= 200) {
+					if (this.listeOuverte.size() - taille >= 200) {
 						notifierObservateurs();
-						this.taille = this.listeOuverte.size();
+						taille = this.listeOuverte.size();
 					}
 				}
 			} else {
 				// Récupère le Noeud final (correspond à la victoire)
 				Noeud n = this.fin;
-				System.out.println("Nombre de tests : " + nb);
+				System.out.println("Nombre de tests : " + nbIterations);
 				ArrayList<String> rep = new ArrayList<String>();
 				int j = 0;
 				// Parcoure les Noeuds précédents pour récupérer les mouvements
@@ -148,15 +169,13 @@ public class IA implements Sujet {
 		return null;
 	}
 
-	/*
+	/**
 	 * Methode qui permet de chercher le prochain Etat dans la direction passé en
 	 * paramettre
 	 * 
-	 * @return Etat, le procjhain Etat
-	 * 
-	 * @param direction , la direction choisie
-	 * 
-	 * @param e, l'Etat courant
+	 * @return Etat, le prochain Etat
+	 * @param direction la direction choisie
+	 * @param e         l'Etat courant
 	 */
 	public Etat chercherProchainMouvement(String direction, Etat e) {
 		Personnage perso = e.getPersonnage();
@@ -169,6 +188,7 @@ public class IA implements Sujet {
 		int xSuiv2 = xSuiv;
 		int ySuiv2 = ySuiv;
 
+		// TODO en faire une methode de case suivante
 		switch (direction) {
 		case "Droite":
 			xSuiv += 1;
@@ -200,12 +220,13 @@ public class IA implements Sujet {
 			}
 		}
 
-		if (!this.grille[xSuiv][ySuiv].isMur()) {
+		Case[][] grille = this.lab.getGrille();
+		if (!grille[xSuiv][ySuiv].isMur()) {
 			if (move != null) {
-				if (move2 == null && !this.grille[xSuiv2][ySuiv2].isMur()) {
+				if (move2 == null && !grille[xSuiv2][ySuiv2].isMur()) {
 					Personnage p = new Personnage(xSuiv, ySuiv);
 					move.setPosition(xSuiv2, ySuiv2);
-					if (this.grille[xSuiv2][ySuiv2].getClass().getSimpleName().equals("Emplacement")) {
+					if (grille[xSuiv2][ySuiv2].getClass().getSimpleName().equals("Emplacement")) {
 						move.setBienPlace(true);
 					} else {
 						move.setBienPlace(false);
@@ -229,6 +250,10 @@ public class IA implements Sujet {
 		return null;
 	}
 
+	// ##################################################
+	// Getter
+	// ##################################################
+
 	public ArrayList<Noeud> getListeOuverte() {
 		return this.listeOuverte;
 	}
@@ -237,7 +262,11 @@ public class IA implements Sujet {
 		return this.listeFerme;
 	}
 
-	/*
+	// ##################################################
+	// MVC
+	// ##################################################
+
+	/**
 	 * Méthode qui permet d'enregistrer un observateur
 	 * 
 	 * @param o, observateur qu'il faut enregistrer
@@ -248,7 +277,7 @@ public class IA implements Sujet {
 
 	}
 
-	/*
+	/**
 	 * Méthode qui permet de supprimer un observateur de la liste
 	 * 
 	 * @param o, l'observateur que l'on veut supprimer
@@ -260,7 +289,7 @@ public class IA implements Sujet {
 			this.observateurs.remove(i);
 	}
 
-	/*
+	/**
 	 * Méthode qui permet de notifier tous les observateurs de la liste après la
 	 * modification d'un attribut de la class
 	 */
@@ -274,4 +303,5 @@ public class IA implements Sujet {
 		}
 
 	}
+
 }
