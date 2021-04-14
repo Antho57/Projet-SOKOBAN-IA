@@ -12,6 +12,9 @@ import IA.heuristiques.Heuristique;
  */
 public class IA implements Sujet {
 
+	// TODO affichage debug ou non
+	public static boolean DEBUG=false;
+	
 	// TODO plutot une liste triée pour ne pas la parcourir
 	private ArrayList<Noeud> listeOuverte; // Liste de noeuds qu'il faut encore explorer
 
@@ -84,36 +87,24 @@ public class IA implements Sujet {
 		int taille = this.listeOuverte.size();
 		int nbIterations = 0;
 
+		// tant qu'il reste des elements à tester et qu'on a pas trouve la sortie
 		while (!this.win && listeOuverte.size() > 0) {
 
-			// TODO tres tres bourrin de trier a chaque fois
+			// TODO tres tres bourrin de trier a chaque fois + reverse
 			Collections.sort(this.listeOuverte);
 			Collections.reverse(this.listeOuverte);
 
-			// cherche si solution dans la liste ouverte !!
-			// TODO inutile, a remplacer 
-			int v = 0;
-			System.out.println(v);
-			while (v < this.listeOuverte.size() && !this.win) {
+			// gere le nombre d'iterations
+			nbIterations++;
+			if (DEBUG && nbIterations % 1000 == 0)
+				System.out.println("  - it " + nbIterations);
 
-				if (this.listeOuverte.get(v).getEtat().estGagnant()) {
-					this.win = true;
-					this.fin = this.listeOuverte.get(v);
-				}
-				v++;
-			}
+			// Récupère le Noeud et le supprime de la liste
+			Noeud n = listeOuverte.get(0);
+			this.listeOuverte.remove(0);
 
-			// si pas solution
-			if (!this.win) {
-				// Récupère le Noeud et le supprime de la liste
-				nbIterations++;
-
-				// affichage
-				if (nbIterations % 1000 == 0)
-					System.out.println("  - it " + nbIterations);
-
-				Noeud n = listeOuverte.get(0);
-				this.listeOuverte.remove(0);
+			// vérifie si le noeud n'est pas une solution
+			if (!n.getEtat().estGagnant()) {
 
 				// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
 				boolean idem = listeFerme.contains(n);
@@ -144,20 +135,15 @@ public class IA implements Sujet {
 					}
 				}
 			} else {
+				// noeud est la solution
+				this.win = true;
 				// Récupère le Noeud final (correspond à la victoire)
-				Noeud n = this.fin;
 				System.out.println("Nombre de tests : " + nbIterations);
 				ArrayList<String> rep = new ArrayList<String>();
 				int j = 0;
 				// Parcoure les Noeuds précédents pour récupérer les mouvements
 				while (n.getPrecedent() != null) {
 					rep.add(0, n.getMouvement());
-//                    System.out.println("Mouvement " +j +" : "+n.getMouvement());
-//                    j++;
-//                    for (int i=0; i<n.getEtat().getListeCaisses().size(); i++){
-//                        System.out.print(" Caisse n" +(i+1) +" : ");
-//                        System.out.println(n.getEtat().getListeCaisses().get(i).getPosX() +" - " +n.getEtat().getListeCaisses().get(i).getPosY());
-//                    }
 					n = n.getPrecedent();
 				}
 				this.lab.setSolution(rep);

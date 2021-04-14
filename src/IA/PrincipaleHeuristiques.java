@@ -25,7 +25,7 @@ public class PrincipaleHeuristiques {
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {
 			// creation du niveau
-			Labyrinthe lab = new Labyrinthe(1);
+			Labyrinthe lab = new Labyrinthe(0);
 
 			// recuperation heuristique avec Factory
 			Heuristique heuristique = HeuristiqueFactory.getHeuristique(nom);
