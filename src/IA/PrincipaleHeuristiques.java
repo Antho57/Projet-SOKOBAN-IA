@@ -19,7 +19,7 @@ public class PrincipaleHeuristiques {
 	public static void main(String[] args) {
 
 		// les heuristiques à tester
-		String[] nomsHeuristiques = { "Dijkstra", "CaissePerso" };
+		String[] nomsHeuristiques = { "Dijkstra", "CaissePerso", "CaissePersoPlusGrand" };
 
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {
