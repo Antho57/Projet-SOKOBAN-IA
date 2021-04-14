@@ -105,6 +105,7 @@ public class IA implements Sujet {
 
 			// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
 			boolean idem = listeFerme.contains(n);
+			
 			// Si le Noeud n'est pas déja dans la liste fermé
 			if (!idem) {
 

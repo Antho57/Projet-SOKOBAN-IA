@@ -3,6 +3,7 @@ package Jeu;
 import IA.Noeud;
 
 import java.awt.Image;
+
 /**
  * @author Anthony Briot
  * @author Lucas Saker
@@ -11,20 +12,22 @@ import java.awt.Image;
  */
 
 /*
-Class qui représente les caisses présentes dans le lalbyrinthe
+ * Class qui représente les caisses présentes dans le lalbyrinthe
  */
-public class Caisse implements Comparable{
+public class Caisse implements Comparable {
 
+	private Case position; // Case sur laquelle la caisse est positionné
+	private int posX; // position en x de la caisse
 
-	private Case position; //Case sur laquelle la caisse est positionné
-	private int posX; //position en x de la caisse
-	private int posY; //position en y de la caisse
-	private boolean bienPlace; //boolean qui indique si la caisse est placé sur un emplacement
+	private int posY; // position en y de la caisse
+	private boolean bienPlace; // boolean qui indique si la caisse est placé sur un emplacement
 
 	/*
-	Constructeur de la caisse
-	@param x, position en x de la caisse
-	@param y, position en y de la caisse
+	 * Constructeur de la caisse
+	 * 
+	 * @param x, position en x de la caisse
+	 * 
+	 * @param y, position en y de la caisse
 	 */
 	public Caisse(int X, int Y, boolean p) {
 		this.posX = X;
@@ -33,21 +36,29 @@ public class Caisse implements Comparable{
 	}
 
 	/*
-	Méthode qui renvoi la position x de la caisse
-	@return int, la position en x de la caisse
+	 * Méthode qui renvoi la position x de la caisse
+	 * 
+	 * @return int, la position en x de la caisse
 	 */
-	public int getPosX() { return this.posX; }
+	public int getPosX() {
+		return this.posX;
+	}
 
 	/*
-	Méthode qui renvoi la position y de la caisse
-	@return int, la position en y de la caisse
+	 * Méthode qui renvoi la position y de la caisse
+	 * 
+	 * @return int, la position en y de la caisse
 	 */
-	public int getPosY() { return this.posY; }
+	public int getPosY() {
+		return this.posY;
+	}
 
 	/*
-	Méthode qui change la position de la caisse
-	@param x, la nouvelle position en x de la caisse
-	@param y, la nouvelle position en y de la caisse
+	 * Méthode qui change la position de la caisse
+	 * 
+	 * @param x, la nouvelle position en x de la caisse
+	 * 
+	 * @param y, la nouvelle position en y de la caisse
 	 */
 	public void setPosition(int X, int Y) {
 		this.posX = X;
@@ -55,32 +66,69 @@ public class Caisse implements Comparable{
 	}
 
 	/*
-	Méthode qui permet de notifier que la caisse est bien placé ou non
-	@param p, boolean qui indique si la caisse est bien placé ou non
+	 * Méthode qui permet de notifier que la caisse est bien placé ou non
+	 * 
+	 * @param p, boolean qui indique si la caisse est bien placé ou non
 	 */
-	public void setBienPlace(boolean p){
+	public void setBienPlace(boolean p) {
 		this.bienPlace = p;
 	}
 
 	/*
-	Méthode qui permet de savoir si la caisse est placé sur un emplacement
-	@return boolean, attribut qui indique si la caisse est bien placé
+	 * Méthode qui permet de savoir si la caisse est placé sur un emplacement
+	 * 
+	 * @return boolean, attribut qui indique si la caisse est bien placé
 	 */
-	public boolean estBienPlace(){
+	public boolean estBienPlace() {
 		return this.bienPlace;
 	}
 
 	@Override
 	public int compareTo(Object o) {
-		Caisse c = (Caisse)o;
+		Caisse c = (Caisse) o;
 		if (this.getPosX() < c.getPosX())
 			return 1;
-		else if(this.getPosX() == c.getPosX()) {
+		else if (this.getPosX() == c.getPosX()) {
 			if (this.getPosY() < c.getPosY())
 				return 1;
 			else if (this.getPosY() == c.getPosY())
 				return 0;
-			else return -1;
-		}else return -1;
+			else
+				return -1;
+		} else
+			return -1;
+	}
+
+	public String toString() {
+		return "(" + this.posX + "," + this.posY + ")";
+	}
+
+	// ###############################
+	// Equals et hashcode
+	// ###############################
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + posX;
+		result = prime * result + posY;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Caisse other = (Caisse) obj;
+		if (posX != other.posX)
+			return false;
+		if (posY != other.posY)
+			return false;
+		return true;
 	}
 }

@@ -20,9 +20,11 @@ public class Etat {
 	 */
 	public Etat(Personnage p, ArrayList<Caisse> c) {
 		this.personnage = p;
-		ArrayList<Caisse> liste = (ArrayList<Caisse>) c.clone();
 
+		// la liste des caisses est triee
+		ArrayList<Caisse> liste = (ArrayList<Caisse>) c.clone();
 		this.listeCaisses = liste;
+		Collections.sort(this.listeCaisses);
 	}
 
 	/**
@@ -38,20 +40,15 @@ public class Etat {
 				|| this.getPersonnage().getPosY() != e.getPersonnage().getPosY()) {
 			return false;
 		} else {
-			ArrayList<Caisse> liste = this.getListeCaisses();
-			// Collections.sort(liste);
-			ArrayList<Caisse> listeE = e.getListeCaisses();
-			// Collections.sort(listeE);
+			// personnage egaux
 			
-			// TODO question : tri des caisses ? états identiques si caisses ont des positions differentes ?
-			for (int i = 0; i < liste.size(); i++) {
-				if (liste.get(i).getPosX() != listeE.get(i).getPosX()
-						|| liste.get(i).getPosY() != listeE.get(i).getPosY()) {
-					return false;
-				}
-			}
+			// comme les etats ont toujours des listes de caisse triees (cf constructeur)
+			// => on peut tester egalite des listes
+			ArrayList<Caisse> liste = this.getListeCaisses();
+			ArrayList<Caisse> listeE = e.getListeCaisses();
+			return liste.equals(listeE);
 		}
-		return true;
+
 	}
 
 	/**
@@ -86,4 +83,5 @@ public class Etat {
 	public ArrayList<Caisse> getListeCaisses() {
 		return this.listeCaisses;
 	}
+
 }
