@@ -28,30 +28,6 @@ public class Etat {
 	}
 
 	/**
-	 * Methode qui compare deux Etats
-	 * 
-	 * @param e1, Etat numero 1
-	 * @param e2, Etat numero 2
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		Etat e = (Etat) obj;
-		if (this.getPersonnage().getPosX() != e.getPersonnage().getPosX()
-				|| this.getPersonnage().getPosY() != e.getPersonnage().getPosY()) {
-			return false;
-		} else {
-			// personnage egaux
-			
-			// comme les etats ont toujours des listes de caisse triees (cf constructeur)
-			// => on peut tester egalite des listes
-			ArrayList<Caisse> liste = this.getListeCaisses();
-			ArrayList<Caisse> listeE = e.getListeCaisses();
-			return liste.equals(listeE);
-		}
-
-	}
-
-	/**
 	 * Methode qui retourne true si l'Etat courant est gagnant
 	 * 
 	 * @return boolean, la reponse
@@ -82,6 +58,30 @@ public class Etat {
 	 */
 	public ArrayList<Caisse> getListeCaisses() {
 		return this.listeCaisses;
+	}
+
+	// ###################################
+	// Equals et hashcode
+	// ###################################
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((listeCaisses == null) ? 0 : listeCaisses.hashCode());
+		result = prime * result + ((personnage == null) ? 0 : personnage.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Etat other = (Etat) obj;
+		
+		// teste personnage
+		if (!personnage.equals(other.personnage))
+			return false;
+		// comme les caisses sont triées, on compare directement les contenus
+		return listeCaisses.equals(other.listeCaisses);
 	}
 
 }

@@ -19,8 +19,10 @@ public class PrincipaleHeuristiques {
 	public static void main(String[] args) {
 
 		// les heuristiques à tester
-		String[] nomsHeuristiques = { "CaissePersoPlusGrand", "CaissePerso", "HeuristiqueEtudiants",
-				"HeuristiqueEtudiantCaisse", "Dijkstra" };
+		String[] nomsHeuristiques = HeuristiqueFactory.getAllNames();
+
+		// affiche en mode debug
+		IA.DEBUG = true;
 
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {

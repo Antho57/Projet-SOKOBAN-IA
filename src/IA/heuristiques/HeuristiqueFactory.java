@@ -51,4 +51,13 @@ public class HeuristiqueFactory {
 
 	}
 
+	/**
+	 * all known heuristic names
+	 */
+	public static String[] getAllNames() {
+		String[] res = { "CaissePersoPlusGrand", "CaissePerso", "HeuristiqueEtudiants", "HeuristiqueEtudiantCaisse",
+				"Dijkstra" };
+		return res;
+	}
+
 }

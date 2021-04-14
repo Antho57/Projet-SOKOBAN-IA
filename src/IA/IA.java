@@ -12,21 +12,19 @@ import IA.heuristiques.Heuristique;
  */
 public class IA implements Sujet {
 
-	// TODO affichage debug ou non
+	// affichage debug ou non
 	public static boolean DEBUG = false;
 
-	// TODO plutot une liste triée pour ne pas la parcourir
-	private ArrayList<Noeud> listeOuverte; // Liste de noeuds qu'il faut encore explorer
+	// TODO plutot une liste triée pour ne pas la parcourir ou la trier
+	// Liste de noeuds qu'il faut encore explorer
+	private List<Noeud> listeOuverte; 
 
-	// TODO transformer en HashSet (besoin de hashcode de noeud)
-	private ArrayList<Noeud> listeFerme; // Liste de noeuds que nous avons deja explore
+	// OK transformé listefermee en HashSet
+	// ensemble de noeuds que nous avons deja explore
+	private Collection<Noeud> listeFerme;
 
 	// TODO dans la classe probleme
 	private Labyrinthe lab; // Le labyrinthe courant
-
-	// TODO plutot des variables que des attributs
-	private boolean win; // Boolean qui représente la reussite de l'IA
-	private Noeud fin; // Noeud qui vas correspondre à l'objectif
 
 	// MVC
 	private ArrayList<Observateur> observateurs; // Lise d'observateur pour le model MVC
@@ -43,10 +41,15 @@ public class IA implements Sujet {
 	 * @param heuristique heuristique utilisee
 	 */
 	public IA(Labyrinthe lab, Heuristique heuristique) {
+		
+		// ensemblee trie
 		this.listeOuverte = new ArrayList<Noeud>();
+		
+		// utilise un hashset pour facilement faire une recherche
+		this.listeFerme = new HashSet<Noeud>();
+		
 		this.lab = lab;
-		this.win = false;
-		listeFerme = new ArrayList<Noeud>();
+		
 		this.observateurs = new ArrayList<Observateur>();
 
 		// stocke heuristique
@@ -87,8 +90,13 @@ public class IA implements Sujet {
 		int taille = this.listeOuverte.size();
 		int nbIterations = 0;
 
+		// si on a trouve une solution dans la liste ouverte
+		boolean win = false;
+		// noeud gagnant trouve
+		Noeud fin = null;
+
 		// tant qu'il reste des elements à tester et qu'on a pas trouve la sortie
-		while (!this.win && listeOuverte.size() > 0) {
+		while (!win && listeOuverte.size() > 0) {
 
 			// TODO tres tres bourrin de trier a chaque fois + reverse
 			Collections.sort(this.listeOuverte);
@@ -105,7 +113,7 @@ public class IA implements Sujet {
 
 			// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
 			boolean idem = listeFerme.contains(n);
-			
+
 			// Si le Noeud n'est pas déja dans la liste fermé
 			if (!idem) {
 
@@ -128,8 +136,8 @@ public class IA implements Sujet {
 
 						// test si le nouveau noeud est gagnant
 						if (etat.estGagnant()) {
-							this.win = true;
-							this.fin = noeud;
+							win = true;
+							fin = noeud;
 						}
 					}
 				}
@@ -140,12 +148,12 @@ public class IA implements Sujet {
 			}
 
 			// si on a ajoute un noeud dans la liste ouverte
-			if (this.win) {
+			if (win) {
 				// Récupère le Noeud final (correspond à la victoire)
 				System.out.println("Nombre de tests : " + nbIterations);
 				ArrayList<String> rep = new ArrayList<String>();
 				int j = 0;
-				Noeud temps = this.fin;
+				Noeud temps = fin;
 				// Parcoure les Noeuds précédents pour récupérer les mouvements
 				while (temps.getPrecedent() != null) {
 					rep.add(0, temps.getMouvement());
@@ -245,11 +253,11 @@ public class IA implements Sujet {
 	// Getter
 	// ##################################################
 
-	public ArrayList<Noeud> getListeOuverte() {
+	public Collection<Noeud> getListeOuverte() {
 		return this.listeOuverte;
 	}
 
-	public ArrayList<Noeud> getListeFerme() {
+	public Collection<Noeud> getListeFerme() {
 		return this.listeFerme;
 	}
 

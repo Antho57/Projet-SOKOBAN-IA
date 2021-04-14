@@ -42,7 +42,7 @@ public class Noeud implements Comparable {
 	// ###########################################
 	// COMPARAISONS
 	// ###########################################
-	
+
 	/**
 	 * Methode qui compare deux Noeuds
 	 * 
@@ -66,10 +66,19 @@ public class Noeud implements Comparable {
 			return -1;
 	}
 
+	// ###########################################
+	// Equals et hashcode sur node
+	// ###########################################
+
 	@Override
 	public boolean equals(Object obj) {
 		Noeud n = (Noeud) obj;
 		return this.etat.equals(n.etat);
+	}
+
+	@Override
+	public int hashCode() {
+		return this.etat.hashCode();
 	}
 
 	// ###########################################
