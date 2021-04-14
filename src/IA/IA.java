@@ -13,8 +13,8 @@ import IA.heuristiques.Heuristique;
 public class IA implements Sujet {
 
 	// TODO affichage debug ou non
-	public static boolean DEBUG=false;
-	
+	public static boolean DEBUG = false;
+
 	// TODO plutot une liste triée pour ne pas la parcourir
 	private ArrayList<Noeud> listeOuverte; // Liste de noeuds qu'il faut encore explorer
 
@@ -103,48 +103,52 @@ public class IA implements Sujet {
 			Noeud n = listeOuverte.get(0);
 			this.listeOuverte.remove(0);
 
-			// vérifie si le noeud n'est pas une solution
-			if (!n.getEtat().estGagnant()) {
+			// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
+			boolean idem = listeFerme.contains(n);
+			// Si le Noeud n'est pas déja dans la liste fermé
+			if (!idem) {
 
-				// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
-				boolean idem = listeFerme.contains(n);
-				// Si le Noeud n'est pas déja dans la liste fermé
-				if (!idem) {
+				// On ajoute le Noeud à la liste fermé
+				this.listeFerme.add(n);
+				Etat e = n.getEtat();
 
-					// On ajoute le Noeud à la liste fermé
-					this.listeFerme.add(n);
-					Etat e = n.getEtat();
+				// Liste des mouvements a tester
+				String[] mouvements = { "Droite", "Gauche", "Haut", "Bas" };
 
-					// Liste des mouvements a tester
-					String[] mouvements = { "Droite", "Gauche", "Haut", "Bas" };
+				// Recherche et ajout des prochains Noeud dans la listeOuverte
+				for (int k = 0; k < mouvements.length; k++) {
+					String m = mouvements[k];
+					Etat etat = this.chercherProchainMouvement(m, e);
+					if (etat != null) {
+						int nbDep = n.getDeplacements() + 1;
+						ArrayList<int[]> emplacements = n.getListeEmplacement();
+						Noeud noeud = new Noeud(nbDep, emplacements, etat, n, m, this.heuristique);
+						this.listeOuverte.add(noeud);
 
-					// Recherche et ajout des prochains Noeud dans la listeOuverte
-					for (int k = 0; k < mouvements.length; k++) {
-						String m = mouvements[k];
-						Etat etat = this.chercherProchainMouvement(m, e);
-						if (etat != null) {
-							int nbDep = n.getDeplacements() + 1;
-							ArrayList<int[]> emplacements = n.getListeEmplacement();
-							Noeud noeud = new Noeud(nbDep, emplacements, etat, n, m, this.heuristique);
-							this.listeOuverte.add(noeud);
+						// test si le nouveau noeud est gagnant
+						if (etat.estGagnant()) {
+							this.win = true;
+							this.fin = noeud;
 						}
 					}
-					if (this.listeOuverte.size() - taille >= 200) {
-						notifierObservateurs();
-						taille = this.listeOuverte.size();
-					}
 				}
-			} else {
-				// noeud est la solution
-				this.win = true;
+				if (this.listeOuverte.size() - taille >= 200) {
+					notifierObservateurs();
+					taille = this.listeOuverte.size();
+				}
+			}
+
+			// si on a ajoute un noeud dans la liste ouverte
+			if (this.win) {
 				// Récupère le Noeud final (correspond à la victoire)
 				System.out.println("Nombre de tests : " + nbIterations);
 				ArrayList<String> rep = new ArrayList<String>();
 				int j = 0;
+				Noeud temps = this.fin;
 				// Parcoure les Noeuds précédents pour récupérer les mouvements
-				while (n.getPrecedent() != null) {
-					rep.add(0, n.getMouvement());
-					n = n.getPrecedent();
+				while (temps.getPrecedent() != null) {
+					rep.add(0, temps.getMouvement());
+					temps = temps.getPrecedent();
 				}
 				this.lab.setSolution(rep);
 				this.notifierObservateurs();
