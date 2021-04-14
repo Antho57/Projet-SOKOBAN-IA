@@ -12,22 +12,27 @@ import IA.heuristiques.Heuristique;
  */
 public class IA implements Sujet {
 
+	
+	// OPTIONS DE DEBUG
+	// on affiche tous les combien pas de temps
+	public static int NB_ITERATION_DEBUG = 1000;
 	// affichage debug ou non
 	public static boolean DEBUG = false;
 
-	// TODO plutot une liste triée pour ne pas la parcourir ou la trier
 	// Liste de noeuds qu'il faut encore explorer
+	// DONE plutot une liste triée pour ne pas la parcourir ou la trier
 	private TreeSet<Noeud> listeOuverte;
 
-	// OK transformé listefermee en HashSet
 	// ensemble de noeuds que nous avons deja explore
+	// DONE transformé listefermee en HashSet
 	private Collection<Noeud> listeFerme;
 
 	// TODO dans la classe probleme
 	private Labyrinthe lab; // Le labyrinthe courant
 
 	// MVC
-	private ArrayList<Observateur> observateurs; // Lise d'observateur pour le model MVC
+	// Liste d'observateur pour le model MVC
+	private ArrayList<Observateur> observateurs; 
 
 	/**
 	 * heuristique utilisée
@@ -87,8 +92,8 @@ public class IA implements Sujet {
 	 * @param objectif, l'Etat qui représente l'objectif
 	 */
 	public ArrayList<String> chercherSolution() {
-		int nbOuverts = this.listeOuverte.size();
-		int taille = nbOuverts;
+		
+		int taille = this.listeOuverte.size();
 		int nbIterations = 0;
 
 		// si on a trouve une solution dans la liste ouverte
@@ -101,10 +106,10 @@ public class IA implements Sujet {
 
 			// gere le nombre d'iterations
 			nbIterations++;
-			if (DEBUG && nbIterations % 1000 == 0) {
+			if (DEBUG && nbIterations % NB_ITERATION_DEBUG == 0) {
 				int nbFerme = this.listeFerme.size();
-				System.out.println("  - it " + nbIterations + " Ouverte" + nbOuverts + " Fermes" + nbFerme);
-
+				int nbOuverts = this.listeOuverte.size();
+				System.out.println("  - it " + nbIterations + " Ouverte " + nbOuverts + " Fermes " + nbFerme);
 			}
 
 			// Récupère le Noeud et le supprime de la liste
@@ -141,9 +146,9 @@ public class IA implements Sujet {
 						}
 					}
 				}
-				if (nbOuverts - taille >= 200) {
+				if (this.listeOuverte.size() - taille >= 200) {
 					notifierObservateurs();
-					taille = nbOuverts;
+					taille = this.listeOuverte.size();
 				}
 			}
 

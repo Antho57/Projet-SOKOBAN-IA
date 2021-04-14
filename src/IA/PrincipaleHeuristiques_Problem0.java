@@ -11,7 +11,7 @@ import Jeu.Labyrinthe;
 /**
  * Class principale qui permet de lancer l'IA lors de l'appui sur le bouton
  */
-public class PrincipaleHeuristiques {
+public class PrincipaleHeuristiques_Problem0 {
 
 	/**
 	 * Main, qui permet de créer et lancer l'IA avec toutes les heuristiques
@@ -23,6 +23,7 @@ public class PrincipaleHeuristiques {
 
 		// affiche en mode debug
 		IA.DEBUG = true;
+		IA.NB_ITERATION_DEBUG = 1000;
 
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {
