@@ -87,4 +87,23 @@ public class Personnage {
 			return false;
 		return true;
 	}
+	
+	public int compareTo(Object o) {
+		Personnage p = (Personnage) o;
+		if (this.getPosX() < p.getPosX())
+			return 1;
+		else if (this.getPosX() == p.getPosX()) {
+			if (this.getPosY() < p.getPosY())
+				return 1;
+			else if (this.getPosY() == p.getPosY())
+				return 0;
+			else
+				return -1;
+		} else
+			return -1;
+	}
+	
+	public String toString() {
+		return "p"+this.posX+","+this.posY;
+	}
 }

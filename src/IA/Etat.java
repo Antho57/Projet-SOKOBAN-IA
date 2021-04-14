@@ -76,12 +76,40 @@ public class Etat {
 	@Override
 	public boolean equals(Object obj) {
 		Etat other = (Etat) obj;
-		
+
 		// teste personnage
 		if (!personnage.equals(other.personnage))
 			return false;
 		// comme les caisses sont triées, on compare directement les contenus
 		return listeCaisses.equals(other.listeCaisses);
+	}
+
+	public int compareTo(Etat etat) {
+		// if personnage sont differents
+		int pj = this.personnage.compareTo(etat.personnage);
+		if (pj!=0)
+			return pj;
+		
+		// si les personnages sont sur le meme lieu, comparer les caisse
+		for (int i=0;i<this.listeCaisses.size();i++)
+		{
+			int compareCaisse = this.listeCaisses.get(i).compareTo(etat.listeCaisses.get(i));
+			if (compareCaisse!=0)
+				return compareCaisse;
+		}
+		
+		// exactement les memes valeurs
+		return 0;
+		
+		
+	}
+
+	// ###################################
+	// getter + tostring
+	// ###################################
+
+	public String toString() {
+		return "(" + this.personnage + "," + this.listeCaisses + ")";
 	}
 
 }

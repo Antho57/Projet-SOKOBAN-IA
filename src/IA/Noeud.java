@@ -53,13 +53,13 @@ public class Noeud implements Comparable {
 	@Override
 	public int compareTo(Object obj) {
 		Noeud n = (Noeud) obj;
-		if (this.cout < n.cout)
+		if (this.cout > n.cout)
 			return 1;
 		else if (this.cout == n.cout) {
-			if (this.deplacements > n.deplacements)
+			if (this.deplacements < n.deplacements)
 				return 1;
 			else if (this.deplacements == n.deplacements)
-				return 0;
+				return this.etat.compareTo(n.etat);
 			else
 				return -1;
 		} else
@@ -136,5 +136,10 @@ public class Noeud implements Comparable {
 
 	public ArrayList<int[]> getListeEmplacement() {
 		return this.listeEmplacement;
+	}
+
+	public String toString()
+	{
+		return this.etat+":"+this.cout;
 	}
 }

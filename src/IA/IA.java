@@ -17,7 +17,7 @@ public class IA implements Sujet {
 
 	// TODO plutot une liste triée pour ne pas la parcourir ou la trier
 	// Liste de noeuds qu'il faut encore explorer
-	private List<Noeud> listeOuverte; 
+	private TreeSet<Noeud> listeOuverte;
 
 	// OK transformé listefermee en HashSet
 	// ensemble de noeuds que nous avons deja explore
@@ -41,15 +41,15 @@ public class IA implements Sujet {
 	 * @param heuristique heuristique utilisee
 	 */
 	public IA(Labyrinthe lab, Heuristique heuristique) {
-		
+
 		// ensemblee trie
-		this.listeOuverte = new ArrayList<Noeud>();
-		
+		this.listeOuverte = new TreeSet<Noeud>();
+
 		// utilise un hashset pour facilement faire une recherche
 		this.listeFerme = new HashSet<Noeud>();
-		
+
 		this.lab = lab;
-		
+
 		this.observateurs = new ArrayList<Observateur>();
 
 		// stocke heuristique
@@ -87,7 +87,8 @@ public class IA implements Sujet {
 	 * @param objectif, l'Etat qui représente l'objectif
 	 */
 	public ArrayList<String> chercherSolution() {
-		int taille = this.listeOuverte.size();
+		int nbOuverts = this.listeOuverte.size();
+		int taille = nbOuverts;
 		int nbIterations = 0;
 
 		// si on a trouve une solution dans la liste ouverte
@@ -98,18 +99,17 @@ public class IA implements Sujet {
 		// tant qu'il reste des elements à tester et qu'on a pas trouve la sortie
 		while (!win && listeOuverte.size() > 0) {
 
-			// TODO tres tres bourrin de trier a chaque fois + reverse
-			Collections.sort(this.listeOuverte);
-			Collections.reverse(this.listeOuverte);
-
 			// gere le nombre d'iterations
 			nbIterations++;
-			if (DEBUG && nbIterations % 1000 == 0)
-				System.out.println("  - it " + nbIterations);
+			if (DEBUG && nbIterations % 1000 == 0) {
+				int nbFerme = this.listeFerme.size();
+				System.out.println("  - it " + nbIterations + " Ouverte" + nbOuverts + " Fermes" + nbFerme);
+
+			}
 
 			// Récupère le Noeud et le supprime de la liste
-			Noeud n = listeOuverte.get(0);
-			this.listeOuverte.remove(0);
+			Noeud n = listeOuverte.first();
+			this.listeOuverte.remove(n);
 
 			// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
 			boolean idem = listeFerme.contains(n);
@@ -141,9 +141,9 @@ public class IA implements Sujet {
 						}
 					}
 				}
-				if (this.listeOuverte.size() - taille >= 200) {
+				if (nbOuverts - taille >= 200) {
 					notifierObservateurs();
-					taille = this.listeOuverte.size();
+					taille = nbOuverts;
 				}
 			}
 
