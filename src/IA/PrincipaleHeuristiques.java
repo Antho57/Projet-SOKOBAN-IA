@@ -19,7 +19,7 @@ public class PrincipaleHeuristiques {
 	public static void main(String[] args) {
 
 		// les heuristiques à tester
-		String[] nomsHeuristiques = { "Dijkstra", "CaissePerso", "CaissePersoPlusGrand" };
+		String[] nomsHeuristiques = {"CaissePerso", "CaissePersoPlusGrand", "HeuristiqueEtudiants", "Dijkstra" };
 
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {
@@ -32,7 +32,7 @@ public class PrincipaleHeuristiques {
 			// creation de l'IA
 			IA ia = new IA(lab, heuristique);
 
-			System.out.println("### Heuristique " + nom);
+			System.out.println("\n### Heuristique " + nom);
 
 			// temp au début de l'execution
 			double timeStart = System.currentTimeMillis();

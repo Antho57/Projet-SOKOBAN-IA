@@ -30,12 +30,15 @@ public class HeuristiqueFactory {
 		case "caisseperso":
 		case "Caisseperso":
 			return new HeuristiqueCaisseEtPersonnage();
-			
-			// heuristique avec caisse et perso
-			case "CaissePersoPlusGrand":
-			case "caissepersoplusgrand":
-				return new HeuristiqueCaisseEtPlusGrandPersonnage();
 
+		// heuristique avec caisse et perso (distance plus elevee caisse mal placee)
+		case "CaissePersoPlusGrand":
+		case "caissepersoplusgrand":
+			return new HeuristiqueCaisseEtPlusGrandPersonnage();
+
+		// heuristique developpee par etudiants
+		case "HeuristiqueEtudiants":
+			return new HeuristiqueEtudiants();
 
 		default:
 			throw new Error("Heuristique " + s + " inconnue");

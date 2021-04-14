@@ -63,10 +63,13 @@ public class Noeud implements Comparable{
         return this.etat.equals(n.etat);
     }
 
-    /*
+     
+    /**
     Fonction d'heuristique, qui vas permettre de trier les Etat en fonction de leur importance
     @return int, la valeur de l'heuristique pour le Noeud courant
      */
+    
+    /*
     public int calculerHeuristique(){
         ArrayList<Caisse> liste = this.etat.getListeCaisses();
         Personnage p = this.etat.getPersonnage();
@@ -85,6 +88,7 @@ public class Noeud implements Comparable{
         }
         return valeurLaPlusPetite;
     }
+    */
 
     /*
     Methode qui renvoi l'Etat courant du Noeud
