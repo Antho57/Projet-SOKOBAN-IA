@@ -6,6 +6,7 @@ import Jeu.Labyrinthe;
 import Jeu.Sujet;
 import IA.LancementIA;
 import IA.heuristiques.HeuristiqueCaisseEtPersonnage;
+import IA.heuristiques.HeuristiqueCaisseEtPlusGrandPersonnage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +36,7 @@ public class VueInferieureLancementIA extends JPanel implements Observateur{
     public VueInferieureLancementIA(Labyrinthe modele, MenuJeu menu){
         this.modele = modele;
         this.menu = menu;
-        this.ia = new IA(modele, new HeuristiqueCaisseEtPersonnage());
+        this.ia = new IA(modele, new HeuristiqueCaisseEtPlusGrandPersonnage());
         this.ia.enregistrerObservateur(this);
 
         this.setSize(new Dimension(900, 100));
@@ -51,7 +52,7 @@ public class VueInferieureLancementIA extends JPanel implements Observateur{
         jpListeOuverte.setBackground(new Color(26, 45, 85));
 
         JLabel nbListeOuverte = new JLabel("ListeOuverte : " + this.ia.getListeOuverte().size());
-        nbListeOuverte.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
+        nbListeOuverte.setFont(new Font("BUBBLEBOY2",Font.BOLD, 14));
         nbListeOuverte.setForeground(new Color(89, 181, 201));
         nbListeOuverte.setBounds(5, -15, 300, 80);
         jpListeOuverte.add(nbListeOuverte);
@@ -64,7 +65,7 @@ public class VueInferieureLancementIA extends JPanel implements Observateur{
         jpListeFerme.setBackground(new Color(26, 45, 85));
 
         JLabel nbListeFerme = new JLabel("ListeFerme : " + this.ia.getListeFerme().size());
-        nbListeFerme.setFont(new Font("BUBBLEBOY2",Font.BOLD, 20));
+        nbListeFerme.setFont(new Font("BUBBLEBOY2",Font.BOLD, 14));
         nbListeFerme.setForeground(new Color(89, 181, 201));
         nbListeFerme.setBounds(5, -15, 300, 80);
         jpListeFerme.add(nbListeFerme);

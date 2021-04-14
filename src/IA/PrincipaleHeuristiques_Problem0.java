@@ -22,7 +22,7 @@ public class PrincipaleHeuristiques_Problem0 {
 		String[] nomsHeuristiques = HeuristiqueFactory.getAllNames();
 
 		// affiche en mode debug
-		IA.DEBUG = true;
+		IA.DEBUG = false;
 		IA.NB_ITERATION_DEBUG = 1000;
 
 		// pour chaque heuristique

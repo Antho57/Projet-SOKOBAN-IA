@@ -12,7 +12,6 @@ import IA.heuristiques.Heuristique;
  */
 public class IA implements Sujet {
 
-	
 	// OPTIONS DE DEBUG
 	// on affiche tous les combien pas de temps
 	public static int NB_ITERATION_DEBUG = 1000;
@@ -32,7 +31,7 @@ public class IA implements Sujet {
 
 	// MVC
 	// Liste d'observateur pour le model MVC
-	private ArrayList<Observateur> observateurs; 
+	private ArrayList<Observateur> observateurs;
 
 	/**
 	 * heuristique utilisée
@@ -92,7 +91,7 @@ public class IA implements Sujet {
 	 * @param objectif, l'Etat qui représente l'objectif
 	 */
 	public ArrayList<String> chercherSolution() {
-		
+
 		int taille = this.listeOuverte.size();
 		int nbIterations = 0;
 
@@ -116,59 +115,56 @@ public class IA implements Sujet {
 			Noeud n = listeOuverte.first();
 			this.listeOuverte.remove(n);
 
-			// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
-			boolean idem = listeFerme.contains(n);
+			// On ajoute le Noeud à la liste fermé
+			this.listeFerme.add(n);
+			Etat e = n.getEtat();
 
-			// Si le Noeud n'est pas déja dans la liste fermé
-			if (!idem) {
+			// Liste des mouvements a tester
+			String[] mouvements = { "Droite", "Gauche", "Haut", "Bas" };
 
-				// On ajoute le Noeud à la liste fermé
-				this.listeFerme.add(n);
-				Etat e = n.getEtat();
+			// Recherche et ajout des prochains Noeud dans la listeOuverte
+			for (int k = 0; k < mouvements.length; k++) {
+				String m = mouvements[k];
+				Etat etat = this.chercherProchainMouvement(m, e);
+				if (etat != null) {
+					int nbDep = n.getDeplacements() + 1;
+					ArrayList<int[]> emplacements = n.getListeEmplacement();
+					Noeud noeud = new Noeud(nbDep, emplacements, etat, n, m, this.heuristique);
 
-				// Liste des mouvements a tester
-				String[] mouvements = { "Droite", "Gauche", "Haut", "Bas" };
-
-				// Recherche et ajout des prochains Noeud dans la listeOuverte
-				for (int k = 0; k < mouvements.length; k++) {
-					String m = mouvements[k];
-					Etat etat = this.chercherProchainMouvement(m, e);
-					if (etat != null) {
-						int nbDep = n.getDeplacements() + 1;
-						ArrayList<int[]> emplacements = n.getListeEmplacement();
-						Noeud noeud = new Noeud(nbDep, emplacements, etat, n, m, this.heuristique);
+					// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
+					if (!listeFerme.contains(noeud))
 						this.listeOuverte.add(noeud);
 
-						// test si le nouveau noeud est gagnant
-						if (etat.estGagnant()) {
-							win = true;
-							fin = noeud;
-						}
+					// test si le nouveau noeud est gagnant
+					if (etat.estGagnant()) {
+						win = true;
+						fin = noeud;
 					}
 				}
-				if (this.listeOuverte.size() - taille >= 200) {
-					notifierObservateurs();
-					taille = this.listeOuverte.size();
-				}
 			}
-
-			// si on a ajoute un noeud dans la liste ouverte
-			if (win) {
-				// Récupère le Noeud final (correspond à la victoire)
-				System.out.println("Nombre de tests : " + nbIterations);
-				ArrayList<String> rep = new ArrayList<String>();
-				int j = 0;
-				Noeud temps = fin;
-				// Parcoure les Noeuds précédents pour récupérer les mouvements
-				while (temps.getPrecedent() != null) {
-					rep.add(0, temps.getMouvement());
-					temps = temps.getPrecedent();
-				}
-				this.lab.setSolution(rep);
-				this.notifierObservateurs();
-				return rep;
+			if (this.listeOuverte.size() - taille >= 200) {
+				notifierObservateurs();
+				taille = this.listeOuverte.size();
 			}
 		}
+
+		// si on a ajoute un noeud dans la liste ouverte
+		if (win) {
+			// Récupère le Noeud final (correspond à la victoire)
+			System.out.println("Nombre de tests : " + nbIterations);
+			ArrayList<String> rep = new ArrayList<String>();
+			int j = 0;
+			Noeud temps = fin;
+			// Parcoure les Noeuds précédents pour récupérer les mouvements
+			while (temps.getPrecedent() != null) {
+				rep.add(0, temps.getMouvement());
+				temps = temps.getPrecedent();
+			}
+			this.lab.setSolution(rep);
+			this.notifierObservateurs();
+			return rep;
+		}
+
 		System.out.println("Perdu");
 		return null;
 	}

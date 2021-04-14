@@ -35,6 +35,10 @@ public class HeuristiqueFactory {
 		case "CaissePersoPlusGrand":
 		case "caissepersoplusgrand":
 			return new HeuristiqueCaisseEtPlusGrandPersonnage();
+			
+		// en retirant les murs (heuristique trop grande)
+		case "CaissePersoPlusGrandPasMur":
+			return new HeuristiqueCaisseEtPlusGrandPersonnagePasMur();
 
 		// heuristique developpee par etudiants
 		case "HeuristiqueEtudiants":
@@ -55,7 +59,7 @@ public class HeuristiqueFactory {
 	 * all known heuristic names
 	 */
 	public static String[] getAllNames() {
-		String[] res = { "CaissePersoPlusGrand", "CaissePerso", "HeuristiqueEtudiants", "HeuristiqueEtudiantCaisse",
+		String[] res = { "CaissePersoPlusGrandPasMur","CaissePersoPlusGrand", "CaissePerso", "HeuristiqueEtudiants", "HeuristiqueEtudiantCaisse",
 				"Dijkstra" };
 		return res;
 	}

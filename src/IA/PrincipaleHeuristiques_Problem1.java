@@ -22,13 +22,13 @@ public class PrincipaleHeuristiques_Problem1 {
 		String[] nomsHeuristiques = {"CaissePersoPlusGrand"};
 
 		// affiche en mode debug
-		IA.DEBUG = true;
+		IA.DEBUG = false;
 		IA.NB_ITERATION_DEBUG = 10000;
 
 		// pour chaque heuristique
 		for (String nom : nomsHeuristiques) {
 			// creation du niveau
-			Labyrinthe lab = new Labyrinthe(1);
+			Labyrinthe lab = new Labyrinthe(5);
 
 			// recuperation heuristique avec Factory
 			Heuristique heuristique = HeuristiqueFactory.getHeuristique(nom);
