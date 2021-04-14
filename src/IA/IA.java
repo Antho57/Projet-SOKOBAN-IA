@@ -116,29 +116,32 @@ public class IA implements Sujet {
 			this.listeOuverte.remove(n);
 
 			// On ajoute le Noeud à la liste fermé
-			this.listeFerme.add(n);
-			Etat e = n.getEtat();
+			// possible si noeud plusieurs fois dans la liste ouverte
+			if (!listeFerme.contains(n)) {
+				this.listeFerme.add(n);
+				Etat e = n.getEtat();
 
-			// Liste des mouvements a tester
-			String[] mouvements = { "Droite", "Gauche", "Haut", "Bas" };
+				// Liste des mouvements a tester
+				String[] mouvements = { "Droite", "Gauche", "Haut", "Bas" };
 
-			// Recherche et ajout des prochains Noeud dans la listeOuverte
-			for (int k = 0; k < mouvements.length; k++) {
-				String m = mouvements[k];
-				Etat etat = this.chercherProchainMouvement(m, e);
-				if (etat != null) {
-					int nbDep = n.getDeplacements() + 1;
-					ArrayList<int[]> emplacements = n.getListeEmplacement();
-					Noeud noeud = new Noeud(nbDep, emplacements, etat, n, m, this.heuristique);
+				// Recherche et ajout des prochains Noeud dans la listeOuverte
+				for (int k = 0; k < mouvements.length; k++) {
+					String m = mouvements[k];
+					Etat etat = this.chercherProchainMouvement(m, e);
+					if (etat != null) {
+						int nbDep = n.getDeplacements() + 1;
+						ArrayList<int[]> emplacements = n.getListeEmplacement();
+						Noeud noeud = new Noeud(nbDep, emplacements, etat, n, m, this.heuristique);
 
-					// Vérifie si le Noeud correpsond à un noeud dans la liste fermé
-					if (!listeFerme.contains(noeud))
-						this.listeOuverte.add(noeud);
+						// Vérifie si le Noeud correspond à un noeud dans la liste fermé
+						if (!listeFerme.contains(noeud))
+							this.listeOuverte.add(noeud);
 
-					// test si le nouveau noeud est gagnant
-					if (etat.estGagnant()) {
-						win = true;
-						fin = noeud;
+						// test si le nouveau noeud est gagnant
+						if (etat.estGagnant()) {
+							win = true;
+							fin = noeud;
+						}
 					}
 				}
 			}
